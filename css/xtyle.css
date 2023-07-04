@@ -1,0 +1,116 @@
+body{
+    background-color: rgb(10, 9, 9);	
+	background-blend-mode: darken;
+	color: #fff;
+}
+
+.dark-mode {
+	background-color: black;
+	color: white;
+  }
+footer{
+    padding: 4px;
+    bottom: 0;
+    width:100%;
+    left:0;
+    position: fixed;
+}
+	#display {
+	text-align: center;
+	height:70px;
+    color: white;
+	line-height:50px;
+	padding:10px 4px;
+	font-size:25px;
+	}
+
+
+	.buttons {
+	display: grid;
+	border-bottom:1px transparent;
+	border-left:1px transparent;
+	grid-template-columns:0.5fr 0.5fr 0.5fr ;
+    
+	}
+	
+
+	.buttons>div {
+	border-top:1px transparent;
+	border-right:1px transparent;
+	}
+	
+
+	.button {
+	border:0.5px transparent;
+	line-height:100px;
+	text-align: center;
+	font-size:23px;
+    color: white;
+	cursor: pointer;
+	}
+	
+
+	#equal {
+	background-color:rgb(85,85,255);
+	color: white;
+	}
+	
+
+	.button:hover {
+	background-color:#323330;
+	color: white;
+    border-radius: 100%;
+	transition:0.5s ease-in-out;
+	}
+	center{
+		margin-top: 13rem;
+	}
+	#pNumber{
+		text-align: center;
+		width: 18rem;
+		padding: 0.8rem;
+		transition: 0.6s ease-in-out;
+	}
+	#pass{
+		text-align: center;
+		width: 18rem;
+		padding: 0.8rem;
+		transition: 0.6s ease-in-out;
+	}
+.leVisage{
+	margin-bottom: 9px;
+	font-weight: bold;
+}
+#display_calling{
+	width: 100%;
+	height: 100%;
+	z-index: 9;
+	margin-top: 0;
+	display: hidden;
+	background-color: blueviolet;
+}
+.agentBee{
+	cursor: pointer;
+}
+.agentBee:hover{
+	color: blue;
+}
+.form-control-user{
+	border-radius: 20pc;
+	padding: 11px;
+	border: transparent;
+}
+
+.colored_card{
+	border-radius: 10px;
+	margin:0.7em;
+}
+.panel {
+	padding: 0 18px;
+	display: none;
+	background-color: transparent;
+	overflow: hidden;	
+  }
+  li{
+	  list-style: none;
+  }
