@@ -510,7 +510,6 @@ function loadCooki(){
           }
 }
 socket.on('logout', (data)=>{
-  console.log(data)
   var dd = JSON.parse(data)
   if(dd === 'logout'){
     dash.style.display="none"
@@ -778,7 +777,6 @@ socket.on('schedule', (data)=>{
  
 })
 socket.on('calendaSetting', (data)=>{
-  console.log(data)
 })
 socket.on('refresh-comments', (data)=>{
    setMe(data.room,data.to)
@@ -875,7 +873,6 @@ function reply(name){
  function date_dasher() {
    var data = JSON.parse(window.localStorage.getItem('usersDatingAcc'))
    var ht = ''
-   console.log(data)
    for (let i = 0; i < data.length; i++) {
      if(data[i].sex === 1 || data[i].sex === '1'){
        var sex_type = '<i class="fas fa-male text-primary"></i>'
@@ -889,7 +886,7 @@ function reply(name){
    usersList.innerHTML=ht 
  }
  socket.on('registration',(data)=>{
-   console.log(data)
+  
   var d = JSON.parse(data)
   document.getElementById('myBtn').disabled=false
     if(d == "Message has been sent"){
