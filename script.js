@@ -328,6 +328,7 @@ function getApprovedStreams(res){
    //document.querySelector('.molly').innerHtml=data
 }
 function myuser_logs(data){ 
+  console.log(data)
  var newData = JSON.parse(data)
  
   if(newData !== null){
@@ -510,6 +511,7 @@ function loadCooki(){
           }
 }
 socket.on('logout', (data)=>{
+  console.log(data)
   var dd = JSON.parse(data)
   if(dd === 'logout'){
     dash.style.display="none"
@@ -777,6 +779,7 @@ socket.on('schedule', (data)=>{
  
 })
 socket.on('calendaSetting', (data)=>{
+  console.log(data)
 })
 socket.on('refresh-comments', (data)=>{
    setMe(data.room,data.to)
@@ -872,21 +875,27 @@ function reply(name){
  
  function date_dasher() {
    var data = JSON.parse(window.localStorage.getItem('usersDatingAcc'))
+
    var ht = ''
-   for (let i = 0; i < data.length; i++) {
-     if(data[i].sex === 1 || data[i].sex === '1'){
-       var sex_type = '<i class="fas fa-male text-primary"></i>'
-     }else if(data[i].sex === 2 || data[i].sex === '2'){
-      var sex_type = '<i class="fas fa-female text-danger"></i>'
-     }else{}
-     
-      ht += '<div class="card bg-transparent m-1 border border-primary colored_card" style="width:10rem;"><img src="'+data[i].profilepic+'" class="card-img-top img-responsive"/><div class=""><h9>'+data[i].name+'</h9><div class="row"><div class="col">'+sex_type+' '+data[i].country+'</div></div></div><span class="btn btn-sm btn-primary text-white" onclick="contactme(\''+data[i].id+'\',\''+data[i].name+'\')">Send</span></div>'
-      
+   if(data.length > 0 || data.length > '0'){
+        for (let i = 0; i < data.length; i++) {
+            if(data[i].sex === 1 || data[i].sex === '1'){
+              var sex_type = '<i class="fas fa-male text-primary"></i>'
+            }else if(data[i].sex === 2 || data[i].sex === '2'){
+              var sex_type = '<i class="fas fa-female text-danger"></i>'
+            }else{}
+            
+              ht += '<div class="card bg-transparent m-1 colored_card" style="width:10rem;"><img src="'+data[i].profilepic+'" class="card-img-top img-responsive"/><div class=""><h9>'+data[i].name+'</h9><div class="row"><div class="col">'+sex_type+' '+data[i].country+'</div></div></div><span class="btn btn-sm btn-primary text-white" onclick="contactme(\''+data[i].id+'\',\''+data[i].name+'\')">Send</span></div>'
+              
+          }
+   }else{
+
    }
+   
    usersList.innerHTML=ht 
  }
  socket.on('registration',(data)=>{
-  
+   console.log(data)
   var d = JSON.parse(data)
   document.getElementById('myBtn').disabled=false
     if(d == "Message has been sent"){
