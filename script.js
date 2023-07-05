@@ -858,6 +858,7 @@ function reply(name){
   document.querySelector('.commentOnlineUsers').innerText=data
  })
  socket.on('datedash', (data)=>{   
+	
    window.localStorage.setItem('usersDatingAcc', JSON.stringify(data))
    var ht = ''
    for (let i = 0; i < data.length; i++) {
@@ -875,7 +876,8 @@ function reply(name){
  
  function date_dasher() {
    var data = JSON.parse(window.localStorage.getItem('usersDatingAcc'))
-
+alert(data.length)
+	 alert(data)
    var ht = ''
    if(data.length > 0 || data.length > '0'){
         for (let i = 0; i < data.length; i++) {
