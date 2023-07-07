@@ -328,7 +328,6 @@ function getApprovedStreams(res){
    //document.querySelector('.molly').innerHtml=data
 }
 function myuser_logs(data){ 
-  console.log(data)
  var newData = JSON.parse(data)
  
   if(newData !== null){
@@ -511,7 +510,7 @@ function loadCooki(){
           }
 }
 socket.on('logout', (data)=>{
-  console.log(data)
+  
   var dd = JSON.parse(data)
   if(dd === 'logout'){
     dash.style.display="none"
@@ -779,7 +778,7 @@ socket.on('schedule', (data)=>{
  
 })
 socket.on('calendaSetting', (data)=>{
-  console.log(data)
+  
 })
 socket.on('refresh-comments', (data)=>{
    setMe(data.room,data.to)
@@ -897,7 +896,7 @@ alert(data.length)
    usersList.innerHTML=ht 
  }
  socket.on('registration',(data)=>{
-   console.log(data)
+ 
   var d = JSON.parse(data)
   document.getElementById('myBtn').disabled=false
     if(d == "Message has been sent"){
