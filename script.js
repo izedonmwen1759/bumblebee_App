@@ -673,7 +673,7 @@ function descriptionMontrer(bio){
    document.querySelector('.videoDescription').innerText=bio
 }
 function clickPlay(link,name) {
-    document.querySelector('.cplay').innerHTML='<a class="btn btn-warning p-1" href="vlc-x-callback://x-callback-url/stream?url='+link+'">Click to Play <strong>'+name+'</strong> Using VLC</a>'
+    document.querySelector('.cplay').innerHTML='<a class="btn btn-warning p-1" href="vlc://'+link+'">Click to Play <strong>'+name+'</strong> Using VLC</a>'
     
  // document.querySelector('#iframePlayerMain').src='https://byspx.localto.net/?use='+newOne
 /*    let newOne
