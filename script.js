@@ -867,7 +867,7 @@ function reply(name){
       var sex_type = '<i class="fas fa-female text-danger"></i>'
      }else{}
      
-      ht += '<div class="card bg-transparent m-1 border border-primary colored_card" style="width:10rem;"><img src="'+data[i].profilepic+'" class="card-img-top img-responsive"/><div class=""><h9>'+data[i].name+'</h9><div class="row"><div class="col">'+sex_type+' '+data[i].country+'</div></div></div><span class="btn btn-sm btn-primary text-white" onclick="contactme(\''+data[i].id+'\',\''+data[i].name+'\')">Send</span></div>'
+      ht += '<div class="card bg-transparent m-1 border border-primary colored_card" style="width:10rem;"><img src="'+data[i].profilepic+'" class="card-img-top img-responsive"/><div class=""><h9>'+data[i].name+'</h9><div class="row"><div class="col">'+sex_type+'</div></div></div><span class="btn btn-sm btn-primary text-white" onclick="contactme(\''+data[i].id+'\',\''+data[i].name+'\')">Send</span></div>'
       
    }
    usersList.innerHTML=ht
@@ -875,8 +875,6 @@ function reply(name){
  
  function date_dasher() {
    var data = JSON.parse(window.localStorage.getItem('usersDatingAcc'))
-alert(data.length)
-	 alert(data)
    var ht = ''
    if(data.length > 0 || data.length > '0'){
         for (let i = 0; i < data.length; i++) {
@@ -886,7 +884,7 @@ alert(data.length)
               var sex_type = '<i class="fas fa-female text-danger"></i>'
             }else{}
             
-              ht += '<div class="card bg-transparent m-1 colored_card" style="width:10rem;"><img src="'+data[i].profilepic+'" class="card-img-top img-responsive"/><div class=""><h9>'+data[i].name+'</h9><div class="row"><div class="col">'+sex_type+' '+data[i].country+'</div></div></div><span class="btn btn-sm btn-primary text-white" onclick="contactme(\''+data[i].id+'\',\''+data[i].name+'\')">Send</span></div>'
+              ht += '<div class="card bg-transparent m-1 colored_card" style="width:10rem;"><img src="'+data[i].profilepic+'" class="card-img-top img-responsive"/><div class=""><h9>'+data[i].name+'</h9><div class="row"><div class="col">'+sex_type+' </div></div></div><span class="btn btn-sm btn-primary text-white" onclick="contactme(\''+data[i].id+'\',\''+data[i].name+'\')">Send</span></div>'
               
           }
    }else{
@@ -1149,7 +1147,7 @@ document.querySelector('.everyone').addEventListener('click', ()=>{
      }else{
          var newOne = getUserData[i].country
      }
-      ht += '<div class="card bg-transparent m-1 border border-primary colored_card" style="width:10rem;"><img src="'+getUserData[i].profilepic+'" class="card-img-top img-responsive"/><div class=""><h9>'+getUserData[i].name+'</h9><div class="row"><div class="col">'+sex_type+' '+newOne+'</div></div></div><span class="btn btn-sm btn-primary text-white" onclick="contactme(\''+getUserData[i].id+'\',\''+getUserData[i].name+'\')">Send</span></div>'
+      ht += '<div class="card bg-transparent m-1 border border-primary colored_card" style="width:10rem;"><img src="'+getUserData[i].profilepic+'" class="card-img-top img-responsive"/><div class=""><h9>'+getUserData[i].name+'</h9><div class="row"><div class="col">'+sex_type+'</div></div></div><span class="btn btn-sm btn-primary text-white" onclick="contactme(\''+getUserData[i].id+'\',\''+getUserData[i].name+'\')">Send</span></div>'
       
    }
    usersList.innerHTML=ht
@@ -1170,7 +1168,7 @@ function findUserSexMale(){
          var newOne = getUserData[i].country
      }
        var sex_type = '<i class="fas fa-male text-primary"></i>'
-       ht += '<div class="card bg-transparent m-1 border border-primary colored_card" style="width:10rem;"><img src="'+getUserData[i].profilepic+'" class="card-img-top img-responsive"/><div class=""><h9>'+getUserData[i].name+'</h9><div class="row"><div class="col">'+sex_type+' '+newOne+'</div></div></div><span class="btn btn-sm btn-primary text-white" onclick="contactme(\''+getUserData[i].id+'\',\''+getUserData[i].name+'\')">Send</span></div>'
+       ht += '<div class="card bg-transparent m-1 border border-primary colored_card" style="width:10rem;"><img src="'+getUserData[i].profilepic+'" class="card-img-top img-responsive"/><div class=""><h9>'+getUserData[i].name+'</h9><div class="row"><div class="col">'+sex_type+'</div></div></div><span class="btn btn-sm btn-primary text-white" onclick="contactme(\''+getUserData[i].id+'\',\''+getUserData[i].name+'\')">Send</span></div>'
      }
    }
    usersList.innerHTML=ht
