@@ -622,7 +622,7 @@ function openVoD(val){
 }
 socket.on('get-channels',(data)=>{
   var ht = ''
- 
+ console.log(data)
   var ress = data
   if(ress.length > 0){
     for (let i = 0; i < ress.length; i++) {
