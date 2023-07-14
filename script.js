@@ -627,20 +627,20 @@ socket.on('get-channels',(data)=>{
   if(ress.length > 0){
     for (let i = 0; i < ress.length; i++) {
       if(ress[i].type === 'News'){
-         ht += '<div class="col bg-dark m-2 p-2" onclick="clickPlay(\''+ress[i].m3url+'\',\''+ress[i].ChannelName+'\')"><img width="48" src="'+ress[i].image+'" class="rounded"/><p class="text-light" style="font-size:12px;">'+ress[i].ChannelName+'</p></div>'
+         ht += '<div class="col bg-dark m-2 p-2" onclick="clickPlay(\''+ress[i].xql+'\',\''+ress[i].ChannelName+'\')"><img width="48" src="'+ress[i].image+'" class="rounded"/><p class="text-light" style="font-size:12px;">'+ress[i].ChannelName+'</p></div>'
       }else if(ress[i].type === 'Movies' || ress[i].type === 'Movie'){
-        ht += '<div class="col bg-dark m-2 p-2" onclick="clickPlay(\''+ress[i].m3url+'\',\''+ress[i].ChannelName+'\')"><img width="48" src="'+ress[i].image+'" class="rounded"/><p class="text-light" style="font-size:12px;">'+ress[i].ChannelName+'</p></div>'
+        ht += '<div class="col bg-dark m-2 p-2" onclick="clickPlay(\''+ress[i].xql+'\',\''+ress[i].ChannelName+'\')"><img width="48" src="'+ress[i].image+'" class="rounded"/><p class="text-light" style="font-size:12px;">'+ress[i].ChannelName+'</p></div>'
       }else if(ress[i].type === 'Kids'){
-        ht += '<div class="col bg-dark m-2 p-2" onclick="clickPlay(\''+ress[i].m3url+'\',\''+ress[i].ChannelName+'\')"><img width="48" src="'+ress[i].image+'" class="rounded"/><p class="text-light" style="font-size:12px;">'+ress[i].ChannelName+'</p></div>'
+        ht += '<div class="col bg-dark m-2 p-2" onclick="clickPlay(\''+ress[i].xql+'\',\''+ress[i].ChannelName+'\')"><img width="48" src="'+ress[i].image+'" class="rounded"/><p class="text-light" style="font-size:12px;">'+ress[i].ChannelName+'</p></div>'
       }else if(ress[i].type === 'Sports'){
-        ht += '<div class="col bg-dark m-2 p-2" onclick="clickPlay(\''+ress[i].m3url+'\',\''+ress[i].ChannelName+'\')"><img width="48" src="'+ress[i].image+'" class="rounded"/><p class="text-light" style="font-size:12px;">'+ress[i].ChannelName+'</p></div>'
+        ht += '<div class="col bg-dark m-2 p-2" onclick="clickPlay(\''+ress[i].xql+'\',\''+ress[i].ChannelName+'\')"><img width="48" src="'+ress[i].image+'" class="rounded"/><p class="text-light" style="font-size:12px;">'+ress[i].ChannelName+'</p></div>'
       }else if(ress[i].type === 'Reality'){
-        ht += '<div class="col bg-dark m-2 p-2" onclick="clickPlay(\''+ress[i].m3url+'\',\''+ress[i].ChannelName+'\')"><img width="48" src="'+ress[i].image+'" class="rounded"/><p class="text-light" style="font-size:12px;">'+ress[i].ChannelName+'</p></div>'
+        ht += '<div class="col bg-dark m-2 p-2" onclick="clickPlay(\''+ress[i].xql+'\',\''+ress[i].ChannelName+'\')"><img width="48" src="'+ress[i].image+'" class="rounded"/><p class="text-light" style="font-size:12px;">'+ress[i].ChannelName+'</p></div>'
       }else if(ress[i].type === 'Lifestyle'){
-        ht += '<div class="col bg-dark m-2 p-2" onclick="clickPlay(\''+ress[i].m3url+'\',\''+ress[i].ChannelName+'\')"><img width="48" src="'+ress[i].image+'" class="rounded"/><p class="text-light" style="font-size:12px;">'+ress[i].ChannelName+'</p></div>'
+        ht += '<div class="col bg-dark m-2 p-2" onclick="clickPlay(\''+ress[i].xql+'\',\''+ress[i].ChannelName+'\')"><img width="48" src="'+ress[i].image+'" class="rounded"/><p class="text-light" style="font-size:12px;">'+ress[i].ChannelName+'</p></div>'
       }else{
        
-          ht += '<div class="col bg-dark m-2 p-2" onclick="clickPlay(\''+ress[i].m3url+'\',\''+ress[i].ChannelName+'\')"><img width="48" src="'+ress[i].image+'" class="rounded"/><p class="text-light" style="font-size:12px;">'+ress[i].ChannelName+'</p></div>'
+          ht += '<div class="col bg-dark m-2 p-2" onclick="clickPlay(\''+ress[i].xql+'\',\''+ress[i].ChannelName+'\')"><img width="48" src="'+ress[i].image+'" class="rounded"/><p class="text-light" style="font-size:12px;">'+ress[i].ChannelName+'</p></div>'
         
       }
      
@@ -672,17 +672,17 @@ function descriptionMontrer(bio){
    document.querySelector('.videoDescription').innerText=bio
 }
 function clickPlay(link,name) {
-    document.querySelector('.cplay').innerHTML='<a class="btn btn-warning p-1" href="vlc://'+link+'">Click to Play <strong>'+name+'</strong> Using VLC</a>'
+   // document.querySelector('.cplay').innerHTML='<a class="btn btn-warning p-1" href="vlc://'+link+'">Click to Play <strong>'+name+'</strong> Using VLC</a>'
     
  // document.querySelector('#iframePlayerMain').src='https://byspx.localto.net/?use='+newOne
-/*    let newOne
+    let newOne
     $.get("https://ipinfo.io", function(response) {
    newOne = link+'&&name-'+name+'|location#'+response.city+'@'+response.country+'@'+response.timezone
      document.querySelector('.cplay').innerHTML='<strong>'+name+'</strong>'
-  document.querySelector('#iframePlayerMain').src='https://byspx.localto.net/?use='+newOne
+  document.querySelector('#iframePlayerMain').src='https://wwu30.localto.net/?use='+newOne
 }, "jsonp");
 
-  */
+  
 }
 function clickPlayMovies(link,name) {
     document.querySelector('.mplay').innerHTML='<a class="btn btn-warning p-1" href="VLC://'+link+'">Click to Play <strong>'+name+'</strong> Using VLC</a>'
