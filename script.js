@@ -1,4 +1,3 @@
-//const socket = io('http://localhost:5009/')
 const socket = io('https://bumblebee-new-server.onrender.com/')
 const regBtn = document.getElementById('registerRg'),
 formSub = document.getElementById('form-submit'),
@@ -29,14 +28,20 @@ editP =document.querySelector('.edit_Prof'),
 commentDisplay =  document.querySelector('.commentDisplay'),
 usersList = document.querySelector('.usersList'),
 holdArr = [],
-cartAlog = [],
+cartAlog = []
+const defaultOptions = {},
 caLog = [],
 chanArray = [],
 dateArray = []
+const video = document.getElementById("player")
+//const videoid = document.getElementById('videoid')
+//const skippa = document.querySelector('.skippa')
+//const adVideo = document.getElementById('vid1')
+//const adVideoVid = document.getElementById('video_container')
+const videoContainer =document.querySelector('.videocontainer')
 
-let holdPic = ''
-let totalPrice = 0
-let tray = []
+var totalPrice = 0
+var tray = []
 function navOnline(){
   if(navigator.onLine === true || navigator.onLine === 'true'){
    document.querySelector('.notifydiv').style.display="none"
@@ -104,15 +109,12 @@ window.addEventListener('storage',()=>{
   }
 })
 */
-function testing(str) {
-        return /^\d+$/.test(str)
-}
+
 formSub.addEventListener('submit', (e)=>{
     e.preventDefault()
     var fname = document.getElementById("fname").value
     var lname = document.getElementById("lname").value
     var email = document.getElementById("email_create").value
-    var phonen = document.getElementById("phone_number").value
     var passwordC = document.getElementById("password_create").value
     var cnt = document.querySelector(".country").value
 
@@ -131,11 +133,7 @@ formSub.addEventListener('submit', (e)=>{
              }else{
                document.getElementById('email_create').style.border="1px solid blue"
              }
-             if(phonen === ""){
-               document.getElementById('phone_number').style.border="1px solid red"
-             }else{
-               document.getElementById('phone_number').style.border="1px solid blue"
-             }
+             
              if(passwordC === ""){
                document.getElementById('password_create').style.border="1px solid red"
              }else{
@@ -146,26 +144,27 @@ formSub.addEventListener('submit', (e)=>{
             }else{
               document.querySelector('.country').style.border="1px solid blue"
             }
-             if(fname !== "" && lname !== "" && email !== "" && phonen !== "" && passwordC !== "" && cnt !== "Choose Country"){
+             if(fname !== "" && lname !== "" && email !== "" && passwordC !== "" && cnt !== "Choose Country"){
                 var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/            
                if(email.match(mailformat))
                {
-                   if(testing(phonen) === true){
+                  
                         const data = {
                            fname:fname,
                            lname:lname,
                            email: email,
-                           phonen: phonen,
                            password:passwordC,
                            country:cnt,                   
-                           date_joined: new Date
+                           date_joined: new Date,
+                           id: Math.floor((Math.random()* 1000000000) +1),
+                           is_loggedIn:false,
+                           verified:false,
+                           subscription:1
                         }  
                        var newData = JSON.stringify(data)
                        document.getElementById('myBtn').disabled=true
-                       socket.emit('registration', newData)
-                   }else{
-                       document.querySelector('.alertRep').innerHTML='Check your Number.'
-                   }
+                       socket.emit('registration', data)
+                   
                 
                 
              } else {
@@ -222,7 +221,7 @@ logForm.addEventListener('submit', (e)=>{
            var newData = JSON.stringify(data)
            
            document.getElementById('logBtn').disabled=true
-            socket.emit('login', newData)
+            socket.emit('login', data)
          } else {
               document.getElementById('email').style.border="1px solid red"
            return false 
@@ -231,7 +230,6 @@ logForm.addEventListener('submit', (e)=>{
         }
 })
 socket.on('login',(data)=>{
- 
   var de = JSON.parse(data)
   document.getElementById('logBtn').disabled=false
   if(de === 'Account not verified'){
@@ -239,15 +237,60 @@ socket.on('login',(data)=>{
    
   }else if(de === 'Email not found'){
     document.getElementById('alertAll').innerHTML="<span class='text-danger'>Email not found...</span>"
-  }else if(de === 'User already loggedin'){
-    document.getElementById('alertAll').innerHTML="<span class='text-danger'>User already loggedin...</span>"
+  }else if(de === 'incorrect'){
+    document.getElementById('alertAll').innerHTML="<span class='text-danger'>Incorrect Details...</span>"
   }else{
-     window.localStorage.setItem('myuser_logs', data)
-    myuser_logs(data)
+   
+    if (de.is_loggedin == true){
+       document.getElementById('alertAll').innerHTML="<span class='text-danger'>User already loggedin...</span>"
+    }else{
+      window.localStorage.setItem('myuser_logs', data)
+      myuser_logs(data)
+    }
   }
  
 })
 
+function runPlay(url){
+  /*var idplay = document.getElementById('hideValue').value
+      if(Hls.isSupported()){
+          const hls = new Hls()
+  
+      video.muted=false 
+      hls.loadSource(url)        
+      hls.on(Hls.Events.MANIFEST_PARSED,(event,data)=>{           
+       const availableQualities = hls.levels.map((l)=> l.height)
+        defaultOptions.controls = [
+                  'play-large',
+                  'restart',
+                  'rewind',
+                  'play',
+                  'fast-forward',
+                  'progress',
+                  'current-time',
+                  'duration',
+                  'mute',
+                  'volume',
+                  'captions',
+                  'settings',
+                  'pip',
+                  'airplay',
+                  'autoPlay',
+                  'fullscreen'
+        ];
+        new Plyr(video, defaultOptions)
+        
+      })       
+     hls.attachMedia(video)              
+     window.hls = hls
+  }
+  const iframe = document.createElement('iframe')
+  iframe.src=url
+  iframe.width='100%'
+  iframe.height="50%"
+  iframe.scrolli=*/
+  document.querySelector('.iframeLivePlayer').src=iframeurl
+}
 
 function userdetails(id){
   const data ={ id:id}
@@ -329,56 +372,72 @@ function getApprovedStreams(res){
 }
 function myuser_logs(data){ 
  var newData = JSON.parse(data)
- 
-  if(newData !== null){
-      	
-    document.querySelector('.regDiv').style.display="none"
+if( newData !== null){      	
+  document.querySelector('.regDiv').style.display="none"
   document.querySelector('.loginDiv').style.display="none" 
   document.getElementById('footer').style.display="none"
   langSet.style.display='none'
-  for (let i = 0; i < newData.length; i++) {
-    if(newData[i].subscription === 1 || newData[i].subscription === '1'){
+  
+    if(newData.subscription === 1 || newData.subscription === '1'){
       
-    document.getElementById('oldemail').value=newData[i].email      
+    document.getElementById('oldemail').value=newData.email      
      
       document.getElementById('mysubscription').style.display="none"
       displayMenu.style.display="block"
-    }else if(newData[i].subscription === 2 || newData[i].subscription === '2'){
+    }else if(newData.subscription === 2 || newData.subscription === '2'){
+      console.log(newData.subscription)
       document.getElementById('mysubscription').style.display="none"
       displayMenu.style.display="block"     
-    }else{     
-      displayMenu.style.display="none"
-      document.getElementById('mysubscription').style.display="block"
+    }else{  
+        displayMenu.style.display="none"
+        document.getElementById('mysubscription').style.display="block"
+        
+        document.getElementById('live').disabled=true
+        document.getElementById('commun').disabled=true
+        runafterload()
+      }
       
-      document.getElementById('live').disabled=true
-      document.getElementById('commun').disabled=true
-      runafterload()
-    }
-    setCookie('cog_log_dsnfdsvdsbjfbds', newData[i].id, 30);
-    window.localStorage.setItem('user_num', newData[i].id)
-    window.localStorage.setItem('email', newData[i].email)
-    window.localStorage.setItem('fullname', newData[i].fname+" "+newData[i].lname)
-    window.localStorage.setItem('countryName', newData[i].country)
-    document.getElementById('up').innerText=newData[i].fname+" "+newData[i].lname
-    document.getElementById('fnameupdate').value=newData[i].fname
-    document.getElementById('lnameupdate').value=newData[i].lname
-    document.getElementById('oldemail').value=newData[i].email
-    socket.emit('user_connected', newData[i].id)
-  }
-  dash.style.display="block"
+      setCookie('cog_log_dsnfdsvdsbjfbds', newData.id, 30);
+      window.localStorage.setItem('user_num', newData.id)
+      window.localStorage.setItem('email', newData.email)
+      window.localStorage.setItem('fullname', newData.fname+" "+newData.lname)
+      window.localStorage.setItem('countryName', newData.country)
+      document.getElementById('up').innerText=newData.fname+" "+newData.lname
+      document.getElementById('fnameupdate').value=newData.fname
+      document.getElementById('lnameupdate').value=newData.lname
+      document.getElementById('oldemail').value=newData.email
+      socket.emit('user_connected', newData.id)
+
+      dash.style.display="block"
+      const newdataa = {
+        fname:newData.fname,
+        lname:newData.lname,
+        email: newData.email,
+        password:newData.password,
+        country:newData.country,                   
+        date_joined:newData.date_joined,
+        id: newData.id,
+        is_loggedIn:true,
+        verified:newData.verified,
+        subscription:newData.subscription
+      }
+      socket.emit('update-login', newdataa)
+
+
+    
+   
   }else{
       var cooki = getCookieForAutoLogin('cog_log_dsnfdsvdsbjfbds')
       const userLog = {id:cooki}
-            var ress = JSON.stringify(userLog)            
-            socket.emit('logout', ress)
-      document.cookie = "cog_log_dsnfdsvdsbjfbds=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
-     
+      var ress = JSON.stringify(userLog)            
+      socket.emit('logout', ress)
+      document.cookie = "cog_log_dsnfdsvdsbjfbds=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";     
   }
 }
 function runafterload() {
     $('#pagesToDisplay').removeClass('d-flex justify-content-center')
     displayMenu.style.display="none"
-  document.getElementById('mysubscription').style.display="block"
+    document.getElementById('mysubscription').style.display="block"
   if(window.localStorage.getItem('countryName') === 'Nigeria'){
     var name = window.localStorage.getItem('fullname')
     document.getElementById('mysubscription').innerHTML='<form  class="d-block justify-content-center payform"><div class="form-group"><input type="hidden" class="userid"/><input type="tel"  value="'+name+'" class="form-control w-50 bg-transparent text-white" disabled/></div><div class="form-group"><select class="form-control bg-transparent mt-3 text-white w-50"  id="item-option"><option value="Choose Plan">Choose Plan</option><option value="1000">14 days - 1000 NGN</option><option value="2000">Monthly - 2000 NGN</option></select></div><div class="form-submit"><button type="button" onclick="payform()" class="btn btn-sm btn-success mt-3 text-uppercase">pay</button></div></form>'
@@ -391,7 +450,7 @@ function runafterload() {
   }
 }
 socket.on('user_connected',(data)=>{
-  alert(data)
+  
 })
 function payform(){
  // e.preventDefault()
@@ -487,6 +546,7 @@ logout.addEventListener('click',()=>{
   loadCooki() 
 })
 function setCookie(cName, cValue, expDays) {
+  document.cookie='username=John'
         let date = new Date();
         date.setTime(date.getTime() + (expDays * 24 * 60 * 60 * 1000));
         const expires = "expires=" + date.toUTCString();
@@ -496,21 +556,31 @@ window.addEventListener('load',loadCooki)
 function loadCooki(){
     
   var cooki = getCookieForAutoLogin('cog_log_dsnfdsvdsbjfbds')
-  
+  var data = window.localStorage.getItem('myuser_logs')
           if(cooki !== ''){
-           var data = window.localStorage.getItem('myuser_logs')
+          
            myuser_logs(data)
           }else{
             
             const userLog = {id:window.localStorage.getItem('user_num')}
-            var ress = JSON.stringify(userLog)            
-            socket.emit('logout', ress)
+            if(userLog.id === null){
+                        dash.style.display="none"
+                        langSet.style.display="none"
+                        document.querySelector('.webcast').style.display="none"
+                        window.localStorage.removeItem('user_num')
+                        window.localStorage.removeItem('myuser_logs')
+                        // document.getElementById('paypal-button-container').innerHTML=""
+                        document.querySelector('.loginDiv').style.display="block"
+            }else{
+               var ress = JSON.stringify(userLog) 
+                socket.emit('logout', data)
+            }
+           
            
             
           }
 }
 socket.on('logout', (data)=>{
-  
   var dd = JSON.parse(data)
   if(dd === 'logout'){
     dash.style.display="none"
@@ -590,12 +660,11 @@ function vod(){
            
 }
 socket.on('fetch-movies', (data)=>{
+  
     var ht = ''
- 
-  var ress = JSON.parse(data)
-  if(ress.length > 0){
-    for (let i = 0; i < ress.length; i++) {
-      ht += '<div class="col"><img onclick="clickPlayMovies(\''+ress[i].m3url+'\',\''+ress[i].movieName+'\')" width="80" height="109" src="'+ress[i].image+'" class="rounded m-1"/><p class="text-light" style="font-size:12px;">'+ress[i].movieName+'</p></div>'
+  if(data.length > 0){
+    for (let i = 0; i < data.length; i++) {
+      ht += '<div class="col"><img onclick="clickPlayMovies(\''+data[i].url+'\',\''+data[i].title+'\')" width="80" height="109" src="'+data[i].img+'" class="rounded m-1"/><p class="text-light" style="font-size:12px;">'+data[i].title+'['+data[i].year+']</p></div>'
       
     }
    
@@ -622,25 +691,25 @@ function openVoD(val){
 }
 socket.on('get-channels',(data)=>{
   var ht = ''
- console.log(data)
+ 
   var ress = data
   if(ress.length > 0){
     for (let i = 0; i < ress.length; i++) {
       if(ress[i].type === 'News'){
-         ht += '<div class="col bg-dark m-2 p-2" onclick="clickPlay(\''+ress[i].xql+'\',\''+ress[i].ChannelName+'\')"><img width="48" src="'+ress[i].image+'" class="rounded"/><p class="text-light" style="font-size:12px;">'+ress[i].ChannelName+'</p></div>'
+         ht += '<div class="col bg-dark m-2 p-2" onclick="runPlay(\''+ress[i].m3url+'\')"><img width="48" src="'+ress[i].image+'" class="rounded"/><p class="text-light" style="font-size:12px;">'+ress[i].ChannelName+'</p></div>'
       }else if(ress[i].type === 'Movies' || ress[i].type === 'Movie'){
-        ht += '<div class="col bg-dark m-2 p-2" onclick="clickPlay(\''+ress[i].xql+'\',\''+ress[i].ChannelName+'\')"><img width="48" src="'+ress[i].image+'" class="rounded"/><p class="text-light" style="font-size:12px;">'+ress[i].ChannelName+'</p></div>'
+        ht += '<div class="col bg-dark m-2 p-2" onclick="runPlay(\''+ress[i].m3url+'\')"><img width="48" src="'+ress[i].image+'" class="rounded"/><p class="text-light" style="font-size:12px;">'+ress[i].ChannelName+'</p></div>'
       }else if(ress[i].type === 'Kids'){
-        ht += '<div class="col bg-dark m-2 p-2" onclick="clickPlay(\''+ress[i].xql+'\',\''+ress[i].ChannelName+'\')"><img width="48" src="'+ress[i].image+'" class="rounded"/><p class="text-light" style="font-size:12px;">'+ress[i].ChannelName+'</p></div>'
+        ht += '<div class="col bg-dark m-2 p-2" onclick="runPlay(\''+ress[i].m3url+'\')"><img width="48" src="'+ress[i].image+'" class="rounded"/><p class="text-light" style="font-size:12px;">'+ress[i].ChannelName+'</p></div>'
       }else if(ress[i].type === 'Sports'){
-        ht += '<div class="col bg-dark m-2 p-2" onclick="clickPlay(\''+ress[i].xql+'\',\''+ress[i].ChannelName+'\')"><img width="48" src="'+ress[i].image+'" class="rounded"/><p class="text-light" style="font-size:12px;">'+ress[i].ChannelName+'</p></div>'
+        ht += '<div class="col bg-dark m-2 p-2" onclick="runPlay(\''+ress[i].m3url+'\')"><img width="48" src="'+ress[i].image+'" class="rounded"/><p class="text-light" style="font-size:12px;">'+ress[i].ChannelName+'</p></div>'
       }else if(ress[i].type === 'Reality'){
-        ht += '<div class="col bg-dark m-2 p-2" onclick="clickPlay(\''+ress[i].xql+'\',\''+ress[i].ChannelName+'\')"><img width="48" src="'+ress[i].image+'" class="rounded"/><p class="text-light" style="font-size:12px;">'+ress[i].ChannelName+'</p></div>'
+        ht += '<div class="col bg-dark m-2 p-2" onclick="runPlay(\''+ress[i].m3url+'\')"><img width="48" src="'+ress[i].image+'" class="rounded"/><p class="text-light" style="font-size:12px;">'+ress[i].ChannelName+'</p></div>'
       }else if(ress[i].type === 'Lifestyle'){
-        ht += '<div class="col bg-dark m-2 p-2" onclick="clickPlay(\''+ress[i].xql+'\',\''+ress[i].ChannelName+'\')"><img width="48" src="'+ress[i].image+'" class="rounded"/><p class="text-light" style="font-size:12px;">'+ress[i].ChannelName+'</p></div>'
+        ht += '<div class="col bg-dark m-2 p-2" onclick="runPlay(\''+ress[i].m3url+'\')"><img width="48" src="'+ress[i].image+'" class="rounded"/><p class="text-light" style="font-size:12px;">'+ress[i].ChannelName+'</p></div>'
       }else{
        
-          ht += '<div class="col bg-dark m-2 p-2" onclick="clickPlay(\''+ress[i].xql+'\',\''+ress[i].ChannelName+'\')"><img width="48" src="'+ress[i].image+'" class="rounded"/><p class="text-light" style="font-size:12px;">'+ress[i].ChannelName+'</p></div>'
+          ht += '<div class="col bg-dark m-2 p-2" onclick="runPlay(\''+ress[i].m3url+'\')"><img width="48" src="'+ress[i].image+'" class="rounded"/><p class="text-light" style="font-size:12px;">'+ress[i].ChannelName+'</p></div>'
         
       }
      
@@ -671,22 +740,23 @@ socket.on('fetch-users-vod',(data)=>{
 function descriptionMontrer(bio){
    document.querySelector('.videoDescription').innerText=bio
 }
-function clickPlay(link,name) {
-   // document.querySelector('.cplay').innerHTML='<a class="btn btn-warning p-1" href="vlc://'+link+'">Click to Play <strong>'+name+'</strong> Using VLC</a>'
+/* function clickPlay(link,name) {
+    document.querySelector('.cplay').innerHTML='<iframe src="'+link+'" width="100%" height="200" id="iframePlayerMain" style="position:relative;" scrolling="no" frameBorder="0" allowfullscreen></iframe>'
     
  // document.querySelector('#iframePlayerMain').src='https://byspx.localto.net/?use='+newOne
-    let newOne
+   let newOne
     $.get("https://ipinfo.io", function(response) {
    newOne = link+'&&name-'+name+'|location#'+response.city+'@'+response.country+'@'+response.timezone
      document.querySelector('.cplay').innerHTML='<strong>'+name+'</strong>'
-  document.querySelector('#iframePlayerMain').src='https://wwu30.localto.net/?use='+newOne
+  document.querySelector('#iframePlayerMain').src='https://byspx.localto.net/?use='+newOne
 }, "jsonp");
 
   
-}
+}*/
 function clickPlayMovies(link,name) {
-    document.querySelector('.mplay').innerHTML='<a class="btn btn-warning p-1" href="VLC://'+link+'">Click to Play <strong>'+name+'</strong> Using VLC</a>'
+    document.querySelector('.mplay').innerHTML='<iframe src="'+link+'" width="100%" height="200" id="iframePlayerMain" style="position:relative;" scrolling="no" frameBorder="0" allowfullscreen></iframe>'
     /*
+    <a class="btn btn-warning p-1" href="VLC://'+link+'">VLC</a>
     let newOne
     $.get("https://ipinfo.io", function(response) {
    newOne = link+'&&name-'+name+'|location#'+response.city+'@'+response.country+'@'+response.timezone
@@ -734,7 +804,7 @@ socket.on('topics',(res)=>{
   if(data.length > 0){
     for (let i = 0; i < data.length; i++) {
     
-      elem += '<span class="text text-white mb-3 d-block" id="listItems" onclick="setMe(\''+data[i].roomid+'\',\''+data[i].userid+'\')">'+window.atob(data[i].topic)+'</span>'
+      elem += '<span class="text text-white mb-3 d-block" id="listItems" onclick="setMe(\''+data[i].roomid+'\',\''+data[i].userid+'\')">'+data[i].topic+'</span>'
     }
     document.getElementById('result').innerHTML+=elem
   }else{
@@ -778,12 +848,13 @@ socket.on('schedule', (data)=>{
  
 })
 socket.on('calendaSetting', (data)=>{
-  
+  console.log(data)
 })
 socket.on('refresh-comments', (data)=>{
    setMe(data.room,data.to)
 })
 function setMe(roomid,user){
+  holdArr.length = 0
   const data = {
     room: roomid
   }
@@ -813,41 +884,47 @@ function setMe(roomid,user){
 
       }else{
        
-        const data = {
-          comment:window.btoa(comInput),
-          from:window.localStorage.getItem('user_num'),
-          to:window.localStorage.getItem('post_creator'),
-          room:hiddenRoom,
-          name:nam,
-          type_:'1',
-          date_added:new Date()
-        }
-        
-     socket.emit('comments', data)
-     document.querySelector('.inputcomment').value=""
-     window.localStorage.removeItem('post_creator')
-     document.querySelector('.comment_data').style.display="none"
+          const data = {
+            comment:comInput,
+            from:window.localStorage.getItem('user_num'),
+            to:window.localStorage.getItem('post_creator'),
+            room:hiddenRoom,
+            name:nam,
+            type_:'1',
+            date_added:new Date()
+          }
+       
+            socket.emit('comments', data)
+            document.querySelector('.inputcomment').value=""
+            document.querySelector('.comment_data').style.display="none"
       }
  })
  
  socket.on('comments', (ddd)=>{ 
-  commentDisplay.innerHTML=""
-  var commenttray = JSON.parse(ddd)
+  commentDisplay.innerHTML="" 
+  const data = JSON.parse(ddd)
   var elem = ''
-   for (let i = 0; i < commenttray.length; i++) {    
-     if(commenttray[i].type_ === '1' || commenttray[i].type_ === 1){
-      elem += '<div class="p-2 bg-transparent border border-primary border-top-0 mb-2" style="font-size:12px;"><div class="row d-flex"><div class="col-8">'+commenttray[i].commentname+'<span class="text-warning">&larr;</span> </div><div class="col-3 float-right">~'+commenttray[i].date_added+'</div></div>'+window.atob(commenttray[i].comment)+'</div>' 
-     }else if(commenttray[i].type_ === '2' || commenttray[i].type_ === 2){
-      elem += '<div class=" p-2 bg-transparent border border-primary border-top-0 mb-2" style="font-size:12px;"><div class="row d-flex"><div class="col-8">'+commenttray[i].commentname+' <span>&larr;</span></div><div class="col-3 float-right"> ~'+commenttray[i].date_added+'</div></div><img src="'+window.atob(commenttray[i].comment)+'" class="card-img-top img-responsive" height="60"/></div>' 
-     }
-     
-   }
+  if(data.length > 0){
+          for (let i = 0; i < data.length; i++) {   
+           
+              var res = data[i].name
+            if(data[i].type_ === '1' || data[i].type_ === 1){
+              elem += '<div class="p-2 bg-transparent border border-primary border-top-0 mb-2" style="font-size:12px;"><div class="row d-flex"><div class="col-8">'+res+'<span class="text-warning">&larr;</span> </div><div class="col-3 float-right">~'+data[i].date_added+'</div></div>'+data[i].comment+'</div>' 
+              }else if(data[i].type_ === '2' || data[i].type_ === 2){
+              elem += '<div class=" p-2 bg-transparent border border-primary border-top-0 mb-2" style="font-size:12px;"><div class="row d-flex"><div class="col-8">'+res+' <span>&larr;</span></div><div class="col-3 float-right"> ~'+data[i].date_added+'</div></div><img src="'+data[i].comment+'" class="card-img-top img-responsive" height="60"/></div>' 
+            }
+            
+          }                                              
+  }else{
+        elem = 'No Data'
+  }
+   
   
-   document.querySelector('.commentsize').innerText=commenttray.length
+   document.querySelector('.commentsize').innerText=data.length
    commentDisplay.innerHTML=elem
    scrollToBottom()
  })
- function scrollToBottom(){    
+function scrollToBottom(){    
   commentDisplay.scrollTo(0, commentDisplay.scrollHeight)
 }
 function reply(name){
@@ -856,9 +933,9 @@ function reply(name){
  socket.on('total-numbers', (data)=>{
   document.querySelector('.commentOnlineUsers').innerText=data
  })
- socket.on('datedash', (data)=>{   
-	
-   window.localStorage.setItem('usersDatingAcc', JSON.stringify(data))
+ socket.on('datedash', (data)=>{  
+  alert('hmmmm')
+   console.log(data)
    var ht = ''
    for (let i = 0; i < data.length; i++) {
      if(data[i].sex === 1 || data[i].sex === '1'){
@@ -867,7 +944,7 @@ function reply(name){
       var sex_type = '<i class="fas fa-female text-danger"></i>'
      }else{}
      
-      ht += '<div class="card bg-transparent m-1 border border-primary colored_card" style="width:10rem;"><img src="'+data[i].profilepic+'" class="card-img-top img-responsive"/><div class=""><h9>'+data[i].name+'</h9><div class="row"><div class="col">'+sex_type+'</div></div></div><span class="btn btn-sm btn-primary text-white" onclick="contactme(\''+data[i].id+'\',\''+data[i].name+'\')">Send</span></div>'
+      ht += '<div class="card bg-transparent m-1 border border-primary colored_card" style="width:10rem;"><img src="'+data[i].profilepic+'" class="card-img-top img-responsive"/><div class=""><h9>'+data[i].name+'</h9><div class="row"><div class="col">'+sex_type+' '+data[i].country+'</div></div></div><span class="btn btn-sm btn-primary text-white" onclick="contactme(\''+data[i].id+'\',\''+data[i].name+'\')">Send</span></div>'
       
    }
    usersList.innerHTML=ht
@@ -876,30 +953,36 @@ function reply(name){
  function date_dasher() {
    var data = JSON.parse(window.localStorage.getItem('usersDatingAcc'))
    var ht = ''
-   if(data.length > 0 || data.length > '0'){
-        for (let i = 0; i < data.length; i++) {
-            if(data[i].sex === 1 || data[i].sex === '1'){
-              var sex_type = '<i class="fas fa-male text-primary"></i>'
-            }else if(data[i].sex === 2 || data[i].sex === '2'){
-              var sex_type = '<i class="fas fa-female text-danger"></i>'
-            }else{}
-            
-              ht += '<div class="card bg-transparent m-1 colored_card" style="width:10rem;"><img src="'+data[i].profilepic+'" class="card-img-top img-responsive"/><div class=""><h9>'+data[i].name+'</h9><div class="row"><div class="col">'+sex_type+' </div></div></div><span class="btn btn-sm btn-primary text-white" onclick="contactme(\''+data[i].id+'\',\''+data[i].name+'\')">Send</span></div>'
-              
-          }
-   }else{
-
-   }
+    if(data === null){
+        alert('Chike')
+    }else{
+      alert('Chike 2')
+                if(data.length > 0 ){
+                        for (let i = 0; i < data.length; i++) {
+                            if(data[i].sex === 1 || data[i].sex === '1'){
+                              var sex_type = '<i class="fas fa-male text-primary"></i>'
+                            }else if(data[i].sex === 2 || data[i].sex === '2'){
+                              var sex_type = '<i class="fas fa-female text-danger"></i>'
+                            }else{}
+                            
+                              ht += '<div class="card bg-transparent m-1 colored_card" style="width:10rem;"><img src="'+data[i].profilepic+'" class="card-img-top img-responsive"/><div class=""><h9>'+data[i].name+'</h9><div class="row"><div class="col">'+sex_type+' '+data[i].country+'</div></div></div><span class="btn btn-sm btn-primary text-white" onclick="contactme(\''+data[i].id+'\',\''+data[i].name+'\')">Send</span></div>'
+                              
+                          }
+                  }else{
+                    alert('Chike 4')
+                  }
+    }
+   
+  
    
    usersList.innerHTML=ht 
  }
  socket.on('registration',(data)=>{
- 
   var d = JSON.parse(data)
   document.getElementById('myBtn').disabled=false
-    if(d == "Message has been sent"){
+    if(d == "created"){
       var alert = '<span class="text-success">Your account has been created, check your Inbox or Spam to verify your account.</span>'
-    }else if(d == "Email already exist"){
+    }else if(d == "Email exist"){
      var alert = '<span class="text-danger">Sorry, this email already exist in our system</span>'
     }else if(d == "Not sent"){
       var alert = '<span class="text-danger">We could not send a confirmation code to your email for verification.</span>'
@@ -909,7 +992,6 @@ function reply(name){
     document.getElementById("lname").value=""
     document.getElementById("email_create").value=""
     document.getElementById("password_create").value=""
-    document.getElementById("phone_number").value=""
  })
  socket.on('report_message', (data)=>{
   
@@ -1009,16 +1091,17 @@ function socials(){
   
   dateDash.style.display="none"
   document.querySelector('.community').style.display="block"
+  socket.emit('get-topics','')
 }
 function checkUserDatingReg(){
  var ddash = window.localStorage.getItem('datedash')
- 
+ alert(ddash)
  if(ddash === 0 || ddash === '0' || ddash === undefined || ddash === 'undefined' || ddash=== null){   
    divMenu.style.display="none"
   
   dateDash.style.display="none"
   creatAcc.style.display="block"
- }else if(ddash === 1 || ddash === '1' ){
+ }else if(ddash === 1 || ddash === '1'){
   date_()
   date_dasher()
  }
@@ -1060,23 +1143,24 @@ function createDash(){
       document.querySelector('.notifydiv').innerHTML="<i class='fas fa-image text-danger m-1'></i> Profile Image"
      
       }
- if(gender.value !== 'Select Gender' && pic != ""){
-  //go_off()
-  gender.style.border=''
-  var name = document.getElementById('up').textContent
-     
-  const data = {
-    name:name,
-    id:window.localStorage.getItem('user_num'),
-    sex:gender.value,
-    profilepic:pic,
-    country:window.localStorage.getItem('countryName'),
-    notice:[]
-  }
-  window.localStorage.setItem('datedash', 1)
- socket.emit('dashaccount', data)
- checkUserDatingReg()
- }
+    if(gender.value !== 'Select Gender' && pic != ""){
+      //go_off()
+      gender.style.border=''
+      var name = document.getElementById('up').textContent
+        
+      var data = {
+        name:name,
+        id:window.localStorage.getItem('user_num'),
+        sex:gender.value,
+        profilepic:pic,
+        country:window.localStorage.getItem('countryName'),
+        notice:[]
+      }
+      console.log(data)
+      //window.localStorage.setItem('datedash', 1)
+      socket.emit('dating-account', data)
+      //checkUserDatingReg()
+    }
 }
 
 function displaySearchBar(){
@@ -1116,7 +1200,7 @@ subTopic.addEventListener('submit', (e)=>{
   if(topi.value !== ""){
     topi.style.border=""
     const delta = {
-      topic:window.btoa(topi.value),
+      topic:topi.value,
       userid:window.localStorage.getItem('user_num'),
       date_created:new Date
     }
@@ -1147,7 +1231,7 @@ document.querySelector('.everyone').addEventListener('click', ()=>{
      }else{
          var newOne = getUserData[i].country
      }
-      ht += '<div class="card bg-transparent m-1 border border-primary colored_card" style="width:10rem;"><img src="'+getUserData[i].profilepic+'" class="card-img-top img-responsive"/><div class=""><h9>'+getUserData[i].name+'</h9><div class="row"><div class="col">'+sex_type+'</div></div></div><span class="btn btn-sm btn-primary text-white" onclick="contactme(\''+getUserData[i].id+'\',\''+getUserData[i].name+'\')">Send</span></div>'
+      ht += '<div class="card bg-transparent m-1 border border-primary colored_card" style="width:10rem;"><img src="'+getUserData[i].profilepic+'" class="card-img-top img-responsive"/><div class=""><h9>'+getUserData[i].name+'</h9><div class="row"><div class="col">'+sex_type+' '+newOne+'</div></div></div><span class="btn btn-sm btn-primary text-white" onclick="contactme(\''+getUserData[i].id+'\',\''+getUserData[i].name+'\')">Send</span></div>'
       
    }
    usersList.innerHTML=ht
@@ -1168,7 +1252,7 @@ function findUserSexMale(){
          var newOne = getUserData[i].country
      }
        var sex_type = '<i class="fas fa-male text-primary"></i>'
-       ht += '<div class="card bg-transparent m-1 border border-primary colored_card" style="width:10rem;"><img src="'+getUserData[i].profilepic+'" class="card-img-top img-responsive"/><div class=""><h9>'+getUserData[i].name+'</h9><div class="row"><div class="col">'+sex_type+'</div></div></div><span class="btn btn-sm btn-primary text-white" onclick="contactme(\''+getUserData[i].id+'\',\''+getUserData[i].name+'\')">Send</span></div>'
+       ht += '<div class="card bg-transparent m-1 border border-primary colored_card" style="width:10rem;"><img src="'+getUserData[i].profilepic+'" class="card-img-top img-responsive"/><div class=""><h9>'+getUserData[i].name+'</h9><div class="row"><div class="col">'+sex_type+' '+newOne+'</div></div></div><span class="btn btn-sm btn-primary text-white" onclick="contactme(\''+getUserData[i].id+'\',\''+getUserData[i].name+'\')">Send</span></div>'
      }
    }
    usersList.innerHTML=ht
@@ -1525,7 +1609,29 @@ socket.on('send-zcode-receive', (data)=>{
  go_off()
  mejvod()
 })
-
+socket.on('delete-account',(data)=>{
+  alert('Account Deleted')
+  document.cookie = "cog_log_dsnfdsvdsbjfbds=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
+  window.localStorage.removeItem('app_date')
+  window.localStorage.removeItem('countryName')
+  window.localStorage.removeItem('datedash')
+  window.localStorage.removeItem('email')
+  window.localStorage.removeItem('fullname')
+  window.localStorage.removeItem('post_creator')
+  window.localStorage.removeItem('receiver')
+  window.localStorage.removeItem('roomId')
+  window.localStorage.removeItem('usersDatingAcc') 
+  dash.style.display="none"
+  langSet.style.display="none"
+  document.querySelector('.webcast').style.display="none"
+  window.localStorage.removeItem('user_num')
+  window.localStorage.removeItem('myuser_logs')
+  document.querySelector('.loginDiv').style.display="block"
+})
+function deleteAccount() {
+  var data = window.localStorage.getItem('myuser_logs')
+  socket.emit('delete-account', JSON.parse(data))
+}
 function go_off() {
   setTimeout(() => {
     document.querySelector('.notifydiv').style.display="none"
