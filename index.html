@@ -18,8 +18,6 @@
 </head>
 <body>  
   
-  <!-- main content ends  -->
-
       <div class="container " id="header">
         
             <div class="languageSettings" id="town" align="center">
@@ -59,7 +57,7 @@
             <input required type="text" class="form-control form-control-user bg-transparent text-white" id="fname" placeholder="First Name">
             <input required type="text" class="form-control form-control-user bg-transparent text-white mt-3" id="lname" placeholder="Last Name">
             <input required type="email" class="form-control form-control-user bg-transparent text-white mt-3" id="email_create" placeholder="email@abc.xyz">
-            <input required type="tel" class="form-control form-control-user bg-transparent text-white mt-3" id="phone_number" placeholder="WhatsApp Number">
+            
             <select class="form-control form-control-user bg-transparent text-white mt-3 country">
                     <option>Choose Country</option>
                     <option>Afghanistan</option>
@@ -271,7 +269,7 @@
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
               <div class="container-fluid">
                 <a class="navbar-brand text-lowercase" style="color: rgb(78, 150, 243);">
-                  <strong>BUMBLEBEE TV</strong>
+                  <strong>blitz TV</strong>
                 </a>          
                   <span id="uname" class="navbar-toggler" style="cursor: pointer;border: 0px;" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><img src="img/user.png" class="img-responsive navbar-toggler-icon" style="border-radius: 70px;" width="34"  alt=""></span>
               
@@ -326,10 +324,10 @@
                 <div class="container-fluid d-flex justify-content-center " id="pagesToDisplay" >                 
                   <div class="m-2">
                      
-                        <a  onclick="channelNo(4)" id="live"><img src="img/live.PNG" class="img-responsive imagehover m-1" height="120" width="120" style="border-radius: 9px 9px 9px 9px;"/>                     
+                        <a  onclick="channelNo(4)" id="live"><img src="img/live.png" class="img-responsive imagehover m-1" height="120" width="120" style="border-radius: 9px 9px 9px 9px;"/>                     
                           </a>
                       
-                        <a  onclick="channelNo(5)"><img src="img/media.PNG" class="img-responsive imagehover m-2" height="120" width="120" style="border-radius: 9px 9px 9px 9px;"/>                      
+                        <a  onclick="channelNo(5)"><img src="img/media.PNG" class="img-responsive imagehover d-none m-2" height="120" width="120" style="border-radius: 9px 9px 9px 9px;"/>                      
                           </a>
                       
                         <a  onclick="channelNo(6)"><img src="img/vod.PNG" class="img-responsive imagehover m-2" height="120" width="120" style="border-radius: 9px 9px 9px 9px;"/>                      
@@ -337,17 +335,28 @@
                      
                         <a onclick="channelNo(7)" id="commun"><img src="img/community.PNG" class="img-responsive imagehover m-1" width="120" height="120" style="border-radius: 9px 9px 9px 9px;"/>
                           </a> 
-                      
+                      <!---
                         <a onclick="channelNo(8)" id="dated"><img src="img/@d.PNG" class="img-responsive imagehover m-1" width="120" height="120" style="border-radius: 9px 9px 9px 9px;"/>
-                          </a> 
+                          </a> -->
                            
                   </div>
                 </div>
               </div>
                 <div class="watchingembed embed-responsive" align="center" id="iptv-list" style="display: none;">
-                  
-                    <span class="cplay" style="font-size:12px;"></span>
-                    <iframe width="100%" height="200" id="iframePlayerMain" style="position:relative;" scrolling="no" frameBorder="0" allowfullscreen></iframe> 
+                    <span class="cplay" ></span>
+                          <div align="center" id="vid12" style="width: 100%;" class="bg-transparent videocontainer">
+                            <div id="message" style="display: none;background-color: black;z-index: 999;" class="p-1 text-light"></div>
+                                <div class="bground">     
+                                    <div class="adPic d-none"></div>             
+                                  <div class="vplay bg-dark">
+                                    <!--<label class="title-label btn border-white text-light channelname"></label>
+                                    <video  autoplay controls width="100%" id="player" preload="none" controlList="nodownload"></video>-->
+                                    <iframe id="iframeLivePlayer" width="100%" height="180%" marginheight="0" frameborder="0" border="0" scrolling="auto"></iframe>
+                                            
+                                    </div>
+                                </div>
+                              
+                          </div>
                     <div class="views row justify-content-center"></div>
                 </div>
               <div class="webcast" style="display: none;">
@@ -415,7 +424,9 @@
                               </div>
                              
                           </div>
-                          <div align="center"> <button type="submit" class="btn bg-transparent text-white" onclick="returnHome()"> <span id="update3">Return Home</span></button></div>
+                          <div align="center">
+                            <button type="submit" class="btn bg-transparent text-white" onclick="deleteAccount()"> <span id="update3">Delete Account</span></button>
+                            <button type="submit" class="btn bg-transparent text-white" onclick="returnHome()"> <span id="update3">Return Home</span></button></div>
               
               
               </div>
