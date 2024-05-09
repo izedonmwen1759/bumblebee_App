@@ -653,3 +653,684 @@ s1.setAttribute('crossorigin','*');
 s0.parentNode.insertBefore(s1,s0);
 })();
 </script>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <title>blitz TV App</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css" />
+  <link rel="stylesheet" href="css/xtyle.css" />
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css"> 
+  <link rel="stylesheet" href="css/lightbox.min.css" type="text/css">
+  <link rel="stylesheet" href="css/lightbox.css" type="text/css">
+  <link rel="stylesheet" href="https://cdn.plyr.io/3.7.2/plyr.css">
+  <!---
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/js-sha1/0.6.0/sha1.min.js" integrity="sha512-q6FuE4ifzTygTD/ug8CFnAFXl+i1zXqBWP6flRAuSWjaXrFu4Cznk8Xr+VrWMyi7fSatbssh7ufobAetvXK8Pg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> 
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+  -->
+</head>
+<body>  
+  
+      <div class="container " id="header">
+        
+            <div class="languageSettings" id="town" align="center">
+             <!--- <select class="form-control w-50 bg-dark text-light langOpt">
+                <option value="eng">English</option>
+                <option value="fr">French</option>
+                <option value="es">Spanish</option>
+              </select>
+              <button class="btn btn-sm btn-outline-primary w-9 mt-2 languagePick"><i class="fas fa-globe text-primary" style="font-size:12px;"></i></button> -->  
+              <img src="img/loader.gif" class="img-responsive justify-content-center" width="20">
+            </div>
+            <footer id="footer" style="bottom: 0px;background-color: black;font-size: 80%;">
+                <div class="reportChannel"></div>
+                <div align="center"><span class="text-white m-1" onclick="removeChan()">Channels Removal</span><span class="text-secondary" id="tc">Visit Emarkets24.com/terms</span></div>
+            </footer>
+    </div>
+    <div class="container loginDiv" style="display: none;">
+      <div class="" id="town" align="center">
+      <em id="alertAll" class="mb-2"></em>    
+      <form action="javascript:void(0)" id="login-form">
+      <p class="mt-3"><input required class="form-control form-control-user bg-transparent text-white w-50 text-center" type="email" id="email" placeholder="email@abc.xyz"/></p>  
+      <p class="mt-2"><input required class="form-control form-control-user bg-transparent text-white w-50 text-center" type="password" id="password" placeholder="************"/></p>   
+      <button type="submit" class="btn btn-primary btn-xs" id="logBtn">Login</button><br>
+      <small class="text-secondary forgotInfo">Forgot your informations</small>
+      </form> 
+      <p><span id="siteContent"> No Account Yet?</span> <a href="javascript:void(0)" class="bg-transparent border-white" id="registerRg">Register Here</a> </p>
+      </div>
+      <footer id="footer" style="bottom: 0px;background-color: black;font-size: 80%;"><div class="reportChannel"></div>
+          <div align="center"><span class="text-white m-1" onclick="removeChan()">Channels Removal</span><span class="text-secondary" id="tc">Visit Emarkets24.com/terms</span></div>
+      </footer>
+    </div>
+  <div class="container-fluid regDiv" style="display: none;">
+         
+      <form action="javascript:void(0)" id="form-submit">
+        <div class="mt-4 alertRep"></div> 
+        <div class="row m-5">          
+            <input required type="text" class="form-control form-control-user bg-transparent text-white" id="fname" placeholder="First Name">
+            <input required type="text" class="form-control form-control-user bg-transparent text-white mt-3" id="lname" placeholder="Last Name">
+            <input required type="email" class="form-control form-control-user bg-transparent text-white mt-3" id="email_create" placeholder="email@abc.xyz">
+            
+            <select class="form-control form-control-user bg-transparent text-white mt-3 country">
+                    <option>Choose Country</option>
+                    <option>Afghanistan</option>
+                    <option>Albania</option>
+                    <option>Algeria</option>
+                    <option>Andorra</option>
+                    <option>Angola</option>
+                    <option>Antigua and Barbuda</option>
+                    <option>Argentina</option>
+                    <option>Armenia</option>
+                    <option>Australia</option>
+                    <option>Austria</option>
+                    <option>Azerbaijan</option>
+                    <option>Bahamas</option>
+                    <option>Bahrain</option>
+                    <option>Bangladesh</option>
+                    <option>Barbados</option>
+                    <option>Belarus</option>
+                    <option>Belgium</option>
+                    <option>Belize</option>
+                    <option>Benin</option>
+                    <option>Bhutan</option>
+                    <option>Bolivia</option>
+                    <option>Bosnia and Herzegovina</option>
+                    <option>Botswana</option>
+                    <option>Brazil</option>
+                    <option>Brunei</option>
+                    <option>Bulgaria</option>
+                    <option>Burkina Faso</option>
+                    <option>Burundi</option>
+                    <option>Cabo Verde</option>
+                    <option>Cambodia</option>
+                    <option>Cameroon</option>
+                    <option>Canada</option>
+                    <option>Central African Republic</option>
+                    <option>Chad</option>
+                    <option>Chile</option>
+                    <option>China</option>
+                    <option>Colombia</option>
+                    <option>Comoros</option>
+                    <option>Congo, Republic of the</option>
+                    <option>Congo, Democratic Republic of the</option>
+                    <option>Costa Rica</option>
+                    <option>Cote d'Ivoire</option>
+                    <option>Croatia</option>
+                    <option>Cuba</option>
+                    <option>Cyprus</option>
+                    <option>Czech Republic</option>
+                    <option>Denmark</option>
+                    <option>Djibouti</option>
+                    <option>Dominica</option>
+                    <option>Dominican Republic</option>
+                    <option>Ecuador</option>
+                    <option>Egypt</option>
+                    <option>El Salvador</option>
+                    <option>Equatorial Guinea</option>
+                    <option>Eritrea</option>
+                    <option>Estonia</option>
+                    <option>Ethiopia</option>
+                    <option>Fiji</option>
+                    <option>Finland</option>
+                    <option>France</option>
+                    <option>Gabon</option>
+                    <option>Gambia</option>
+                    <option>Georgia</option>
+                    <option>Germany</option>
+                    <option>Ghana</option>
+                    <option>Greece</option>
+                    <option>Grenada</option>
+                    <option>Guatemala</option>
+                    <option>Guinea</option>
+                    <option>Guinea-Bissau</option>
+                    <option>Guyana</option>
+                    <option>Haiti</option>
+                    <option>Honduras</option>
+                    <option>Hungary</option>
+                    <option>Iceland</option>
+                    <option>India</option>
+                    <option>Indonesia</option>
+                    <option>Iran</option>
+                    <option>Iraq</option>
+                    <option>Ireland</option>
+                    <option>Israel</option>
+                    <option>Italy</option>
+                    <option>Jamaica</option>
+                    <option>Japan</option>
+                    <option>Jordan</option>
+                    <option>Kazakhstan</option>
+                    <option>Kenya</option>
+                    <option>Kiribati</option>
+                    <option>Kosovo</option>
+                    <option>Kuwait</option>
+                    <option>Kyrgyzstan</option>
+                    <option>Laos</option>
+                    <option>Latvia</option>
+                    <option>Lebanon</option>
+                    <option>Lesotho</option>
+                    <option>Liberia</option>
+                    <option>Libya</option>
+                    <option>Liechtenstein</option>
+                    <option>Lithuania</option>
+                    <option>Luxembourg</option>
+                    <option>Macedonia</option>
+                    <option>Madagascar</option>
+                    <option>Malawi</option>
+                    <option>Malaysia</option>
+                    <option>Maldives</option>
+                    <option>Mali</option>
+                    <option>Malta</option>
+                    <option>Marshall Islands</option>
+                    <option>Mauritania</option>
+                    <option>Mauritius</option>
+                    <option>Mexico</option>
+                    <option>Micronesia</option>
+                    <option>Moldova</option>
+                    <option>Monaco</option>
+                    <option>Mongolia</option>
+                    <option>Montenegro</option>
+                    <option>Morocco</option>
+                    <option>Mozambique</option>
+                    <option>Myanmar </option>
+                    <option>Namibia</option>
+                    <option>Nauru</option>
+                    <option>Nepal</option>
+                    <option>Netherlands</option>
+                    <option>New Zealand</option>
+                    <option>Nicaragua</option>
+                    <option>Niger</option>
+                    <option>Nigeria</option>
+                    <option>North Korea</option>
+                    <option>Norway</option>
+                    <option>Oman</option>
+                    <option>Pakistan</option>
+                    <option>Palau</option>
+                    <option>Palestine</option>
+                    <option>Panama</option>
+                    <option>Papua New Guinea</option>
+                    <option>Paraguay</option>
+                    <option>Peru</option>
+                    <option>Philippines</option>
+                    <option>Poland</option>
+                    <option>Portugal</option>
+                    <option>Qatar</option>
+                    <option>Romania</option>
+                    <option>Russia</option>
+                    <option>Rwanda</option>
+                    <option>St. Kitts and Nevis</option>
+                    <option>St. Lucia</option>
+                    <option>St. Vincent and The Grenadines</option>
+                    <option>Samoa</option>
+                    <option>San Marino</option>
+                    <option>Sao Tome and Principe</option>
+                    <option>Saudi Arabia</option>
+                    <option>Senegal</option>
+                    <option>Serbia</option>
+                    <option>Seychelles</option>
+                    <option>Sierra Leone</option>
+                    <option>Singapore</option>
+                    <option>Slovakia</option>
+                    <option>Slovenia</option>
+                    <option>Solomon Islands</option>
+                    <option>Somalia</option>
+                    <option>South Africa</option>
+                    <option>South Korea</option>
+                    <option>South Sudan</option>
+                    <option>Spain</option>
+                    <option>Sri Lanka</option>
+                    <option>Sudan</option>
+                    <option>Suriname</option>
+                    <option>Swaziland</option>
+                    <option>Sweden</option>
+                    <option>Switzerland</option>
+                    <option>Syria</option>
+                    <option>Taiwan</option>
+                    <option>Tajikistan</option>
+                    <option>Tanzania</option>
+                    <option>Thailand</option>
+                    <option>Timor-Leste</option>
+                    <option>Togo</option>
+                    <option>Tonga</option>
+                    <option>Trinidad and Tobago</option>
+                    <option>Tunisia</option>
+                    <option>Turkey</option>
+                    <option>Turkmenistan</option>
+                    <option>Tuvalu</option>
+                    <option>Uganda</option>
+                    <option>Ukraine</option>
+                    <option>United Arab Emirates</option>
+                    <option>United Kingdom (UK)</option>
+                    <option>United States of America (USA)</option>
+                    <option>Uruguay</option>
+                    <option>Uzbekistan</option>
+                    <option>Vanuatu</option>
+                    <option>Vatican City (Holy See)</option>
+                    <option>Venezuela</option>
+                    <option>Vietnam</option>
+                    <option>Yemen</option>
+                    <option>Zambia</option>
+                    <option>Zimbabwe</option>
+            </select>
+            <input required type="password" class="form-control form-control-user bg-transparent text-white mt-3" id="password_create" placeholder="Password">
+            <button type="submit" id="myBtn" class="btn bg-transparent btn-xs border-primary text-white mt-3">Create Account</button> <a class="ml-5 mt-4 text-danger" id="log" href="javascript:void(0)" >Login Here</a>          
+        </div>      
+     </form>
+     
+  </div>
+  
+<div class="container dashboard" style="display: none;">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+              <div class="container-fluid">
+                <a class="navbar-brand text-lowercase" style="color: rgb(78, 150, 243);">
+                  <strong>blitz TV</strong>
+                </a>          
+                  <span id="uname" class="navbar-toggler" style="cursor: pointer;border: 0px;" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><img src="img/user.png" class="img-responsive navbar-toggler-icon" style="border-radius: 70px;" width="34"  alt=""></span>
+              
+                <div class="collapse navbar-collapse"  id="navbarSupportedContent">
+                  <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                      <a class="nav-link active" aria-current="page" href="javascript:void(0)" onclick=" returnHome()"> <span class="homeNow"> <i class="fas fa-home"></i></span></a>
+                    </li>
+                    <li class="nav-item dropdown no-arrow mx-1">
+                      <a class="nav-link" id="alertsDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <i class="fas fa-bell fa-fw"></i><sup class="text-primary notifyList"></sup>                        
+                      </a>
+                        <ul class="dropdown-list dropdown-menu dropdown-menu-end border-primary p-2 m-2 text-white" aria-labelledby="alertsDropdown" id="alertDropdown">
+                            <i class="fas fa-bell-slash text-secondary"></i>                       
+                        </ul>
+                      
+                    </li>
+                    
+                    <li class="nav-item">
+                      <a class="nav-link" href="javascript:void(0)"><span class="linkNow"> <!---Link ---></span></a>
+                    </li>
+                    <li class="nav-item dropdown">
+                      <a class="nav-link" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <span id="uname"><img src="img/user.png" class="img-responsive" style="border-radius: 70px;" width="20"  alt=""></span>
+                      </a>
+                      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="javascript:void(0)" id="user_profile"><i class="fas fa-users-cog"></i> <span id="up">User Profile</span></a></li>
+                        <li><a class="dropdown-item" href="javascript:void(0)" id="appoint"><i class="fas fa-calendar"></i> Appointments</a></li>
+                        <li>
+                       
+                        <li><a class="dropdown-item" href="javascript:void(0)" id="feedback"><i class="fas fa-pen-square"></i> Feedback</a></li>                        
+                        <li><a class="dropdown-item" id="logout">Logout</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </nav>
+                
+   
+            <div class="container-fluid menu-list" style="margin-top: 5em;">
+                      
+
+                <div class="p-2 bg-dark fixed-top w-100 mt-5 timeArrange" style="display: none;" align="right">
+                  <em>Setup a schedule</em>
+                  <ul class="classy"></ul> 
+                </div>
+              <div class="displayview  mt-3">
+                                <div id="mysubscription" class="container-fluid" style="margin:2em;display: none;">
+                                  <div id="paypa"></div>
+                                </div>
+                <div class="container-fluid d-flex justify-content-center " id="pagesToDisplay" >                 
+                  <div class="m-2">
+                     
+                        <a  onclick="channelNo(4)" id="live"><img src="img/live.png" class="img-responsive imagehover m-1" height="120" width="120" style="border-radius: 9px 9px 9px 9px;"/>                     
+                          </a>
+                      
+                       
+                      
+                        <a  onclick="channelNo(6)"><img src="img/media.PNG" class="img-responsive imagehover m-2" height="120" width="120" style="border-radius: 9px 9px 9px 9px;"/>                      
+                          </a>
+                      <!--- 
+                        <a  onclick="channelNo(5)"><img src="img/media.png" class="img-responsive imagehover d-none m-2" height="120" width="120" style="border-radius: 9px 9px 9px 9px;"/>                      
+                          </a>
+                        <a onclick="channelNo(7)" id="commun"><img src="img/community.PNG" class="img-responsive imagehover m-1" width="120" height="120" style="border-radius: 9px 9px 9px 9px;"/>
+                          </a> 
+                     
+                        <a onclick="channelNo(8)" id="dated"><img src="img/@d.PNG" class="img-responsive imagehover m-1" width="120" height="120" style="border-radius: 9px 9px 9px 9px;"/>
+                          </a> -->
+                           
+                  </div>
+                </div>
+              </div>
+                <div class="watchingembed embed-responsive row" align="center" id="iptv-list" style="display: none;">
+                  <div class="container-fluid row">
+                    <div class="col-lg-6 fixed">
+                          <span class="cplay" ></span>
+                          <div align="center" id="vid12" style="width: 100%;" class="bg-transparent videocontainer col-lg">
+                            <div id="message" style="display: none;background-color: black;z-index: 999;" class="p-1 text-light"></div>
+                                <div class="bground">     
+                                    <div class="adPic d-none"></div>             
+                                  <div class="vplay bg-dark">
+                                    <!--<label class="title-label btn border-white text-light channelname"></label>
+                                    <video  autoplay controls width="100%" id="player" preload="none" controlList="nodownload"></video>-->
+                                    <iframe class="responsive-iframe" id="iframeLivePlayer" width="100%" height="200" marginheight="0" frameborder="0" border="0" scrolling="no"></iframe>
+                                            
+                                    </div>
+                                </div>
+                              
+                          </div>
+                    </div>
+                    <div class="col-lg-6">
+                       <ul class="views row justify-content-center"></ul>
+                    </div>
+                  </div>
+                    
+                </div>
+              <div class="webcast" style="display: none;">
+                  <div align="center" class="castView">
+                      <a onclick="liveTV()" title="Live Cast"><img src="img/liveStream.jpg" class="img-responsive imagehover m-2" width="90" height="90" style="border-radius: 9px 9px 9px 9px;"/>
+                    </a>             
+                    <!----
+                    <a onclick="musicfiles()" title="Music"><img src="img/ms.png" class="img-responsive imagehover m-2" width="90" height="90" style="border-radius: 9px 9px 9px 9px;"/>
+                    </a>  
+                      <a onclick="audiocast()" title="Audio Cast"><img src="img/speech.png" class="img-responsive imagehover m-2" width="90" height="90" style="border-radius: 9px 9px 9px 9px;"/></a>  
+                      <a onclick="listeningroom()" title="Listening Room"><img src="img/listening.png" class="img-responsive imagehover m-2" width="90" height="90" style="border-radius: 9px 9px 9px 9px;"/></a> -->
+                  </div>
+                  <div class="list_of_webcast"></div>
+                <div class="channels-display row d-flex"></div>
+              </div>
+             <div class="vod" align="center" style="display: none;">
+                 <span class="mplay" style="font-size:12px;"></span>
+                 <!--
+                    <iframe width="100%" height="200" id="iframePlayerMovie" style="position:relative;" scrolling="no" frameBorder="0" allowfullscreen></iframe>  -->
+                    <div class="row justify-content-center" id="vod_set"></div>
+             </div>
+              <div class="feedback" style="display: none;">
+                <form class="feedform">
+                  <p class="alert alert-info alert-sm">Dear Client, as much as we try our best to increase the efficiency of our service we are open to opinions on how we can improve our services. Do bear in mind that your response and insight would be highly appreciated and we will surely reply you through your email, thank you.
+                    <br>Best regards <br>Peter[Developer]
+                  </p>
+                  <textarea class="form-control fback" cols="5" rows="3"></textarea>
+                  <button type="submit" class="btn btn-primary text-uppercase">send</button>
+                </form>
+              </div>
+              <div class="user_profile" style="display: none;">
+              
+                          <h4 class="text-danger"><i class="fas fa-users-cog"></i> <span id="set">Settings</span> </h4> 
+                          <div class="row m-1">
+                              <h6 id="name">Update User Profile</h6>
+                              
+                              <div class="col-lg-6">
+                                  <input type="text" id="fnameupdate" class="form-control text-white bg-transparent">
+                              </div>
+                              <div class="col-lg-6">
+                                  <input type="text" id="lnameupdate" class="form-control text-white bg-transparent">
+                              </div>
+                              <div class="col-lg-6">
+                                  <button type="button" class="btn bg-transparent border-success text-success updateBtnUserNames" onclick="updateUserName()"> <span id="update">Update</span></button>
+                              </div>
+                              
+                          </div>
+                          <div class="row m-1">
+                              <h6 id="email">Change Email</h6>
+                              <div class="col-lg-6">
+                                  <input type="email" id="oldemail" class="form-control text-white bg-transparent" disabled>
+                              </div>
+                              <div class="col-lg-6">
+                                  
+                                  <button type="button" class="btn bg-transparent border-success text-success userEmail" onclick="updateUserEmail()"> <span id="update1">Update</span></button>
+                              </div>
+                          </div>
+                          <div class="row m-1">
+                              <h6 id="pass">Change Password</h6>
+                              <div class="col-lg-6">
+                                  <input type="password" id="oldpass" class="form-control text-white bg-transparent" placeholder="Old Password" value="11234567890987654321" disabled>
+                              </div>        
+                              <div class="col-lg-6">
+                                      <button type="button" class="btn bg-transparent border-success text-success passwordUpdate" onclick="updateUserPass()"> <span id="update2">Update</span></button>
+                              </div>
+                             
+                          </div>
+                          <div align="center" class="mt-4">
+                            <button type="submit" class="btn btn-danger" onclick="deleteAccount()"> <span id="update3">Delete Account</span></button>
+                            <button type="submit" class="btn btn-secondary" onclick="returnHome()"> <span id="update3">Return Home</span></button></div>
+              
+              
+              </div>
+              <div class="container-fluid community" style="display:none;">
+                <h6 class="comntSectn">Topics</h6>
+                
+                  <div id="searchBar" class="z-index-2 position-absolute"><form action="javascript:void(o)"  id="onsubmit">
+                    <input type="text" class="form-control bg-transparent text-light" placeholder="topic" id="topic"/>
+                    <button type="submit" id="checkBtn" class="btn btn-outline-primary btn-xs mt-1">Post</button>                    
+                  </form>
+                  </div>
+
+                <div id="result" style="list-style: none;"></div>
+                <div class="comments container-fluid" style="display: none;">
+                  <em class="topHeading"></em><span class="hidfield"></span>
+                  <div class="commentDisplay"></div>
+                  <span class="fixed-bottom z-index-9 d-flex m-3" onclick="displayoutCommentForm()"><i class="fas fa-comment-dots text-light"></i></span>
+                  <form action="javascript:void(0)" class="comment_data fixed-bottom z-index-9 " style="display: none;">
+                      <input type="text" class="form-control inputcomment bg-transparent text-light" placeholder="Comment..."> <!---<label for="hiddenImage"  class="btn btn-outline-transparent"><i class="fas fa-file-image text-warning"></i></label>
+                     <input type="file" accept=".jpg, .jpeg, .png, .bmp, .svg, .gif" class="d-none hiddenImage" onchange="postImage()" id="hiddenImage">-->
+                      <button type="submit" class="btn btn-sm btn-primary ml-1 btn-comment text-white"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                  </div>
+
+                  <div class="bg-transparent fixed-bottom m-3 enlever" align="right">
+                        <span class="btn btn-outline-primary text-primary" onclick="displaySearchBar()" id="sidebarToggle">+</span>
+                      <span class="btn btn-outline-light text-light" style="display: none;" onclick="hideSearchBar()" id="hidesidebarToggle">-</span>
+                  </div>
+              </div>
+                
+              <div class="container-fluid date_dash" style="display:none;">
+                
+                <i class="fas fa-users-cog m-3 text-warning edit_Prof"></i>| 
+                <i class="fas fa-female m-3 female_"></i><i class="fas fa-male male_"></i><i class="fas fa-users m-3 everyone"></i><i class="fas fa-question-circler m-3" id="appoint"></i><i class="m-3 fas fa-video accordion"><sup class="text-warning zoomList"></sup></i><div class="panel"><ul class="panelCart"></ul>USD<input id="amountCart" class="bg-transparent text-light border-0" disabled></span>
+                  <div id="paypal-button-container2" class="btnCart" style="display: none;"></div></div>
+                <hr>
+                  <div class="row usersList"></div>
+
+                      <div class="bg-transparent fixed-bottom m-3" align="left">
+                          <div id="dashMenu" class="z-index-2 position-absolute">
+                            <span>Requests</span><br>
+                            <span>Appointments</span><br>
+                            <span>Payments</span>
+                          </div>
+                      <!---  <span class="btn border-radius btn-outline-primary text-primary" onclick="displayMenuList()" id="sidebarToggle">+</span>
+                      <span class="btn btn-outline-light text-light" style="display: none;" onclick="hideSearchBar()" id="hidesidebarToggle">-</span>-->
+                      </div>
+              </div>
+              
+              <div class="container-fluid createAcc" style="display:none;">
+                  <div><select class="form-control bg-transparent text-white gender"><option>Select Gender</option><option value="1">Male</option><option value="2">Female</option></select></div>
+                <div><label for="profilepic"><i class="fas fa-user p-3"></i></label><input type="file" id="profilepic" onchange="picUpload()" style="display:none;" />
+                <input type="hidden" class="hiddenPicDetails"></div>
+                <div><button type="button" class="btn btn-sm btn-warning" onclick="createDash()">Ok</button></div>
+                  <div style="font-size:12px;"> <span class="text-danger">Date Dash @ Doblaz</span> is an online RTC [Real-time Communication] dating platform for people all around the world to 
+                    connect with one another. Simply fill in the details above and click the ok button.
+                    To get connected, please follow these steps;<br/>
+                    1. Click on the other user B profile<br/>
+2. A notification will be sent to user B to accept your request. Upon acceptance, a calendar will be shown <br/>
+on their portal for them to schedule a date and time for a face-time communication [Zoom].<br/>
+3. Once the date has been entered and sent by use B, user A feed will be updated [pay attention to the video icon].<br/>
+4. User A is required to pay a fee before setting up and sending the meeting Id to other users.<br/>
+<em class="text-warning">* NOTE: You are required to setup a meeting based on the date choosen by user B.</em><br/>
+5. After payment has been made, create a Zoom meeting Id and obtain the code for the meeting inline with the calendar sent by user B.<br/>
+6. Click on the profile icon and select "Appointment", a dialogue feed will display then insert your meeting Id code
+   into the text box and send to the receiver[user B]. User B will automatically get notified.</div>
+              </div>
+
+    </div>
+    <div class="container-fluid appoint" style="display:none;"> 
+
+    </div>
+    
+  <!-- js files  -->
+ 
+  <div id="myModal" class="modal">
+
+    <!-- The Close Button -->
+    <span class="close">&times;</span>
+  
+    <!-- Modal Content (The Image) -->
+    <img class="modal-content" id="img01">
+  
+    <!-- Modal Caption (Image Text) -->
+    <div id="caption"></div>
+  </div>
+  
+ 
+
+ <div class="modal fade" id="videoDes" tabindex="-1" role="dialog" aria-labelledby="videoDesTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-dark">
+        <h5 class="modal-title" id="exampleModalLongTitle"><strong>About</strong></h5>
+        <button type="button" class="close" style="border:0px;" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body text text-dark videoDescription">
+       
+      </div>
+      
+    </div>
+  </div>
+</div>
+ 
+  
+  <div class="fixed-bottom z-index-9 p-1 notifydiv" style="display: none;background-color: black;font-size: 15px;width:100%;">
+  </div>
+</body>
+
+</html>
+<style>
+#town{
+  margin-top:33vh;
+  margin-left:18;
+}
+#searchBar{
+   background-color: black;
+    display: none;
+    transition: 0.8s ease-in;    
+}
+#dashMenu{
+   background-color: black;
+    display: none;
+    margin-bottom: 4rem;
+    transition: 0.8s ease-in;    
+}
+#alertDropdown{
+  background-color: black;
+  padding: 1px;
+  margin:1px;
+}
+.commentDisplay{ 
+    display: flex;
+    flex-direction: column;
+    max-width: auto;
+    max-height: auto;   
+    overflow-y: scroll hidden;
+    overflow-x: hidden;
+}
+#myImg {
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#myImg:hover {opacity: 0.7;}
+
+/* Caption of Modal Image (Image Text) - Same Width as the Image */
+#caption {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+  text-align: center;
+  color: #ccc;
+  padding: 10px 0;
+  height: 150px;
+}
+
+/* Add Animation - Zoom in the Modal */
+#myvideo{
+        width:100%;
+        height: 75%; 
+        background-color: black;
+    }
+@keyframes zoom {
+  from {transform:scale(0)}
+  to {transform:scale(1)}
+}
+
+/* The Close Button */
+
+/* 100% Image Width on Smaller Screens */
+#iframeLivePlayeer {
+            display: block; /* iframes are inline by default */
+            background: #000;
+            border: none; /* Reset default border */
+            height: 100vh; /* Viewport-relative units */
+            width: 100vw;
+        }
+</style>
+<script>
+  var acc = document.getElementsByClassName("accordion");
+  var i;
+  
+  for (i = 0; i < acc.length; i++) {
+    acc[i].addEventListener("click", function() {
+      this.classList.toggle("active");
+      var panel = this.nextElementSibling;
+      if (panel.style.display === "block") {
+        panel.style.display = "none";
+      } else {
+        panel.style.display = "block";
+      }
+    });
+  }
+  
+  </script>
+<script src="vendor/jquery/jquery.js"></script>
+<script src="js/jquery.min.js"></script>
+ <script src="js/bootstrap.min.js"></script>
+ <script src="js/bootstrap.bundle.min.js"></script>
+ <script src="js/lightbox-plus-jquery.min.js"></script>
+ <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+<script src="https://cdn.plyr.io/3.7.2/plyr.js"></script>
+  <script src="https://bumblebee-new-server.onrender.com/socket.io/socket.io.js"></script> 
+ <!----
+
+<script src="http://localhost:6456/socket.io/socket.io.js"></script>
+ 
+ <script async src="https://www.googletagmanager.com/gtag/js?id=G-97KBC9Z4K3"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>-->
+<script src="https://www.paypal.com/sdk/js?client-id=AUpyBpqgx5wJNWWKC3bi2phDn0y1ENHc_okRSjWlSCJ86cs6jglpywtTyBzPub0qXKkwDVy5e7KdO0wz&enable-funding=venmo&currency=USD" data-sdk-integration-source="button-factory"></script>
+<script src="https://js.paystack.co/v1/inline.js"></script>
+<script src="./js/cloudflare-crypt.js"></script>
+<script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/md5.js"></script>
+<script src="./script.js"></script>
+
+<script type="text/javascript">
+//////// GOOGLE ANALYTICS STARTS HERE
+window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-97KBC9Z4K3');
+///////////// GOOGLE ANALYTICS ENDS HERE
+
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/64738c6674285f0ec46e17b7/1h1hlosqh';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
