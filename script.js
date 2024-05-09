@@ -124,7 +124,7 @@ formSub.addEventListener('submit', (e)=>{
                document.getElementById('fname').style.border="1px solid blue"
              }
              if(lname === ""){
-               document.getElementById('lname').style.border="1px solid red"
+               document.getElementById('lname').stfyle.border="1px solid red"
              }else{
                document.getElementById('lname').style.border="1px solid blue"  
              }
@@ -153,7 +153,7 @@ formSub.addEventListener('submit', (e)=>{
                            fname:fname,
                            lname:lname,
                            email: email,
-                           password:passwordC,
+                           password:CryptoJS.MD5(passwordC).toString(),
                            country:cnt,                   
                            date_joined: new Date,
                            id: Math.floor((Math.random()* 1000000000) +1),
@@ -163,8 +163,23 @@ formSub.addEventListener('submit', (e)=>{
                         }  
                        var newData = JSON.stringify(data)
                        document.getElementById('myBtn').disabled=true
-                       socket.emit('registration', data)
-                   
+                       
+                       
+                        var n=30; //number of days to add. 
+                        var today=new Date(); //Today's Date
+                        var requiredDate=new Date(today.getFullYear(),today.getMonth(),today.getDate()+n)
+                      
+                      const paydata = {
+                        id:Number(data.id),
+                        days:n,
+                        start:today,
+                        terminate:requiredDate,
+                        agent:"",
+                        texxt:Math.floor((Math.random() * 1000000000) + 1),
+                        gateway:'Free'
+                      }
+                      socket.emit('registration', data)
+                      socket.emit('payment-successful', paydata)
                 
                 
              } else {
@@ -213,15 +228,16 @@ logForm.addEventListener('submit', (e)=>{
            if(mail.match(mailformat))
            {
             const data = {
-               email:mail,
-               password:pass,
-              // device:window.navigator.userAgent
+                email:mail,
+                password:CryptoJS.MD5(pass).toString(),
+                device:window.navigator.userAgent
             }  
            
-           var newData = JSON.stringify(data)
            
            document.getElementById('logBtn').disabled=true
             socket.emit('login', data)
+            document.getElementById("email").value = ''
+            document.getElementById("password").value = ''
          } else {
               document.getElementById('email').style.border="1px solid red"
            return false 
@@ -241,17 +257,30 @@ socket.on('login',(data)=>{
     document.getElementById('alertAll').innerHTML="<span class='text-danger'>Incorrect Details...</span>"
   }else{
    
-    if (de.is_loggedin == true){
+    if(de.is_loggedin == true){
        document.getElementById('alertAll').innerHTML="<span class='text-danger'>User already loggedin...</span>"
-    }else{
-      window.localStorage.setItem('myuser_logs', data)
-      myuser_logs(data)
+    }else{      
+      myuser_logs(data)      
     }
   }
- 
 })
-
-function runPlay(url){
+window.addEventListener('mouseover',()=>{
+  if(window.localStorage.getItem('user_num') === '') {}
+  else socket.emit('check-sub', Number(window.localStorage.getItem('user_num')))
+})
+function checksubscriber(params) {
+  socket.emit('check-sub',params)
+}
+socket.on('check-sub',(data)=>{
+  if(data === null){
+   runafterload()
+  }else if(data !== null){
+     $('#pagesToDisplay').addClass('d-flex justify-content-center')
+    displayMenu.style.display="block"
+    document.getElementById('mysubscription').style.display="none"
+  }
+})
+function runPlay(code){
   /*var idplay = document.getElementById('hideValue').value
       if(Hls.isSupported()){
           const hls = new Hls()
@@ -289,9 +318,8 @@ function runPlay(url){
   iframe.width='100%'
   iframe.height="50%"
   iframe.scrolli=*/
-  document.querySelector('.iframeLivePlayer').src=iframeurl
+  document.querySelector('#iframeLivePlayer').src='http://localhost/media/?url_code='+code
 }
-
 function userdetails(id){
   const data ={ id:id}
   socket.emit('userdetails', data)
@@ -362,7 +390,7 @@ function goback(){
  document.querySelector('.list_of_webcast').style.display="none"
 }
 function musicfiles(){
-  document.querySelector('.webcast').innerHTML="Music <button class='btn btn-sm btn-primary' >Test</button>"
+  document.querySelector('.webcast').innerHTML="Music <button class='btn btn-sm btn-primary'>Test</button>"
 }
 
 function getApprovedStreams(res){
@@ -372,31 +400,14 @@ function getApprovedStreams(res){
 }
 function myuser_logs(data){ 
  var newData = JSON.parse(data)
-if( newData !== null){      	
-  document.querySelector('.regDiv').style.display="none"
-  document.querySelector('.loginDiv').style.display="none" 
-  document.getElementById('footer').style.display="none"
-  langSet.style.display='none'
+ checksubscriber(newData.id)
+  if( newData !== null){      	
+    document.querySelector('.regDiv').style.display="none"
+    document.querySelector('.loginDiv').style.display="none" 
+    document.getElementById('footer').style.display="none"
+    langSet.style.display='none'
   
-    if(newData.subscription === 1 || newData.subscription === '1'){
-      
-    document.getElementById('oldemail').value=newData.email      
-     
-      document.getElementById('mysubscription').style.display="none"
-      displayMenu.style.display="block"
-    }else if(newData.subscription === 2 || newData.subscription === '2'){
-      console.log(newData.subscription)
-      document.getElementById('mysubscription').style.display="none"
-      displayMenu.style.display="block"     
-    }else{  
-        displayMenu.style.display="none"
-        document.getElementById('mysubscription').style.display="block"
-        
-        document.getElementById('live').disabled=true
-        document.getElementById('commun').disabled=true
-        runafterload()
-      }
-      
+    
       setCookie('cog_log_dsnfdsvdsbjfbds', newData.id, 30);
       window.localStorage.setItem('user_num', newData.id)
       window.localStorage.setItem('email', newData.email)
@@ -429,7 +440,7 @@ if( newData !== null){
   }else{
       var cooki = getCookieForAutoLogin('cog_log_dsnfdsvdsbjfbds')
       const userLog = {id:cooki}
-      var ress = JSON.stringify(userLog)            
+      var ress = JSON.stringify(userLog) 
       socket.emit('logout', ress)
       document.cookie = "cog_log_dsnfdsvdsbjfbds=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";     
   }
@@ -440,12 +451,12 @@ function runafterload() {
     document.getElementById('mysubscription').style.display="block"
   if(window.localStorage.getItem('countryName') === 'Nigeria'){
     var name = window.localStorage.getItem('fullname')
-    document.getElementById('mysubscription').innerHTML='<form  class="d-block justify-content-center payform"><div class="form-group"><input type="hidden" class="userid"/><input type="tel"  value="'+name+'" class="form-control w-50 bg-transparent text-white" disabled/></div><div class="form-group"><select class="form-control bg-transparent mt-3 text-white w-50"  id="item-option"><option value="Choose Plan">Choose Plan</option><option value="1000">14 days - 1000 NGN</option><option value="2000">Monthly - 2000 NGN</option></select></div><div class="form-submit"><button type="button" onclick="payform()" class="btn btn-sm btn-success mt-3 text-uppercase">pay</button></div></form>'
+    document.getElementById('mysubscription').innerHTML='<form  class="d-block justify-content-center row payform"><div class="form-group col-lg"><input type="hidden" class="userid"/><input type="tel"  value="'+name+'" class="form-control bg-transparent text-white" disabled/></div><div class="form-group col-lg"><select class="form-control bg-transparent mt-3 text-white"  id="item-option"><option value="Choose Plan">Choose Plan</option><option value="1000">Monthly - 1000 NGN</option></select></div><div class="form-submit"><button type="button" onclick="payform()" class="btn btn-sm btn-success mt-3 text-uppercase">pay</button></div></form>'
     const pf = document.querySelector('.payform')
     pf.addEventListener('click', payform, false)
  }else{
-   document.getElementById('paypa').innerHTML='<div id="smart-button-container"><div style="text-align: center;"><div style="margin-bottom: 1.25rem;"><select class="form-control form-control-user bg-transparent mt-3 text-white"  id="item-options"><option value="14 days" price="1">14 days - 1 USD</option><option value="Monthly" price="4.5">Monthly - 4.5 USD</option></select><select style="visibility: hidden;" id="quantitySelect"></select></div><div id="paypal-button-container"></div></div></div>'
-   // initPayPalButton()
+   document.getElementById('paypa').innerHTML='<div id="smart-button-container"><div style="text-align: center;"><div style="margin-bottom: 1.25rem;"><select class="form-control form-control-user bg-transparent mt-3 text-white"  id="item-options"><option value="Monthly" price="1.5">Monthly - 1.5 USD</option></select><select style="visibility: hidden;" id="quantitySelect"></select></div><div id="paypal-button-container"></div></div></div>'
+    initPayPalButton()
    // document.getElementById('mysubscription').innerHTML=''
   }
 }
@@ -472,17 +483,13 @@ function payform(){
         document.querySelector('.notifydiv').style.display="block"
         document.querySelector('.notifydiv').innerHTML="<i class='fas fa-money-bill-alt text-success m-1'></i> Succesful."
         go_off()
-        if(planprice === 580 || planprice === '580'){
-          var n=14; //number of days to add. 
-          var today=new Date(); //Today's Date
-          var requiredDate=new Date(today.getFullYear(),today.getMonth(),today.getDate()+n)
-        }else if(planprice === 1090 || planprice === '1090'){
+        if(planprice === 1000 || planprice === '1000'){
           var n=30; //number of days to add. 
           var today=new Date(); //Today's Date
           var requiredDate=new Date(today.getFullYear(),today.getMonth(),today.getDate()+n)
         }else{}        
         const paydata = {
-          id:window.localStorage.getItem('user_num'),
+          id:Number(window.localStorage.getItem('user_num')),
           days:n,
           start:today,
           terminate:requiredDate,
@@ -572,17 +579,13 @@ function loadCooki(){
                         // document.getElementById('paypal-button-container').innerHTML=""
                         document.querySelector('.loginDiv').style.display="block"
             }else{
-               var ress = JSON.stringify(userLog) 
-                socket.emit('logout', data)
-            }
-           
+             socket.emit('logout', userLog)
+            }           
            
             
           }
 }
-socket.on('logout', (data)=>{
-  var dd = JSON.parse(data)
-  if(dd === 'logout'){
+socket.on('logout', ()=>{
     dash.style.display="none"
     langSet.style.display="none"
      document.querySelector('.webcast').style.display="none"
@@ -590,8 +593,7 @@ socket.on('logout', (data)=>{
     window.localStorage.removeItem('myuser_logs')
    // document.getElementById('paypal-button-container').innerHTML=""
     document.querySelector('.loginDiv').style.display="block"
-    
-  }
+  
 })
 fb.addEventListener('click',()=>{
   divMenu.style.display="none"  
@@ -620,6 +622,7 @@ fb.addEventListener('click',()=>{
     return "";
 }
 function channelNo(num){
+  checksubscriber(window.localStorage.getItem('user_num'))
   switch(num){
     case 1:
       tvchannels(num)
@@ -692,28 +695,11 @@ function openVoD(val){
 socket.on('get-channels',(data)=>{
   var ht = ''
  
-  var ress = data
+  var ress = data.sort()
   if(ress.length > 0){
     for (let i = 0; i < ress.length; i++) {
-      if(ress[i].type === 'News'){
-         ht += '<div class="col bg-dark m-2 p-2" onclick="runPlay(\''+ress[i].m3url+'\')"><img width="48" src="'+ress[i].image+'" class="rounded"/><p class="text-light" style="font-size:12px;">'+ress[i].ChannelName+'</p></div>'
-      }else if(ress[i].type === 'Movies' || ress[i].type === 'Movie'){
-        ht += '<div class="col bg-dark m-2 p-2" onclick="runPlay(\''+ress[i].m3url+'\')"><img width="48" src="'+ress[i].image+'" class="rounded"/><p class="text-light" style="font-size:12px;">'+ress[i].ChannelName+'</p></div>'
-      }else if(ress[i].type === 'Kids'){
-        ht += '<div class="col bg-dark m-2 p-2" onclick="runPlay(\''+ress[i].m3url+'\')"><img width="48" src="'+ress[i].image+'" class="rounded"/><p class="text-light" style="font-size:12px;">'+ress[i].ChannelName+'</p></div>'
-      }else if(ress[i].type === 'Sports'){
-        ht += '<div class="col bg-dark m-2 p-2" onclick="runPlay(\''+ress[i].m3url+'\')"><img width="48" src="'+ress[i].image+'" class="rounded"/><p class="text-light" style="font-size:12px;">'+ress[i].ChannelName+'</p></div>'
-      }else if(ress[i].type === 'Reality'){
-        ht += '<div class="col bg-dark m-2 p-2" onclick="runPlay(\''+ress[i].m3url+'\')"><img width="48" src="'+ress[i].image+'" class="rounded"/><p class="text-light" style="font-size:12px;">'+ress[i].ChannelName+'</p></div>'
-      }else if(ress[i].type === 'Lifestyle'){
-        ht += '<div class="col bg-dark m-2 p-2" onclick="runPlay(\''+ress[i].m3url+'\')"><img width="48" src="'+ress[i].image+'" class="rounded"/><p class="text-light" style="font-size:12px;">'+ress[i].ChannelName+'</p></div>'
-      }else{
-       
-          ht += '<div class="col bg-dark m-2 p-2" onclick="runPlay(\''+ress[i].m3url+'\')"><img width="48" src="'+ress[i].image+'" class="rounded"/><p class="text-light" style="font-size:12px;">'+ress[i].ChannelName+'</p></div>'
-        
-      }
-     
-      
+          ht += '<li class="col bg-dark m-2 p-2" onclick="runPlay(\''+ress[i].m3url+'\')"><img width="48" src="'+ress[i].image+'" class="rounded"/><p class="text-light" style="font-size:12px;">'+ress[i].ChannelName+'</p></li>'
+         
     }
     document.querySelector('.views').innerHTML=ht
   }
@@ -838,7 +824,6 @@ socket.on('schedule', (data)=>{
       status:''
     }
     socket.emit('calendaSetting', da)
-    initPayPalButton2()
   }
   document.querySelector('.btnCart').style.display="block"
   document.querySelector('.panelCart').innerHTML=ht
@@ -848,7 +833,6 @@ socket.on('schedule', (data)=>{
  
 })
 socket.on('calendaSetting', (data)=>{
-  console.log(data)
 })
 socket.on('refresh-comments', (data)=>{
    setMe(data.room,data.to)
@@ -933,9 +917,7 @@ function reply(name){
  socket.on('total-numbers', (data)=>{
   document.querySelector('.commentOnlineUsers').innerText=data
  })
- socket.on('datedash', (data)=>{  
-  alert('hmmmm')
-   console.log(data)
+ socket.on('datedash', (data)=>{ 
    var ht = ''
    for (let i = 0; i < data.length; i++) {
      if(data[i].sex === 1 || data[i].sex === '1'){
@@ -981,7 +963,10 @@ function reply(name){
   var d = JSON.parse(data)
   document.getElementById('myBtn').disabled=false
     if(d == "created"){
-      var alert = '<span class="text-success">Your account has been created, check your Inbox or Spam to verify your account.</span>'
+      var alert = '<span class="text-success">Your account has been created.</span>'
+      setTimeout(() => {
+        window.location.href='index.html'
+      }, 3000);
     }else if(d == "Email exist"){
      var alert = '<span class="text-danger">Sorry, this email already exist in our system</span>'
     }else if(d == "Not sent"){
@@ -1156,7 +1141,6 @@ function createDash(){
         country:window.localStorage.getItem('countryName'),
         notice:[]
       }
-      console.log(data)
       //window.localStorage.setItem('datedash', 1)
       socket.emit('dating-account', data)
       //checkUserDatingReg()
@@ -1456,11 +1440,7 @@ function initPayPalButton() {
     onApprove: function(data, actions) {
       return actions.order.capture().then(function(orderData) {
       var selectedItemPrice = parseFloat(itemOptions.options[itemOptions.selectedIndex].getAttribute("price"));
-        if(selectedItemPrice === 1 || selectedItemPrice === '1'){
-          var n=14; //number of days to add. 
-          var today=new Date(); //Today's Date
-          var requiredDate=new Date(today.getFullYear(),today.getMonth(),today.getDate()+n)
-        }else if(selectedItemPrice === 4.5 || selectedItemPrice === '4.5'){
+        if(selectedItemPrice === 1.5 || selectedItemPrice === '1.5'){
           var n=30; //number of days to add. 
           var today=new Date(); //Today's Date
           var requiredDate=new Date(today.getFullYear(),today.getMonth(),today.getDate()+n)
@@ -1472,7 +1452,7 @@ function initPayPalButton() {
         document.querySelector('.notifydiv').innerHTML="<i class='fas fa-money-bill-alt text-success m-1'></i> Successful"
         go_off()
         const paydata = {
-          id:window.localStorage.getItem('user_num'),
+          id:Number(window.localStorage.getItem('user_num')),
           days:n,
           start:today,
           end:requiredDate,
@@ -1490,50 +1470,7 @@ function initPayPalButton() {
   }).render('#paypal-button-container');
 }
  
-function initPayPalButton2() {
-  var d = document.getElementById("amountCart").value
- 
-      paypal.Buttons({
-        style: {
-          shape: 'rect',
-          color: 'white',
-          layout: 'vertical',
-          label: 'pay',
-          
-        },
-     
-        
-        createOrder: function(data, actions) {
-          return actions.order.create({
-            purchase_units: [{"amount":{"currency_code":"USD","value":d}}]
-          });
-        },
 
-        onApprove: function(data, actions) {
-          return actions.order.capture().then(function(orderData) {
-            document.querySelector('.notifydiv').style.display="block"
-            document.querySelector('.notifydiv').innerHTML="<i class='fas fa-money-bill-alt text-success m-1'></i> Payment successful, create a zoom meeting code and update using the Appointment tab on the menu list."
-           go_off()
-          const paydata = {
-            id:window.localStorage.getItem('user_num'),
-            receiver:window.localStorage.getItem('receiver'),
-            name:window.localStorage.getItem('fullname'),
-            approved_date:window.localStorage.getItem('app_date')
-          }
-        
-          socket.emit('zoom-successful', paydata)
-            
-            
-          });
-        },
-
-        onError: function(err) {
-          console.log(err);
-        }
-      
-      }).render('#paypal-button-container2');
-  
- }
     //initPayPalButton();
 app.addEventListener('click', ()=>{
   mejvod()
