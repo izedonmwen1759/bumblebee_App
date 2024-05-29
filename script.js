@@ -259,8 +259,8 @@ socket.on('login',(data)=>{
    
     if(de.is_loggedin == true){
        document.getElementById('alertAll').innerHTML="<span class='text-danger'>User already loggedin...</span>"
-    }else{      
-      myuser_logs(data)      
+    }else{      	    
+      myuser_logs(de)      
     }
   }
 })
