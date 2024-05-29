@@ -73,7 +73,7 @@ forgot.addEventListener('click',()=>{
 })
 function removeChan(){
    
-    document.querySelector('.reportChannel').innerHTML='Please understand that Bumblebee TV is a streaming service and user-uploaded platform that sourced channels/content on the web in align with guidelines and content policies, by this we assume that the channels/content are available to the general public for viewing. Notwithstanding, we take the priviledge of obliging to channels/content owners to take down any channels/content that has breached their terms of service, policies, copyrights etc. that has with or without a prior noticed been changed. Bumblebee Tv takes all channel removal requests seriously in order to avoid LEGAL SUIT, our dedicated support team works around the clock to quickly process and remove such channel(s)/content.<br/> For channels/content take-down, kindly send us a message to the following email addresses<p>                    * <a href="mailto:bumblebee@emarkets24.com">bumblebee@emarkets24.com</a><br/>                    * <a href="mailto:bumblebeetv.customercare@gmail.com">bumblebeetv.customercare@gmail.com</a></p>'
+    document.querySelector('.reportChannel').innerHTML='Please understand that Blitz TV is a streaming service and user-uploaded platform that sourced channels/content on the web in align with guidelines and content policies, by this we assume that the channels/content are available to the general public for viewing. Notwithstanding, we take the priviledge of obliging to channels/content owners to take down any channels/content that has breached their terms of service, policies, copyrights etc. that has with or without a prior noticed been changed. Blitz Tv takes all channel removal requests seriously in order to avoid LEGAL SUIT, our dedicated support team works around the clock to quickly process and remove such channel(s)/content.<br/> For channels/content take-down, kindly send us a message to the following email addresses<p>       * <a href="mailto:blitzviews360@gmail.com">Blitz Tv</a></p>'
 }
 socket.on('forgot-account', (data)=>{
    
@@ -400,7 +400,6 @@ function getApprovedStreams(res){
 }
 function myuser_logs(data){ 
  var newData = JSON.parse(data)
- checksubscriber(newData.id)
   if( newData !== null){      	
     document.querySelector('.regDiv').style.display="none"
     document.querySelector('.loginDiv').style.display="none" 
