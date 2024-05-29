@@ -1,1 +1,1576 @@
-var _0x38a113=_0x10c1;(function(_0x41a64f,_0x3f009a){var _0x83bcf=_0x10c1,_0x2fa7e9=_0x41a64f();while(!![]){try{var _0xcc07c=-parseInt(_0x83bcf(0x29c))/0x1*(-parseInt(_0x83bcf(0x218))/0x2)+parseInt(_0x83bcf(0x266))/0x3*(parseInt(_0x83bcf(0x1c0))/0x4)+-parseInt(_0x83bcf(0x19a))/0x5*(-parseInt(_0x83bcf(0x132))/0x6)+parseInt(_0x83bcf(0x250))/0x7*(-parseInt(_0x83bcf(0x191))/0x8)+parseInt(_0x83bcf(0x18e))/0x9*(-parseInt(_0x83bcf(0x2a3))/0xa)+parseInt(_0x83bcf(0x291))/0xb*(parseInt(_0x83bcf(0x1d0))/0xc)+-parseInt(_0x83bcf(0x197))/0xd;if(_0xcc07c===_0x3f009a)break;else _0x2fa7e9['push'](_0x2fa7e9['shift']());}catch(_0x4379e4){_0x2fa7e9['push'](_0x2fa7e9['shift']());}}}(_0xe80d,0xccb9a));const socket=io(_0x38a113(0x1f5)),regBtn=document[_0x38a113(0x1c5)](_0x38a113(0x29b)),formSub=document['getElementById'](_0x38a113(0x213)),logForm=document[_0x38a113(0x1c5)](_0x38a113(0x204)),dash=document['querySelector'](_0x38a113(0x136)),footer=document['getElementById'](_0x38a113(0x190)),menu=document[_0x38a113(0x243)]('.menu-list'),displayMenu=document[_0x38a113(0x243)](_0x38a113(0x28e)),channels=document['querySelector'](_0x38a113(0x1d8)),forgot=document[_0x38a113(0x243)](_0x38a113(0x216)),channels_display=document['querySelector']('.channels-display'),userprofile=document[_0x38a113(0x1c5)](_0x38a113(0x2a7)),userprofileDiv=document[_0x38a113(0x243)](_0x38a113(0x1f1)),subTopic=document[_0x38a113(0x1c5)]('onsubmit'),topi=document[_0x38a113(0x1c5)]('topic'),result=document['getElementById'](_0x38a113(0x285)),feedform=document[_0x38a113(0x243)]('.feedform'),app=document[_0x38a113(0x1c5)](_0x38a113(0x288)),fb=document[_0x38a113(0x243)]('#feedback'),divMenu=document[_0x38a113(0x243)]('.displayview'),dateDash=document[_0x38a113(0x243)](_0x38a113(0x24a)),logout=document['querySelector']('#logout'),langSet=document['querySelector'](_0x38a113(0x274)),myBtn=document[_0x38a113(0x1c5)]('myBtn'),commentForm=document[_0x38a113(0x243)](_0x38a113(0x1e3)),creatAcc=document[_0x38a113(0x243)](_0x38a113(0x152)),editP=document[_0x38a113(0x243)](_0x38a113(0x257)),commentDisplay=document[_0x38a113(0x243)](_0x38a113(0x185)),usersList=document[_0x38a113(0x243)]('.usersList'),holdArr=[],cartAlog=[],defaultOptions={},caLog=[],chanArray=[],dateArray=[],video=document[_0x38a113(0x1c5)](_0x38a113(0x1fa)),videoContainer=document[_0x38a113(0x243)](_0x38a113(0x17c));var totalPrice=0x0,tray=[];function navOnline(){var _0xa5b5a9=_0x38a113;navigator[_0xa5b5a9(0x27b)]===!![]||navigator[_0xa5b5a9(0x27b)]===_0xa5b5a9(0x12d)?document[_0xa5b5a9(0x243)]('.notifydiv')['style'][_0xa5b5a9(0x1be)]=_0xa5b5a9(0x280):(document[_0xa5b5a9(0x243)]('.notifydiv')[_0xa5b5a9(0x231)][_0xa5b5a9(0x1be)]='block',document[_0xa5b5a9(0x243)](_0xa5b5a9(0x144))[_0xa5b5a9(0x130)]=_0xa5b5a9(0x24b));}setInterval(()=>{navOnline();},0x7d0),document[_0x38a113(0x243)](_0x38a113(0x1a3))[_0x38a113(0x1ed)](_0x38a113(0x1ea),()=>{var _0x5e1f31=_0x38a113;document[_0x5e1f31(0x243)](_0x5e1f31(0x14d))['style'][_0x5e1f31(0x1be)]='none',document[_0x5e1f31(0x243)]('.loginDiv')['style'][_0x5e1f31(0x1be)]=_0x5e1f31(0x18c);}),forgot[_0x38a113(0x1ed)]('click',()=>{var _0x1b4f23=_0x38a113,_0x5b4b4d=document[_0x1b4f23(0x1c5)](_0x1b4f23(0x29f))[_0x1b4f23(0x221)];if(_0x5b4b4d==='')document['getElementById'](_0x1b4f23(0x278))[_0x1b4f23(0x130)]=_0x1b4f23(0x282);else{const _0x5d1e79={'em':_0x5b4b4d};socket[_0x1b4f23(0x15c)](_0x1b4f23(0x141),_0x5d1e79);}});function removeChan(){var _0x5d1155=_0x38a113;document[_0x5d1155(0x243)](_0x5d1155(0x236))['innerHTML']=_0x5d1155(0x20a);}socket['on'](_0x38a113(0x141),_0xe71611=>{var _0x3aa61c=_0x38a113,_0x73c846=JSON[_0x3aa61c(0x214)](_0xe71611);if(_0x73c846==='0'||_0x73c846===0x0)document[_0x3aa61c(0x1c5)](_0x3aa61c(0x278))[_0x3aa61c(0x130)]='<span\x20class=\x27text-danger\x27>Invalid\x20email,</span>';else(_0x73c846==='1'||_0x73c846===0x1)&&(document[_0x3aa61c(0x1c5)]('alertAll')['innerHTML']=_0x3aa61c(0x1f3));}),regBtn[_0x38a113(0x1ed)](_0x38a113(0x1ea),regbtn);function regbtn(){var _0x2c71ed=_0x38a113;document['querySelector'](_0x2c71ed(0x20d))['style'][_0x2c71ed(0x1be)]='none',document[_0x2c71ed(0x243)](_0x2c71ed(0x14d))[_0x2c71ed(0x231)][_0x2c71ed(0x1be)]=_0x2c71ed(0x18c);}socket['on']('region',_0x7432f4=>{var _0x3d39ab=_0x38a113;chanArray[_0x3d39ab(0x25f)]=0x0,chanArray[_0x3d39ab(0x238)](JSON[_0x3d39ab(0x214)](_0x7432f4));}),formSub['addEventListener'](_0x38a113(0x140),_0x18b0df=>{var _0x19a979=_0x38a113;_0x18b0df[_0x19a979(0x242)]();var _0x2d5abc=document['getElementById']('fname')[_0x19a979(0x221)],_0xc02051=document['getElementById'](_0x19a979(0x1e4))[_0x19a979(0x221)],_0x5584cf=document['getElementById'](_0x19a979(0x1d4))['value'],_0x39acf7=document['getElementById'](_0x19a979(0x27e))['value'],_0x178f94=document['querySelector'](_0x19a979(0x268))['value'];_0x2d5abc===''?document['getElementById'](_0x19a979(0x1b1))[_0x19a979(0x231)]['border']=_0x19a979(0x1da):document[_0x19a979(0x1c5)](_0x19a979(0x1b1))[_0x19a979(0x231)][_0x19a979(0x149)]='1px\x20solid\x20blue';_0xc02051===''?document[_0x19a979(0x1c5)](_0x19a979(0x1e4))[_0x19a979(0x16b)][_0x19a979(0x149)]='1px\x20solid\x20red':document[_0x19a979(0x1c5)](_0x19a979(0x1e4))[_0x19a979(0x231)][_0x19a979(0x149)]=_0x19a979(0x234);_0x5584cf===''?document['getElementById'](_0x19a979(0x1d4))[_0x19a979(0x231)][_0x19a979(0x149)]=_0x19a979(0x1da):document[_0x19a979(0x1c5)](_0x19a979(0x1d4))[_0x19a979(0x231)][_0x19a979(0x149)]=_0x19a979(0x234);_0x39acf7===''?document[_0x19a979(0x1c5)]('password_create')[_0x19a979(0x231)][_0x19a979(0x149)]=_0x19a979(0x1da):document[_0x19a979(0x1c5)](_0x19a979(0x27e))['style']['border']=_0x19a979(0x234);_0x178f94===_0x19a979(0x255)?document[_0x19a979(0x243)]('.country')['style']['border']=_0x19a979(0x1da):document[_0x19a979(0x243)]('.country')[_0x19a979(0x231)]['border']=_0x19a979(0x234);if(_0x2d5abc!==''&&_0xc02051!==''&&_0x5584cf!==''&&_0x39acf7!==''&&_0x178f94!==_0x19a979(0x255)){var _0x2ee62a=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;if(_0x5584cf[_0x19a979(0x1e8)](_0x2ee62a)){const _0x15cdec={'fname':_0x2d5abc,'lname':_0xc02051,'email':_0x5584cf,'password':CryptoJS['MD5'](_0x39acf7)[_0x19a979(0x283)](),'country':_0x178f94,'date_joined':new Date(),'id':Math[_0x19a979(0x1dc)](Math['random']()*0x3b9aca00+0x1),'is_loggedIn':![],'verified':![],'subscription':0x1};var _0x2d2f16=JSON[_0x19a979(0x1bd)](_0x15cdec);document[_0x19a979(0x1c5)]('myBtn')[_0x19a979(0x256)]=!![];var _0x22b1c2=0x1e,_0x5398a7=new Date(),_0x21af3c=new Date(_0x5398a7[_0x19a979(0x16e)](),_0x5398a7[_0x19a979(0x20f)](),_0x5398a7[_0x19a979(0x2a0)]()+_0x22b1c2);const _0x439d94={'id':Number(_0x15cdec['id']),'days':_0x22b1c2,'start':_0x5398a7,'terminate':_0x21af3c,'agent':'','texxt':Math[_0x19a979(0x1dc)](Math[_0x19a979(0x168)]()*0x3b9aca00+0x1),'gateway':'Free'};socket[_0x19a979(0x15c)](_0x19a979(0x230),_0x15cdec),socket[_0x19a979(0x15c)](_0x19a979(0x15a),_0x439d94);}else return document['getElementById'](_0x19a979(0x1d4))[_0x19a979(0x231)]['border']='solid\x20red',![];}}),feedform[_0x38a113(0x1ed)](_0x38a113(0x140),_0x1d7820=>{var _0x24fd98=_0x38a113;_0x1d7820[_0x24fd98(0x242)]();var _0x997bc2=document[_0x24fd98(0x243)](_0x24fd98(0x160))[_0x24fd98(0x221)];if(_0x997bc2==='')document['querySelector'](_0x24fd98(0x160))[_0x24fd98(0x231)]['border']='1px\x20border\x20red';else{document[_0x24fd98(0x243)](_0x24fd98(0x160))[_0x24fd98(0x231)][_0x24fd98(0x149)]='';const _0x588c91={'userid':window[_0x24fd98(0x207)][_0x24fd98(0x202)](_0x24fd98(0x1fc)),'feed':_0x997bc2};socket[_0x24fd98(0x15c)](_0x24fd98(0x224),_0x588c91),document[_0x24fd98(0x243)](_0x24fd98(0x160))[_0x24fd98(0x221)]='';}}),logForm[_0x38a113(0x1ed)]('submit',_0xe2749c=>{var _0x57ddf2=_0x38a113;_0xe2749c[_0x57ddf2(0x242)](),footer['style'][_0x57ddf2(0x1be)]=_0x57ddf2(0x18c),langSet[_0x57ddf2(0x231)][_0x57ddf2(0x1be)]=_0x57ddf2(0x280);var _0x5bb59c=document['getElementById']('email')[_0x57ddf2(0x221)],_0x317eda=document['getElementById'](_0x57ddf2(0x24d))[_0x57ddf2(0x221)];_0x5bb59c===''?document[_0x57ddf2(0x1c5)]('email')[_0x57ddf2(0x231)][_0x57ddf2(0x149)]=_0x57ddf2(0x1da):document['getElementById'](_0x57ddf2(0x29f))[_0x57ddf2(0x231)]['border']=_0x57ddf2(0x234);_0x317eda===''?document['getElementById'](_0x57ddf2(0x24d))[_0x57ddf2(0x231)][_0x57ddf2(0x149)]='1px\x20solid\x20red':document[_0x57ddf2(0x1c5)](_0x57ddf2(0x24d))[_0x57ddf2(0x231)][_0x57ddf2(0x149)]=_0x57ddf2(0x234);if(_0x5bb59c!==''&&_0x317eda!==''){var _0x5b1581=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;if(_0x5bb59c[_0x57ddf2(0x1e8)](_0x5b1581)){const _0x4ad6d9={'email':_0x5bb59c,'password':CryptoJS[_0x57ddf2(0x1b4)](_0x317eda)[_0x57ddf2(0x283)](),'device':window[_0x57ddf2(0x16f)][_0x57ddf2(0x1d9)]};document['getElementById']('logBtn')['disabled']=!![],socket['emit'](_0x57ddf2(0x23f),_0x4ad6d9),document[_0x57ddf2(0x1c5)]('email')[_0x57ddf2(0x221)]='',document['getElementById'](_0x57ddf2(0x24d))[_0x57ddf2(0x221)]='';}else return document[_0x57ddf2(0x1c5)](_0x57ddf2(0x29f))[_0x57ddf2(0x231)][_0x57ddf2(0x149)]=_0x57ddf2(0x1da),![];}}),socket['on'](_0x38a113(0x23f),_0x214c68=>{var _0x4a224b=_0x38a113,_0x27717f=JSON[_0x4a224b(0x214)](_0x214c68);document[_0x4a224b(0x1c5)]('logBtn')[_0x4a224b(0x256)]=![];if(_0x27717f===_0x4a224b(0x210))document[_0x4a224b(0x1c5)](_0x4a224b(0x278))['innerHTML']=_0x4a224b(0x199);else{if(_0x27717f==='Email\x20not\x20found')document[_0x4a224b(0x1c5)](_0x4a224b(0x278))[_0x4a224b(0x130)]='<span\x20class=\x27text-danger\x27>Email\x20not\x20found...</span>';else _0x27717f===_0x4a224b(0x18f)?document[_0x4a224b(0x1c5)](_0x4a224b(0x278))[_0x4a224b(0x130)]='<span\x20class=\x27text-danger\x27>Incorrect\x20Details...</span>':_0x27717f['is_loggedin']==!![]?document[_0x4a224b(0x1c5)](_0x4a224b(0x278))[_0x4a224b(0x130)]=_0x4a224b(0x215):myuser_logs(_0x214c68);}}),window[_0x38a113(0x1ed)](_0x38a113(0x1aa),()=>{var _0x433819=_0x38a113;if(window[_0x433819(0x207)]['getItem'](_0x433819(0x1fc))===''){}else socket[_0x433819(0x15c)]('check-sub',Number(window[_0x433819(0x207)][_0x433819(0x202)](_0x433819(0x1fc))));});function _0x10c1(_0xbf49b2,_0x35b102){var _0xe80d8=_0xe80d();return _0x10c1=function(_0x10c1bb,_0x7b5226){_0x10c1bb=_0x10c1bb-0x12b;var _0x2478d6=_0xe80d8[_0x10c1bb];return _0x2478d6;},_0x10c1(_0xbf49b2,_0x35b102);}function checksubscriber(_0x2b4f5c){var _0x461b88=_0x38a113;socket[_0x461b88(0x15c)](_0x461b88(0x1d5),_0x2b4f5c);}socket['on']('check-sub',_0x5eb566=>{var _0x5067f4=_0x38a113;if(_0x5eb566===null)runafterload();else _0x5eb566!==null&&($(_0x5067f4(0x28e))[_0x5067f4(0x1ae)]('d-flex\x20justify-content-center'),displayMenu['style'][_0x5067f4(0x1be)]=_0x5067f4(0x18c),document[_0x5067f4(0x1c5)]('mysubscription')[_0x5067f4(0x231)][_0x5067f4(0x1be)]=_0x5067f4(0x280));});function runPlay(_0x38276e){var _0x3275e8=_0x38a113;document[_0x3275e8(0x243)]('#iframeLivePlayer')['src']=_0x3275e8(0x20b)+_0x38276e;}function userdetails(_0xb2fa5d){var _0xfd7f18=_0x38a113;const _0x2c0cb8={'id':_0xb2fa5d};socket[_0xfd7f18(0x15c)]('userdetails',_0x2c0cb8);}socket['on'](_0x38a113(0x277),_0x1af537=>{});function audiocast(){var _0x43c4de=_0x38a113;document[_0x43c4de(0x243)](_0x43c4de(0x1e5))[_0x43c4de(0x130)]=_0x43c4de(0x25b);}function listeningroom(){var _0x1e4933=_0x38a113;document[_0x1e4933(0x243)](_0x1e4933(0x1e5))['innerHTML']=_0x1e4933(0x200);}function liveTV(){var _0x287564=_0x38a113;document[_0x287564(0x243)]('.castView')[_0x287564(0x231)][_0x287564(0x1be)]=_0x287564(0x280),document[_0x287564(0x243)](_0x287564(0x178))[_0x287564(0x231)][_0x287564(0x1be)]=_0x287564(0x18c),document['querySelector'](_0x287564(0x178))['innerHTML']=_0x287564(0x1a1),document[_0x287564(0x243)]('.molly')[_0x287564(0x130)]=_0x287564(0x1a8),socket['emit'](_0x287564(0x192),''),document[_0x287564(0x243)](_0x287564(0x206))['addEventListener'](_0x287564(0x140),_0x3a29a4=>{var _0x573a26=_0x287564;_0x3a29a4['preventDefault']();var _0x643050=document[_0x573a26(0x243)](_0x573a26(0x270))[_0x573a26(0x221)];if(_0x643050===''){}else runChannelSearch(_0x643050),document['querySelector'](_0x573a26(0x270))['value']='';});}socket['on'](_0x38a113(0x192),_0x5e1436=>{var _0x1e1f57=_0x38a113;const _0x5b27bb=JSON[_0x1e1f57(0x214)](_0x5e1436);var _0x2c0a35='';_0x5b27bb['length']>0x0?$[_0x1e1f57(0x20e)](_0x5b27bb,(_0x3c8284,_0x54a508)=>{var _0x2e60a8=_0x1e1f57;_0x2c0a35+=_0x2e60a8(0x29e)+_0x54a508[_0x2e60a8(0x289)]+_0x2e60a8(0x159)+_0x54a508[_0x2e60a8(0x1e0)]+'\x27)\x22><i\x20class=\x22fas\x20fa-play-circle\x20rounded\x22></i></a></div><p>'+_0x54a508[_0x2e60a8(0x22b)]+'</p><div>';}):_0x2c0a35=_0x1e1f57(0x155),document[_0x1e1f57(0x243)](_0x1e1f57(0x134))['innerHTML']=_0x2c0a35;});function playee(_0x382193){var _0x4a0ff2=_0x38a113;document[_0x4a0ff2(0x243)](_0x4a0ff2(0x1b8))[_0x4a0ff2(0x130)]='';var _0x329e31=document[_0x4a0ff2(0x265)](_0x4a0ff2(0x229));_0x329e31[_0x4a0ff2(0x22d)]=_0x329e31['contentWindow'][_0x4a0ff2(0x276)][_0x4a0ff2(0x28f)]['scrollWidth'],_0x329e31[_0x4a0ff2(0x245)]=_0x329e31[_0x4a0ff2(0x219)][_0x4a0ff2(0x276)][_0x4a0ff2(0x28f)]['scrollHeight'],_0x329e31['id']=_0x4a0ff2(0x1ec),_0x329e31[_0x4a0ff2(0x145)]=!![],_0x329e31['style'][_0x4a0ff2(0x149)]=_0x4a0ff2(0x280),_0x329e31[_0x4a0ff2(0x231)][_0x4a0ff2(0x13e)]=_0x4a0ff2(0x21f),_0x329e31[_0x4a0ff2(0x177)]=_0x4a0ff2(0x154)+_0x382193,document[_0x4a0ff2(0x243)](_0x4a0ff2(0x1b8))['append'](_0x329e31);}function runChannelSearch(_0x1e4f1f){var _0xf76ffe=_0x38a113;const _0x440d07=JSON[_0xf76ffe(0x214)](window['localStorage'][_0xf76ffe(0x202)](_0xf76ffe(0x138)));for(let _0x265ceb=0x0;_0x265ceb<_0x440d07[_0xf76ffe(0x25f)];_0x265ceb++){if(_0x1e4f1f===_0x440d07[_0x265ceb][_0xf76ffe(0x22b)]){}}}function goback(){var _0x1b9547=_0x38a113;document['querySelector'](_0x1b9547(0x178))[_0x1b9547(0x130)]='',document[_0x1b9547(0x243)](_0x1b9547(0x1b7))[_0x1b9547(0x231)][_0x1b9547(0x1be)]=_0x1b9547(0x18c),document[_0x1b9547(0x243)](_0x1b9547(0x178))[_0x1b9547(0x231)]['display']=_0x1b9547(0x280);}function musicfiles(){var _0x2f9042=_0x38a113;document[_0x2f9042(0x243)](_0x2f9042(0x1e5))[_0x2f9042(0x130)]=_0x2f9042(0x1fe);}function getApprovedStreams(_0x5e66b0){var _0x5084f6=_0x38a113;const _0xaf2a16=JSON[_0x5084f6(0x214)](_0x5e66b0);}function myuser_logs(_0x1decfe){var _0x4d8120=_0x38a113,_0x2368a7=JSON[_0x4d8120(0x214)](_0x1decfe);checksubscriber(_0x2368a7['id']);if(_0x2368a7!==null){document[_0x4d8120(0x243)](_0x4d8120(0x14d))[_0x4d8120(0x231)][_0x4d8120(0x1be)]=_0x4d8120(0x280),document[_0x4d8120(0x243)]('.loginDiv')[_0x4d8120(0x231)][_0x4d8120(0x1be)]=_0x4d8120(0x280),document[_0x4d8120(0x1c5)](_0x4d8120(0x190))['style'][_0x4d8120(0x1be)]=_0x4d8120(0x280),langSet[_0x4d8120(0x231)][_0x4d8120(0x1be)]=_0x4d8120(0x280),setCookie(_0x4d8120(0x1f9),_0x2368a7['id'],0x1e),window[_0x4d8120(0x207)][_0x4d8120(0x19c)](_0x4d8120(0x1fc),_0x2368a7['id']),window[_0x4d8120(0x207)][_0x4d8120(0x19c)](_0x4d8120(0x29f),_0x2368a7[_0x4d8120(0x29f)]),window[_0x4d8120(0x207)][_0x4d8120(0x19c)](_0x4d8120(0x267),_0x2368a7['fname']+'\x20'+_0x2368a7['lname']),window[_0x4d8120(0x207)][_0x4d8120(0x19c)]('countryName',_0x2368a7[_0x4d8120(0x290)]),document['getElementById']('up')[_0x4d8120(0x1b0)]=_0x2368a7[_0x4d8120(0x1b1)]+'\x20'+_0x2368a7['lname'],document[_0x4d8120(0x1c5)]('fnameupdate')[_0x4d8120(0x221)]=_0x2368a7[_0x4d8120(0x1b1)],document[_0x4d8120(0x1c5)](_0x4d8120(0x1d3))['value']=_0x2368a7[_0x4d8120(0x1e4)],document[_0x4d8120(0x1c5)](_0x4d8120(0x194))[_0x4d8120(0x221)]=_0x2368a7['email'],socket['emit'](_0x4d8120(0x16d),_0x2368a7['id']),dash[_0x4d8120(0x231)][_0x4d8120(0x1be)]=_0x4d8120(0x18c);const _0x3042e6={'fname':_0x2368a7['fname'],'lname':_0x2368a7[_0x4d8120(0x1e4)],'email':_0x2368a7[_0x4d8120(0x29f)],'password':_0x2368a7[_0x4d8120(0x24d)],'country':_0x2368a7['country'],'date_joined':_0x2368a7[_0x4d8120(0x252)],'id':_0x2368a7['id'],'is_loggedIn':!![],'verified':_0x2368a7['verified'],'subscription':_0x2368a7['subscription']};socket[_0x4d8120(0x15c)](_0x4d8120(0x20c),_0x3042e6);}else{var _0x4b8256=getCookieForAutoLogin(_0x4d8120(0x1f9));const _0x29044d={'id':_0x4b8256};var _0x4d6d4c=JSON[_0x4d8120(0x1bd)](_0x29044d);socket[_0x4d8120(0x15c)](_0x4d8120(0x137),_0x4d6d4c),document[_0x4d8120(0x1f6)]=_0x4d8120(0x258);}}function runafterload(){var _0x233679=_0x38a113;$(_0x233679(0x28e))[_0x233679(0x2a8)](_0x233679(0x196)),displayMenu[_0x233679(0x231)][_0x233679(0x1be)]=_0x233679(0x280),document[_0x233679(0x1c5)](_0x233679(0x176))[_0x233679(0x231)][_0x233679(0x1be)]='block';if(window[_0x233679(0x207)][_0x233679(0x202)]('countryName')==='Nigeria'){var _0x2edd0a=window[_0x233679(0x207)][_0x233679(0x202)](_0x233679(0x267));document[_0x233679(0x1c5)](_0x233679(0x176))[_0x233679(0x130)]='<form\x20\x20class=\x22d-block\x20justify-content-center\x20row\x20payform\x22><div\x20class=\x22form-group\x20col-lg\x22><input\x20type=\x22hidden\x22\x20class=\x22userid\x22/><input\x20type=\x22tel\x22\x20\x20value=\x22'+_0x2edd0a+'\x22\x20class=\x22form-control\x20bg-transparent\x20text-white\x22\x20disabled/></div><div\x20class=\x22form-group\x20col-lg\x22><select\x20class=\x22form-control\x20bg-transparent\x20mt-3\x20text-white\x22\x20\x20id=\x22item-option\x22><option\x20value=\x22Choose\x20Plan\x22>Choose\x20Plan</option><option\x20value=\x221000\x22>Monthly\x20-\x201000\x20NGN</option></select></div><div\x20class=\x22form-submit\x22><button\x20type=\x22button\x22\x20onclick=\x22payform()\x22\x20class=\x22btn\x20btn-sm\x20btn-success\x20mt-3\x20text-uppercase\x22>pay</button></div></form>';const _0x3c39c3=document[_0x233679(0x243)](_0x233679(0x2a5));_0x3c39c3[_0x233679(0x1ed)]('click',payform,![]);}else document['getElementById']('paypa')[_0x233679(0x130)]=_0x233679(0x146),initPayPalButton();}socket['on'](_0x38a113(0x16d),_0x3e788c=>{});function payform(){var _0x2f7d1f=_0x38a113,_0x11dffd=document[_0x2f7d1f(0x243)](_0x2f7d1f(0x1db))['value'];if(_0x11dffd===_0x2f7d1f(0x14c))document['querySelector'](_0x2f7d1f(0x1db))[_0x2f7d1f(0x231)][_0x2f7d1f(0x149)]=_0x2f7d1f(0x1da);else{let _0x328d4a=PaystackPop[_0x2f7d1f(0x1b2)]({'key':'pk_live_c03716a93c872a0cb37b90ba2488fbbeb7de7529','amount':_0x11dffd*0x64,'email':window[_0x2f7d1f(0x207)][_0x2f7d1f(0x202)](_0x2f7d1f(0x29f)),'ref':''+Math[_0x2f7d1f(0x1dc)](Math[_0x2f7d1f(0x168)]()*0x3b9aca00+0x1),'onClose':function(){var _0x4be5a1=_0x2f7d1f;document[_0x4be5a1(0x243)]('.notifydiv')['style'][_0x4be5a1(0x1be)]=_0x4be5a1(0x18c),document[_0x4be5a1(0x243)]('.notifydiv')[_0x4be5a1(0x130)]='<i\x20class=\x27fas\x20fa-money-bill-alt\x20text-danger\x20m-1\x27></i>\x20Closed.',go_off();},'callback':function(_0x2a6453){var _0x1d0bae=_0x2f7d1f;document[_0x1d0bae(0x243)](_0x1d0bae(0x144))[_0x1d0bae(0x231)][_0x1d0bae(0x1be)]='block',document[_0x1d0bae(0x243)](_0x1d0bae(0x144))[_0x1d0bae(0x130)]='<i\x20class=\x27fas\x20fa-money-bill-alt\x20text-success\x20m-1\x27></i>\x20Succesful.',go_off();if(_0x11dffd===0x3e8||_0x11dffd===_0x1d0bae(0x269))var _0x2661dd=0x1e,_0x28765f=new Date(),_0x45d5f2=new Date(_0x28765f[_0x1d0bae(0x16e)](),_0x28765f[_0x1d0bae(0x20f)](),_0x28765f[_0x1d0bae(0x2a0)]()+_0x2661dd);else{}const _0x508fbd={'id':Number(window[_0x1d0bae(0x207)][_0x1d0bae(0x202)]('user_num')),'days':_0x2661dd,'start':_0x28765f,'terminate':_0x45d5f2,'agent':'','texxt':Math[_0x1d0bae(0x1dc)](Math[_0x1d0bae(0x168)]()*0x3b9aca00+0x1),'gateway':_0x1d0bae(0x150)+_0x11dffd};socket[_0x1d0bae(0x15c)](_0x1d0bae(0x15a),_0x508fbd);}});_0x328d4a[_0x2f7d1f(0x1a0)]();}}socket['on'](_0x38a113(0x15a),_0x55673b=>{var _0x4310e2=_0x38a113,_0xed2f38=JSON[_0x4310e2(0x214)](_0x55673b);if(_0xed2f38===_0x4310e2(0x1ce)){document[_0x4310e2(0x243)]('.notifydiv')[_0x4310e2(0x231)][_0x4310e2(0x1be)]=_0x4310e2(0x18c),document[_0x4310e2(0x243)](_0x4310e2(0x144))[_0x4310e2(0x130)]=_0x4310e2(0x223),go_off();const _0xeaeec3={'id':window[_0x4310e2(0x207)][_0x4310e2(0x202)](_0x4310e2(0x1fc))};socket[_0x4310e2(0x15c)](_0x4310e2(0x151),_0xeaeec3);}});function accept(_0x181a06){var _0x174962=_0x38a113,_0x208df3=document['querySelector'](_0x174962(0x1ee)+_0x181a06)['value'],_0x4720be=document['querySelector']('.hiddenId'+_0x181a06)[_0x174962(0x221)];if(_0x208df3==='')document[_0x174962(0x243)](_0x174962(0x1ee)+_0x181a06)['style'][_0x174962(0x1be)]=_0x174962(0x1da);else{const _0x1bf06a={'d_time':_0x208df3,'user':window[_0x174962(0x207)][_0x174962(0x202)]('user_num'),'id':_0x4720be,'name':window[_0x174962(0x207)][_0x174962(0x202)](_0x174962(0x267)),'type':_0x174962(0x25c),'amount':'2.1'};socket[_0x174962(0x15c)](_0x174962(0x203),_0x1bf06a),dateArray['splice'](_0x181a06,0x1),dateArr(dateArray);}}function reject(_0x4fcb57){var _0x8cdfb7=_0x38a113;dateArray[_0x8cdfb7(0x23d)](_0x4fcb57,0x1),dateArr(dateArray);}logout[_0x38a113(0x1ed)]('click',()=>{var _0x235c5f=_0x38a113;document[_0x235c5f(0x1f6)]=_0x235c5f(0x258),window[_0x235c5f(0x207)]['removeItem'](_0x235c5f(0x1d6)),window[_0x235c5f(0x207)][_0x235c5f(0x22e)]('countryName'),window['localStorage'][_0x235c5f(0x22e)]('datedash'),window[_0x235c5f(0x207)][_0x235c5f(0x22e)](_0x235c5f(0x29f)),window[_0x235c5f(0x207)][_0x235c5f(0x22e)](_0x235c5f(0x267)),window[_0x235c5f(0x207)]['removeItem'](_0x235c5f(0x2a1)),window['localStorage']['removeItem'](_0x235c5f(0x1e7)),window['localStorage'][_0x235c5f(0x22e)](_0x235c5f(0x1dd)),window['localStorage'][_0x235c5f(0x22e)](_0x235c5f(0x228)),loadCooki();});function setCookie(_0x4aac14,_0x5e226c,_0x24abff){var _0x194733=_0x38a113;document['cookie']=_0x194733(0x247);let _0x3bd267=new Date();_0x3bd267[_0x194733(0x167)](_0x3bd267[_0x194733(0x1bc)]()+_0x24abff*0x18*0x3c*0x3c*0x3e8);const _0x3c6b09=_0x194733(0x286)+_0x3bd267['toUTCString']();document[_0x194733(0x1f6)]=_0x4aac14+'='+_0x5e226c+';\x20'+_0x3c6b09+_0x194733(0x1fd);}window[_0x38a113(0x1ed)](_0x38a113(0x2a4),loadCooki);function loadCooki(){var _0x26bc35=_0x38a113,_0x349f31=getCookieForAutoLogin(_0x26bc35(0x1f9)),_0x35625e=window[_0x26bc35(0x207)]['getItem'](_0x26bc35(0x1a6));if(_0x349f31!=='')myuser_logs(_0x35625e);else{const _0x156da1={'id':window[_0x26bc35(0x207)][_0x26bc35(0x202)](_0x26bc35(0x1fc))};_0x156da1['id']===null?(dash[_0x26bc35(0x231)][_0x26bc35(0x1be)]=_0x26bc35(0x280),langSet['style']['display']=_0x26bc35(0x280),document[_0x26bc35(0x243)](_0x26bc35(0x1e5))[_0x26bc35(0x231)][_0x26bc35(0x1be)]=_0x26bc35(0x280),window['localStorage'][_0x26bc35(0x22e)](_0x26bc35(0x1fc)),window[_0x26bc35(0x207)]['removeItem'](_0x26bc35(0x1a6)),document[_0x26bc35(0x243)](_0x26bc35(0x20d))[_0x26bc35(0x231)][_0x26bc35(0x1be)]=_0x26bc35(0x18c)):socket[_0x26bc35(0x15c)](_0x26bc35(0x137),_0x156da1);}}socket['on'](_0x38a113(0x137),()=>{var _0x2ee02b=_0x38a113;dash[_0x2ee02b(0x231)][_0x2ee02b(0x1be)]=_0x2ee02b(0x280),langSet[_0x2ee02b(0x231)][_0x2ee02b(0x1be)]='none',document['querySelector'](_0x2ee02b(0x1e5))[_0x2ee02b(0x231)][_0x2ee02b(0x1be)]=_0x2ee02b(0x280),window['localStorage'][_0x2ee02b(0x22e)]('user_num'),window[_0x2ee02b(0x207)][_0x2ee02b(0x22e)](_0x2ee02b(0x1a6)),document['querySelector'](_0x2ee02b(0x20d))[_0x2ee02b(0x231)]['display']='block';}),fb['addEventListener']('click',()=>{var _0x15794c=_0x38a113;divMenu['style'][_0x15794c(0x1be)]=_0x15794c(0x280),userprofileDiv['style'][_0x15794c(0x1be)]=_0x15794c(0x280),dateDash[_0x15794c(0x231)][_0x15794c(0x1be)]=_0x15794c(0x280),creatAcc[_0x15794c(0x231)][_0x15794c(0x1be)]='none',document[_0x15794c(0x243)]('.community')[_0x15794c(0x231)]['display']='none',document[_0x15794c(0x243)](_0x15794c(0x23c))['style'][_0x15794c(0x1be)]=_0x15794c(0x280),document['querySelector'](_0x15794c(0x1e9))[_0x15794c(0x231)][_0x15794c(0x1be)]='none',document['querySelector'](_0x15794c(0x17d))['style'][_0x15794c(0x1be)]=_0x15794c(0x18c),document['querySelector'](_0x15794c(0x1e5))[_0x15794c(0x231)][_0x15794c(0x1be)]=_0x15794c(0x280);});function getCookieForAutoLogin(_0x5bdba5){var _0x14a9e3=_0x38a113;let _0x360876=_0x5bdba5+'=',_0x4a95d1=decodeURIComponent(document[_0x14a9e3(0x1f6)]),_0x592867=_0x4a95d1['split'](';');for(let _0x43c5ab=0x0;_0x43c5ab<_0x592867[_0x14a9e3(0x25f)];_0x43c5ab++){let _0x2796e4=_0x592867[_0x43c5ab];while(_0x2796e4[_0x14a9e3(0x173)](0x0)=='\x20'){_0x2796e4=_0x2796e4[_0x14a9e3(0x18a)](0x1);}if(_0x2796e4['indexOf'](_0x360876)==0x0)return _0x2796e4[_0x14a9e3(0x18a)](_0x360876[_0x14a9e3(0x25f)],_0x2796e4['length']);}return'';}function channelNo(_0x35c447){var _0x129371=_0x38a113;checksubscriber(window[_0x129371(0x207)]['getItem'](_0x129371(0x1fc)));switch(_0x35c447){case 0x1:tvchannels(_0x35c447);break;case 0x2:tvchannels(_0x35c447);break;case 0x3:tvchannels(_0x35c447);break;case 0x4:watching();break;case 0x5:webCast();break;case 0x6:vod();break;case 0x7:socials();break;case 0x8:checkUserDatingReg();break;}const _0x3df1a9={'id':window[_0x129371(0x207)][_0x129371(0x202)]('user_num')};socket[_0x129371(0x15c)](_0x129371(0x151),_0x3df1a9);}function vod(){var _0x2cbf85=_0x38a113;document[_0x2cbf85(0x243)](_0x2cbf85(0x21e))[_0x2cbf85(0x231)][_0x2cbf85(0x1be)]=_0x2cbf85(0x280),document[_0x2cbf85(0x243)]('.watchingembed')[_0x2cbf85(0x231)][_0x2cbf85(0x1be)]=_0x2cbf85(0x280),document[_0x2cbf85(0x243)](_0x2cbf85(0x201))[_0x2cbf85(0x231)][_0x2cbf85(0x1be)]='block',socket[_0x2cbf85(0x15c)](_0x2cbf85(0x19b),'');}socket['on']('fetch-movies',_0x373336=>{var _0x1df04a=_0x38a113,_0x4bedc3='';if(_0x373336[_0x1df04a(0x25f)]>0x0)for(let _0xe308db=0x0;_0xe308db<_0x373336[_0x1df04a(0x25f)];_0xe308db++){_0x4bedc3+=_0x1df04a(0x15b)+_0x373336[_0xe308db][_0x1df04a(0x26a)]+_0x1df04a(0x17b)+_0x373336[_0xe308db]['title']+_0x1df04a(0x261)+_0x373336[_0xe308db][_0x1df04a(0x284)]+_0x1df04a(0x16a)+_0x373336[_0xe308db][_0x1df04a(0x1f4)]+'['+_0x373336[_0xe308db][_0x1df04a(0x298)]+_0x1df04a(0x166);}document[_0x1df04a(0x1c5)](_0x1df04a(0x19d))[_0x1df04a(0x130)]=_0x4bedc3;});function watching(){var _0x507520=_0x38a113;socket[_0x507520(0x15c)](_0x507520(0x23e),''),document['querySelector'](_0x507520(0x21e))[_0x507520(0x231)][_0x507520(0x1be)]=_0x507520(0x280),document[_0x507520(0x243)](_0x507520(0x23c))[_0x507520(0x231)]['display']=_0x507520(0x18c);}function openVoD(_0x4620b6){var _0x57b3be=_0x38a113;document[_0x57b3be(0x243)](_0x57b3be(0x201))[_0x57b3be(0x130)]=_0x57b3be(0x188),document['querySelector'](_0x57b3be(0x1ac))['innerHTML']=_0x57b3be(0x14e);const _0x5ecbcf={'vae':_0x4620b6};socket['emit'](_0x57b3be(0x241),_0x5ecbcf);}socket['on']('get-channels',_0x5879f3=>{var _0x4a1e43=_0x38a113,_0x1b98c9='',_0x42e726=_0x5879f3['sort']();if(_0x42e726[_0x4a1e43(0x25f)]>0x0){for(let _0xdaa40f=0x0;_0xdaa40f<_0x42e726[_0x4a1e43(0x25f)];_0xdaa40f++){_0x1b98c9+='<li\x20class=\x22col\x20bg-dark\x20m-2\x20p-2\x22\x20onclick=\x22runPlay(\x27'+_0x42e726[_0xdaa40f]['m3url']+_0x4a1e43(0x29d)+_0x42e726[_0xdaa40f][_0x4a1e43(0x289)]+_0x4a1e43(0x164)+_0x42e726[_0xdaa40f][_0x4a1e43(0x22c)]+_0x4a1e43(0x1a9);}document['querySelector'](_0x4a1e43(0x1cf))[_0x4a1e43(0x130)]=_0x1b98c9;}}),socket['on']('fetch-users-vod',_0x10cd7b=>{var _0x49c53d=_0x38a113,_0x5ac3f7=JSON[_0x49c53d(0x214)](_0x10cd7b),_0x38873b='';document['querySelector'](_0x49c53d(0x1ac))['innerHTML']='';if(_0x5ac3f7[_0x49c53d(0x25f)]>0x0)for(let _0xe98041=0x0;_0xe98041<_0x5ac3f7['length'];_0xe98041++){if(_0x5ac3f7[_0xe98041][_0x49c53d(0x284)]==='')var _0x10b5a2=_0x49c53d(0x237);else var _0x10b5a2=_0x5ac3f7[_0xe98041][_0x49c53d(0x284)];_0x38873b+='<div\x20class=\x22row\x22><div\x20class=\x22col\x22><span\x20\x20class=\x22m-2\x22><img\x20width=\x22106\x22\x20class=\x22rounded\x22\x20src=\x22'+_0x10b5a2+'\x22\x20/><p>'+_0x5ac3f7[_0xe98041][_0x49c53d(0x1f4)]+_0x49c53d(0x233)+_0x5ac3f7[_0xe98041][_0x49c53d(0x251)]+'\x27)\x22\x20class=\x22p-2\x20mt-1\x20btn\x20btn-primary\x22><i\x20class=\x22fas\x20fa-play\x22></i></a><p><i\x20class=\x22fas\x20fa-plus\x20m-1\x20text\x20text-info\x22\x20data-toggle=\x22modal\x22\x20data-target=\x22#videoDes\x22\x20onclick=\x22descriptionMontrer(\x27'+_0x5ac3f7[_0xe98041][_0x49c53d(0x281)]+_0x49c53d(0x25a);}else _0x38873b=_0x49c53d(0x1cd);document[_0x49c53d(0x243)](_0x49c53d(0x1ac))[_0x49c53d(0x130)]=_0x49c53d(0x1b5)+_0x38873b+_0x49c53d(0x15e);});function _0xe80d(){var _0x440fc5=['Topics','.commentDisplay','alertDropdown','\x22\x20width=\x22100%\x22\x20height=\x22200\x22\x20id=\x22iframePlayerMain\x22\x20style=\x22position:relative;\x22\x20scrolling=\x22no\x22\x20frameBorder=\x220\x22\x20allowfullscreen></iframe>','<p><span\x20onclick=\x27returnback()\x27>&larr;</span></p><div\x20id=\x27vid\x27></div><div\x20class=\x27vidList\x20w-100\x27></div>','send-message-for-user-account-update','substring','scrollWidth','block','<i\x20class=\x27fas\x20fa-envelope-open-text\x20text-success\x20m-1\x27></i>','9QAPRMG','incorrect','footer','64CwlLVr','fetch-users-livetv-data','USD','oldemail','searchBar','d-flex\x20justify-content-center','10437882ydgJbf','Portal!\x20You\x20can\x20choose\x20any\x20language\x20','<span\x20class=\x27text-warning\x27>Please\x20verify\x20your\x20account,\x20check\x20your\x20Inbox\x20or\x20Spam\x20mail...</span>','15XqXIAF','fetch-movies','setItem','vod_set','from','.mplay','openIframe','<div\x20class=\x22container-fluid\x20row\x20d-flex\x22><div\x20class=\x22col\x22><span\x20onclick=\x22goback()\x22\x20class=\x22text-light\x22>&larr;</span></div>\x20<div\x20class=\x22col\x22\x20align=\x22right\x22><form\x20id=\x22formj\x22><input\x20type=\x22text\x22\x20class=\x22form-control\x20chaname\x20text-light\x20bg-transparent\x20border-0\x22\x20placeholder=\x22Channel\x20Name\x22\x20required/></form></div>\x20</div>\x20<hr/><div\x20class=\x22container-fluid\x20molly\x22></div>','.enlever','#log','price','<i\x20class=\x27fas\x20fa-envelope-open-text\x20text-success\x20m-1\x27></i>\x20Code\x20sent','myuser_logs','readAsDataURL','<center><img\x20src=\x22img/loader.gif\x22\x20class=\x22img-responsive\x20m-1\x22\x20width=\x2233\x22/></center>','</p></li>','mouseover','we\x20dey\x20play\x20ball','.vidList','visibility','addClass',',\x20Date:\x20','innerText','fname','setup','.hiddenRoomId','MD5','<div\x20class=\x22container-fluid\x22>','<span\x20class=\x22text-success\x22>Your\x20account\x20has\x20been\x20created.</span>','.castView','.appendVideo','datedash','<div\x20class=\x22\x20p-2\x20bg-transparent\x20border\x20border-primary\x20border-top-0\x20mb-2\x22\x20style=\x22font-size:12px;\x22><div\x20class=\x22row\x20d-flex\x22><div\x20class=\x22col-8\x22>','<i\x20class=\x22fas\x20fa-male\x20text-primary\x22></i>','getTime','stringify','display','delete-account','6672Shaabv','\x22\x20alt=\x22','<div\x20class=\x22card\x20bg-transparent\x20m-1\x20border\x20border-primary\x20colored_card\x22\x20style=\x22width:10rem;\x22><img\x20src=\x22','capture','send-zcode','getElementById','countryName','PayPal\x20','options','#paypal-button-container','<span\x20class=\x22text-danger\x22>Sorry,\x20this\x20email\x20already\x20exist\x20in\x20our\x20system</span>','GeeksforGeeks\x20Obrigado\x20','<div\x20class=\x22row\x20d-flex\x20justify-content-center\x22><img\x20src=\x22img/loader.gif\x22\x20class=\x22img-responsive\x20m-1\x22\x20width=\x2233\x22/></div>','<span\x20class=\x22row\x20d-flex\x20justify-content-center\x20text-danger\x22>No\x20Data,\x20Visit\x20https://drellon.com\x20and\x20start\x20streaming.</span>','successful','.views','49404hReGnN','</li>','pay','lnameupdate','email_create','check-sub','app_date','.classy','.channel-lists','userAgent','1px\x20solid\x20red','#item-option','floor','roomId','</h9><div\x20class=\x22row\x22><div\x20class=\x22col\x22>','dd_id','stream','.notifyList','name','.comment_data','lname','.webcast','selectedIndex','receiver','match','.appoint','click','\x22\x20class=\x22card-img-top\x20img-responsive\x22\x20height=\x2260\x22/></div>','iframePlayer','addEventListener','.timeArrangement','vertical','.inputcomment','.user_profile','.comments','<span\x20class=\x27text-success\x27>Check\x20your\x20inbox\x20or\x20spam\x20messages.</span>','title','https://xpwgcnd.localto.net/','cookie','.everyone','\x27)\x22>No</button><button\x20type=\x22button\x22\x20class=\x22btn\x20btn-sm\x20btn-success\x20accept','cog_log_dsnfdsvdsbjfbds','player','\x22\x20class=\x22card-img-top\x20img-responsive\x22/><div\x20class=\x22\x22><h9>','user_num',';\x20path=/','Music\x20<button\x20class=\x27btn\x20btn-sm\x20btn-primary\x27>Test</button>','<div\x20class=\x22mb-1\x22><div\x20class=\x22col\x22><form\x20id=\x22formVod\x22><input\x20type=\x22text\x22\x20class=\x22form-control\x20chaname\x20text-light\x20bg-transparent\x20border-0\x22\x20placeholder=\x22Channel\x20Name\x22\x20required/></form></div></div><div\x20class=\x22container-fluid\x20list_of_vodchannel\x22></div>','Listening\x20Room','.vod','getItem','schedule','login-form','<iframe\x20src=\x22','#formj','localStorage','\x22\x20placeholder=\x22Zoom\x20Code\x22\x20/><button\x20type=\x22button\x22\x20class=\x22btn\x20btn-sm\x20btn-warning\x22\x20onclick=\x22sendCode(\x27','<input\x20type=\x22text\x22\x20class=\x22bg-transparent\x20text-white\x20form-control\x20w-50\x20zcode','Please\x20understand\x20that\x20Bumblebee\x20TV\x20is\x20a\x20streaming\x20service\x20and\x20user-uploaded\x20platform\x20that\x20sourced\x20channels/content\x20on\x20the\x20web\x20in\x20align\x20with\x20guidelines\x20and\x20content\x20policies,\x20by\x20this\x20we\x20assume\x20that\x20the\x20channels/content\x20are\x20available\x20to\x20the\x20general\x20public\x20for\x20viewing.\x20Notwithstanding,\x20we\x20take\x20the\x20priviledge\x20of\x20obliging\x20to\x20channels/content\x20owners\x20to\x20take\x20down\x20any\x20channels/content\x20that\x20has\x20breached\x20their\x20terms\x20of\x20service,\x20policies,\x20copyrights\x20etc.\x20that\x20has\x20with\x20or\x20without\x20a\x20prior\x20noticed\x20been\x20changed.\x20Bumblebee\x20Tv\x20takes\x20all\x20channel\x20removal\x20requests\x20seriously\x20in\x20order\x20to\x20avoid\x20LEGAL\x20SUIT,\x20our\x20dedicated\x20support\x20team\x20works\x20around\x20the\x20clock\x20to\x20quickly\x20process\x20and\x20remove\x20such\x20channel(s)/content.<br/>\x20For\x20channels/content\x20take-down,\x20kindly\x20send\x20us\x20a\x20message\x20to\x20the\x20following\x20email\x20addresses<p>\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20*\x20<a\x20href=\x22mailto:bumblebee@emarkets24.com\x22>bumblebee@emarkets24.com</a><br/>\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20*\x20<a\x20href=\x22mailto:bumblebeetv.customercare@gmail.com\x22>bumblebeetv.customercare@gmail.com</a></p>','https://2wxdql0.localto.net/media/?url_code=','update-login','.loginDiv','each','getMonth','Account\x20not\x20verified','.hiddenPicDetails','onload','form-submit','parse','<span\x20class=\x27text-danger\x27>User\x20already\x20loggedin...</span>','.forgotInfo','flex','2iYlqAc','contentWindow','send-zcode-receive','</strong><br/>Zoom\x20Code:\x20','scrollTo','<div\x20class=\x22p-2\x20bg-transparent\x20border\x20border-primary\x20border-top-0\x20mb-2\x22\x20style=\x22font-size:12px;\x22><div\x20class=\x22row\x20d-flex\x22><div\x20class=\x22col-8\x22>','.displayview','relative','Welcome\x20to\x20the\x20GeeksforGeeks\x20','value','amountCart','<i\x20class=\x27fas\x20fa-money-bill-alt\x20text-success\x20m-1\x27></i>\x20Successful','feed-back','<span\x20class=\x22text-danger\x22>We\x20could\x20not\x20send\x20a\x20confirmation\x20code\x20to\x20your\x20email\x20for\x20verification.</span>','textContent','type_','usersDatingAcc','iframe','5em','channelname','ChannelName','width','removeItem','d_time','registration','style','Not\x20sent','</p></span></div><div\x20align=\x22right\x22\x20class=\x22col\x20col-lg\x22><br><a\x20href=\x22javascript:void()\x22\x20onclick=\x22playVideo(\x27','1px\x20solid\x20blue','<i\x20class=\x22fas\x20fa-female\x20text-danger\x22></i>','.reportChannel','./img/vod.PNG','push','.list_of_vodchannel','<span\x20class=\x27text-danger\x20m-2\x27\x20onclick=\x27undoWork()\x27><i\x20class=\x27fas\x20fa-undo\x27></i></span>\x20<i\x20class=\x27fas\x20fa-comment-alt\x20text-primary\x27></i>\x20<span\x20class=\x27float-right\x20commentsize\x27></span>\x20<i\x20class=\x27fas\x20fa-users\x20text-primary\x27></i>\x20<span\x20class=\x27float-right\x20commentOnlineUsers\x27></span>','hash','.watchingembed','splice','get-channels','login','Select\x20Gender','fetch-users-vod','preventDefault','querySelector','¿No\x20tienes\x20cuenta\x20aún?','height','get-topics','username=John','awaiting\x20zoom\x20code...','\x27)\x22>Send</span></div>','.date_dash','<i\x20class=\x22fas\x20fa-wifi\x20text-danger\x20m-1\x22></i>You\x20are\x20offline...','order','password','send-message-for-user-pass-update','fetch-users-vodfiles','943768qeiRmW','content','date_joined','\x22>\x20<button\x20type=\x22button\x22\x20class=\x22btn\x20btn-sm\x20btn-danger\x20m-1\x20reject','send-message-for-user-email-update','Choose\x20Country','disabled','.edit_Prof','cog_log_dsnfdsvdsbjfbds=;\x20expires=Thu,\x2001\x20Jan\x201970\x2000:00:00\x20UTC;\x20path=/','sidebarToggle','\x27)\x22></i></p></div></div>','hello','accept','undefined','<div\x20class=\x22\x22><strong>','length','comment','\x27)\x22\x20width=\x2280\x22\x20height=\x22109\x22\x20src=\x22','Account\x20Deleted','user','<div\x20class=\x22card\x20bg-transparent\x20m-1\x20colored_card\x22\x20style=\x22width:10rem;\x22><img\x20src=\x22','createElement','1347MrJhQP','fullname','.country','1000','url','target','Chike','userid','then','.comntSectn','.chaname','.community','.male_','hidesidebarToggle','.languageSettings','marginTop','document','userdetails','alertAll','.zoomList','topics','onLine','href','los\x20botones\x20de\x20arriba!','password_create','\x22\x20onclick=\x22accept(\x27','none','description','<span\x20class=\x27text-danger\x27>Enter\x20your\x20email.</span>','toString','img','result','expires=','report_message','appoint','image','zoom','<span\x20class=\x22text-warning\x22>&larr;</span>\x20</div><div\x20class=\x22col-3\x20float-right\x22>~','round','appointment','#pagesToDisplay','body','country','2123zjXhKy','blue','\x22\x20class=\x22card-img-top\x20img-responsive\x22\x20data-toggle=\x22modal\x22\x20data-target=\x22#exampletest\x22/><div\x20class=\x22\x22><h9>','get-appointments','location','\x20has\x20accepted\x20your\x20request,\x20you\x20have\x20been\x20scheduled\x20for\x20','files','year','Buttons','.timeArrange','registerRg','1110401aPDoJt','\x27)\x22><img\x20width=\x2248\x22\x20src=\x22','<div\x20class=\x22row\x20mb-1\x22><div\x20class=\x22container-fluid\x20appendVideo\x22></div><div\x20class=\x22col\x22><img\x20src=\x22','email','getDate','post_creator','refresh-comments','7700470siapfT','load','.payform','.btnCart','user_profile','removeClass','</div></div>','visible','.videoDescription','true','</div></div></div><span\x20class=\x22btn\x20btn-sm\x20btn-primary\x20text-white\x22\x20onclick=\x22contactme(\x27','topic','innerHTML','.zcode','1672386ZYXCsd','room','.molly','#smart-button-container\x20#item-options','.dashboard','logout','all_channels','<i\x20class=\x27fas\x20fa-user-check\x20text-success\x27></i>\x20Petition\x20has\x20been\x20submitted,\x20an\x20agent\x20will\x20respond\x20to\x20you\x20through\x20your\x20email.','reload','\x20<img\x20src=\x22','भाषा\x20को\x20चुन\x20सकते\x20हैं!','profilepic','position','1.5','submit','forgot-account','myBtn','scrollHeight','.notifydiv','allowFullscreen','<div\x20id=\x22smart-button-container\x22><div\x20style=\x22text-align:\x20center;\x22><div\x20style=\x22margin-bottom:\x201.25rem;\x22><select\x20class=\x22form-control\x20form-control-user\x20bg-transparent\x20mt-3\x20text-white\x22\x20\x20id=\x22item-options\x22><option\x20value=\x22Monthly\x22\x20price=\x221.5\x22>Monthly\x20-\x201.5\x20USD</option></select><select\x20style=\x22visibility:\x20hidden;\x22\x20id=\x22quantitySelect\x22></select></div><div\x20id=\x22paypal-button-container\x22></div></div></div>','getTopicDetails','.hidfield','border','date_added','\x27)\x22>Yes</button></li>','Choose\x20Plan','.regDiv','<div\x20class=\x22d-flex\x20justify-content-center\x22><img\x20src=\x22./img/loader.gif\x22\x20class=\x22img-responsive\x20m-1\x22\x20width=\x2233\x22/></div>','¡Puedes\x20elegir\x20cualquier\x20idioma\x20usando\x20','PayStack\x20','check-subscription','.createAcc','using\x20the\x20buttons\x20above!','https://byspx.localto.net/?user=','<span\x20class=\x27row\x20d-flex\x20justify-content-center\x20text-danger\x27>No\x20Data,\x20Visit\x20https://drellon.com\x20and\x20start\x20streaming.</span>','<li\x20class=\x22m-1\x22>','getAttribute','user-connected','\x22\x20class=\x22m-1\x20img-responsive\x22\x20width=\x22100\x22\x20height=\x2250\x22/></div><div\x20class=\x22col\x22><a\x20href=\x22javascript:void(0)\x22\x20class=\x22btn\x20btn-primary\x20p-1\x22\x20onclick=\x22playee(\x27','payment-successful','<div\x20class=\x22col\x22><img\x20onclick=\x22clickPlayMovies(\x27','emit','entrar','</div>','index.html','.fback','log','\x22\x20class=\x22hiddenRoomId\x22/>','No\x20Data','\x22\x20class=\x22rounded\x22/><p\x20class=\x22text-light\x22\x20style=\x22font-size:12px;\x22>','total-numbers',']</p></div>','setTime','random','comments','\x22\x20class=\x22rounded\x20m-1\x22/><p\x20class=\x22text-light\x22\x20style=\x22font-size:12px;\x22>','stfyle','\x20wants\x20to\x20have\x20a\x20video\x20chat\x20with\x20you','user_connected','getFullYear','navigator','¡Bienvenido\x20al\x20portal\x20GeeksforGeeks!\x20','आप\x20ऊपर\x20दिए\x20गए\x20बटन\x20का\x20उपयोग\x20करके\x20किसी\x20भी\x20','\x22\x20value=\x22','charAt','append','Crear\x20una\x20cuenta','mysubscription','src','.list_of_webcast','vid',',\x20setup\x20a\x20zoom\x20video\x20chat\x20and\x20forward,\x20your\x20cart\x20has\x20been\x20updated.\x20Thank\x20you','\x27,\x27','.videocontainer','.feedback','sex','<i\x20class=\x27fas\x20fa-image\x20text-danger\x20m-1\x27></i>\x20Profile\x20Image','<li>','calendaSetting','inline-block','\x22\x20class=\x22img-responsive\x20iamgePic\x22\x20width=\x2244\x22><input\x20type=\x22datetime-local\x22\x20class=\x22form-control-user\x20timeArrangement'];_0xe80d=function(){return _0x440fc5;};return _0xe80d();}function descriptionMontrer(_0x17901b){var _0x5a0c76=_0x38a113;document[_0x5a0c76(0x243)](_0x5a0c76(0x12c))[_0x5a0c76(0x1b0)]=_0x17901b;}function clickPlayMovies(_0x119a3b,_0x44b4e7){var _0x1f65df=_0x38a113;document[_0x1f65df(0x243)](_0x1f65df(0x19f))[_0x1f65df(0x130)]=_0x1f65df(0x205)+_0x119a3b+_0x1f65df(0x187);}function returnback(){var _0x3b50a5=_0x38a113;document[_0x3b50a5(0x243)](_0x3b50a5(0x201))['innerHTML']=_0x3b50a5(0x1ff),document[_0x3b50a5(0x243)](_0x3b50a5(0x239))['innerHTML']=_0x3b50a5(0x1cc),socket['emit'](_0x3b50a5(0x24f),'');}function playVideo(_0x1deb1e){var _0x5d2f3b=_0x38a113;document[_0x5d2f3b(0x1c5)](_0x5d2f3b(0x179))[_0x5d2f3b(0x130)]='';var _0x45ff65=document['createElement'](_0x5d2f3b(0x229));_0x45ff65[_0x5d2f3b(0x22d)]=_0x45ff65['contentWindow']['document'][_0x5d2f3b(0x28f)][_0x5d2f3b(0x18b)],_0x45ff65[_0x5d2f3b(0x245)]=_0x45ff65[_0x5d2f3b(0x219)][_0x5d2f3b(0x276)][_0x5d2f3b(0x28f)][_0x5d2f3b(0x143)],_0x45ff65['id']=_0x5d2f3b(0x1ec),_0x45ff65[_0x5d2f3b(0x145)]=!![],_0x45ff65[_0x5d2f3b(0x231)][_0x5d2f3b(0x149)]=_0x5d2f3b(0x280),_0x45ff65[_0x5d2f3b(0x231)][_0x5d2f3b(0x13e)]='relative',_0x45ff65[_0x5d2f3b(0x177)]=_0x5d2f3b(0x154)+_0x1deb1e,document[_0x5d2f3b(0x1c5)](_0x5d2f3b(0x179))[_0x5d2f3b(0x174)](_0x45ff65);}function webCast(){var _0x5c0297=_0x38a113;document[_0x5c0297(0x243)](_0x5c0297(0x21e))[_0x5c0297(0x231)][_0x5c0297(0x1be)]=_0x5c0297(0x280),document[_0x5c0297(0x243)](_0x5c0297(0x1e5))[_0x5c0297(0x231)][_0x5c0297(0x1be)]=_0x5c0297(0x18c);}editP[_0x38a113(0x1ed)](_0x38a113(0x1ea),()=>{var _0x53898c=_0x38a113;dateDash['style'][_0x53898c(0x1be)]=_0x53898c(0x280),creatAcc[_0x53898c(0x231)][_0x53898c(0x1be)]='block';}),socket['on'](_0x38a113(0x27a),_0x3ba363=>{var _0x4608de=_0x38a113;document[_0x4608de(0x1c5)](_0x4608de(0x285))[_0x4608de(0x130)]='';var _0x339bcc='',_0x44ba31=JSON[_0x4608de(0x214)](_0x3ba363);if(_0x44ba31[_0x4608de(0x25f)]>0x0){for(let _0x194ba5=0x0;_0x194ba5<_0x44ba31[_0x4608de(0x25f)];_0x194ba5++){_0x339bcc+='<span\x20class=\x22text\x20text-white\x20mb-3\x20d-block\x22\x20id=\x22listItems\x22\x20onclick=\x22setMe(\x27'+_0x44ba31[_0x194ba5]['roomid']+_0x4608de(0x17b)+_0x44ba31[_0x194ba5][_0x4608de(0x26d)]+'\x27)\x22>'+_0x44ba31[_0x194ba5][_0x4608de(0x12f)]+'</span>';}document[_0x4608de(0x1c5)](_0x4608de(0x285))[_0x4608de(0x130)]+=_0x339bcc;}else document[_0x4608de(0x1c5)](_0x4608de(0x285))[_0x4608de(0x130)]='No\x20Data';}),socket['on'](_0x38a113(0x203),_0x20bbe9=>{var _0x6b09c8=_0x38a113;cartAlog[_0x6b09c8(0x25f)]=0x0,cartAlog[_0x6b09c8(0x238)](_0x20bbe9);var _0x2df048='',_0x3d5524='';for(let _0x57db20=0x0;_0x57db20<cartAlog[_0x6b09c8(0x25f)];_0x57db20++){const _0x12e749=cartAlog[_0x6b09c8(0x25f)]*cartAlog[_0x57db20]['amount'];totalPrice=totalPrice+_0x12e749,document['getElementById'](_0x6b09c8(0x222))['value']=totalPrice,_0x2df048+=_0x6b09c8(0x180)+cartAlog[_0x57db20]['name']+'|\x20'+cartAlog[_0x57db20][_0x6b09c8(0x22f)]+_0x6b09c8(0x1d1),_0x3d5524+='<li>'+cartAlog[_0x57db20][_0x6b09c8(0x1e2)]+_0x6b09c8(0x296)+cartAlog[_0x57db20][_0x6b09c8(0x22f)]+'</li>',document[_0x6b09c8(0x243)](_0x6b09c8(0x144))['style']['display']='block',document[_0x6b09c8(0x243)](_0x6b09c8(0x144))['innerHTML']=cartAlog[_0x57db20][_0x6b09c8(0x1e2)]+'\x20has\x20accepted\x20your\x20request,\x20you\x20have\x20been\x20scheduled\x20for\x20'+cartAlog[_0x57db20][_0x6b09c8(0x22f)]+_0x6b09c8(0x17a),go_off(),window[_0x6b09c8(0x207)][_0x6b09c8(0x19c)](_0x6b09c8(0x1e7),cartAlog[_0x57db20][_0x6b09c8(0x263)]),window[_0x6b09c8(0x207)][_0x6b09c8(0x19c)]('app_date',cartAlog[_0x57db20][_0x6b09c8(0x22f)]);const _0xc10025={'sender':window['localStorage'][_0x6b09c8(0x202)](_0x6b09c8(0x1fc)),'receiver':cartAlog[_0x57db20]['user'],'date':cartAlog[_0x57db20]['d_time'],'code':'','status':''};socket[_0x6b09c8(0x15c)](_0x6b09c8(0x181),_0xc10025);}document['querySelector'](_0x6b09c8(0x2a6))[_0x6b09c8(0x231)][_0x6b09c8(0x1be)]=_0x6b09c8(0x18c),document[_0x6b09c8(0x243)]('.panelCart')[_0x6b09c8(0x130)]=_0x2df048,document['getElementById'](_0x6b09c8(0x186))['innerHTML']=_0x3d5524,document['querySelector'](_0x6b09c8(0x1e1))[_0x6b09c8(0x1b0)]=cartAlog[_0x6b09c8(0x25f)],document[_0x6b09c8(0x243)](_0x6b09c8(0x279))[_0x6b09c8(0x1b0)]=cartAlog[_0x6b09c8(0x25f)];}),socket['on']('calendaSetting',_0x25dab3=>{}),socket['on'](_0x38a113(0x2a2),_0x287180=>{var _0x22ce25=_0x38a113;setMe(_0x287180[_0x22ce25(0x133)],_0x287180['to']);});function setMe(_0xdcea01,_0x2fa8a0){var _0x200cfa=_0x38a113;holdArr[_0x200cfa(0x25f)]=0x0;const _0x61813a={'room':_0xdcea01};window[_0x200cfa(0x207)]['setItem'](_0x200cfa(0x2a1),_0x2fa8a0);var _0x512b07='<input\x20type=\x22hidden\x22\x20value=\x22'+_0xdcea01+_0x200cfa(0x162);document[_0x200cfa(0x243)](_0x200cfa(0x148))['innerHTML']=_0x512b07,document[_0x200cfa(0x243)](_0x200cfa(0x1a2))[_0x200cfa(0x231)][_0x200cfa(0x1be)]=_0x200cfa(0x280),document[_0x200cfa(0x1c5)]('result')['style']['display']=_0x200cfa(0x280),document[_0x200cfa(0x243)](_0x200cfa(0x1f2))[_0x200cfa(0x231)][_0x200cfa(0x1be)]=_0x200cfa(0x18c),document[_0x200cfa(0x243)](_0x200cfa(0x26f))[_0x200cfa(0x130)]=_0x200cfa(0x23a),socket['emit'](_0x200cfa(0x147),_0x61813a);}socket['on'](_0x38a113(0x158),_0x4d5ba1=>{var _0x30a37a=_0x38a113;window[_0x30a37a(0x207)]['setItem'](_0x30a37a(0x1dd),_0x4d5ba1);});function displayoutCommentForm(){var _0x5a9375=_0x38a113;document[_0x5a9375(0x243)]('.comment_data')[_0x5a9375(0x231)][_0x5a9375(0x1be)]=_0x5a9375(0x217);}commentForm[_0x38a113(0x1ed)](_0x38a113(0x140),_0x4c18e7=>{var _0x2b0bb0=_0x38a113;_0x4c18e7[_0x2b0bb0(0x242)]();var _0x430709=document[_0x2b0bb0(0x243)](_0x2b0bb0(0x1f0))[_0x2b0bb0(0x221)],_0x1094e5=document[_0x2b0bb0(0x243)](_0x2b0bb0(0x1b3))[_0x2b0bb0(0x221)],_0x3b44f8=document[_0x2b0bb0(0x1c5)]('up')['textContent'];if(_0x430709===''){}else{const _0xda9a40={'comment':_0x430709,'from':window['localStorage'][_0x2b0bb0(0x202)](_0x2b0bb0(0x1fc)),'to':window['localStorage'][_0x2b0bb0(0x202)]('post_creator'),'room':_0x1094e5,'name':_0x3b44f8,'type_':'1','date_added':new Date()};socket[_0x2b0bb0(0x15c)](_0x2b0bb0(0x169),_0xda9a40),document[_0x2b0bb0(0x243)](_0x2b0bb0(0x1f0))[_0x2b0bb0(0x221)]='',document[_0x2b0bb0(0x243)](_0x2b0bb0(0x1e3))[_0x2b0bb0(0x231)][_0x2b0bb0(0x1be)]='none';}}),socket['on'](_0x38a113(0x169),_0x269c2a=>{var _0x2dd993=_0x38a113;commentDisplay[_0x2dd993(0x130)]='';const _0x39fc1f=JSON['parse'](_0x269c2a);var _0x2475af='';if(_0x39fc1f['length']>0x0)for(let _0x36e966=0x0;_0x36e966<_0x39fc1f[_0x2dd993(0x25f)];_0x36e966++){var _0x2f80b8=_0x39fc1f[_0x36e966]['name'];if(_0x39fc1f[_0x36e966][_0x2dd993(0x227)]==='1'||_0x39fc1f[_0x36e966]['type_']===0x1)_0x2475af+=_0x2dd993(0x21d)+_0x2f80b8+_0x2dd993(0x28b)+_0x39fc1f[_0x36e966][_0x2dd993(0x14a)]+_0x2dd993(0x2a9)+_0x39fc1f[_0x36e966]['comment']+_0x2dd993(0x15e);else(_0x39fc1f[_0x36e966][_0x2dd993(0x227)]==='2'||_0x39fc1f[_0x36e966][_0x2dd993(0x227)]===0x2)&&(_0x2475af+=_0x2dd993(0x1ba)+_0x2f80b8+'\x20<span>&larr;</span></div><div\x20class=\x22col-3\x20float-right\x22>\x20~'+_0x39fc1f[_0x36e966][_0x2dd993(0x14a)]+'</div></div><img\x20src=\x22'+_0x39fc1f[_0x36e966][_0x2dd993(0x260)]+_0x2dd993(0x1eb));}else _0x2475af='No\x20Data';document[_0x2dd993(0x243)]('.commentsize')['innerText']=_0x39fc1f[_0x2dd993(0x25f)],commentDisplay[_0x2dd993(0x130)]=_0x2475af,scrollToBottom();});function scrollToBottom(){var _0x2132c9=_0x38a113;commentDisplay[_0x2132c9(0x21c)](0x0,commentDisplay[_0x2132c9(0x143)]);}function reply(_0x317989){var _0xa6534e=_0x38a113;document[_0xa6534e(0x243)](_0xa6534e(0x1f0))['value']+='@'+_0x317989;}socket['on'](_0x38a113(0x165),_0x429f64=>{var _0x34218e=_0x38a113;document['querySelector']('.commentOnlineUsers')[_0x34218e(0x1b0)]=_0x429f64;}),socket['on'](_0x38a113(0x1b9),_0xc7984e=>{var _0x352d32=_0x38a113,_0x12743b='';for(let _0x458aec=0x0;_0x458aec<_0xc7984e[_0x352d32(0x25f)];_0x458aec++){if(_0xc7984e[_0x458aec][_0x352d32(0x17e)]===0x1||_0xc7984e[_0x458aec][_0x352d32(0x17e)]==='1')var _0x32303c='<i\x20class=\x22fas\x20fa-male\x20text-primary\x22></i>';else{if(_0xc7984e[_0x458aec][_0x352d32(0x17e)]===0x2||_0xc7984e[_0x458aec]['sex']==='2')var _0x32303c=_0x352d32(0x235);else{}}_0x12743b+='<div\x20class=\x22card\x20bg-transparent\x20m-1\x20border\x20border-primary\x20colored_card\x22\x20style=\x22width:10rem;\x22><img\x20src=\x22'+_0xc7984e[_0x458aec][_0x352d32(0x13d)]+_0x352d32(0x1fb)+_0xc7984e[_0x458aec][_0x352d32(0x1e2)]+_0x352d32(0x1de)+_0x32303c+'\x20'+_0xc7984e[_0x458aec]['country']+'</div></div></div><span\x20class=\x22btn\x20btn-sm\x20btn-primary\x20text-white\x22\x20onclick=\x22contactme(\x27'+_0xc7984e[_0x458aec]['id']+_0x352d32(0x17b)+_0xc7984e[_0x458aec][_0x352d32(0x1e2)]+_0x352d32(0x249);}usersList[_0x352d32(0x130)]=_0x12743b;});function date_dasher(){var _0x4b123f=_0x38a113,_0x430b2a=JSON['parse'](window[_0x4b123f(0x207)][_0x4b123f(0x202)]('usersDatingAcc')),_0xe6ea9b='';if(_0x430b2a===null)alert(_0x4b123f(0x26c));else{alert('Chike\x202');if(_0x430b2a[_0x4b123f(0x25f)]>0x0)for(let _0x333210=0x0;_0x333210<_0x430b2a[_0x4b123f(0x25f)];_0x333210++){if(_0x430b2a[_0x333210][_0x4b123f(0x17e)]===0x1||_0x430b2a[_0x333210][_0x4b123f(0x17e)]==='1')var _0x17fc0b=_0x4b123f(0x1bb);else{if(_0x430b2a[_0x333210][_0x4b123f(0x17e)]===0x2||_0x430b2a[_0x333210][_0x4b123f(0x17e)]==='2')var _0x17fc0b=_0x4b123f(0x235);else{}}_0xe6ea9b+=_0x4b123f(0x264)+_0x430b2a[_0x333210][_0x4b123f(0x13d)]+_0x4b123f(0x1fb)+_0x430b2a[_0x333210]['name']+_0x4b123f(0x1de)+_0x17fc0b+'\x20'+_0x430b2a[_0x333210][_0x4b123f(0x290)]+_0x4b123f(0x12e)+_0x430b2a[_0x333210]['id']+_0x4b123f(0x17b)+_0x430b2a[_0x333210][_0x4b123f(0x1e2)]+_0x4b123f(0x249);}else alert('Chike\x204');}usersList['innerHTML']=_0xe6ea9b;}socket['on']('registration',_0x271136=>{var _0x36e106=_0x38a113,_0x599685=JSON['parse'](_0x271136);document[_0x36e106(0x1c5)](_0x36e106(0x142))[_0x36e106(0x256)]=![];if(_0x599685=='created'){var _0xe23980=_0x36e106(0x1b6);setTimeout(()=>{var _0x6a1459=_0x36e106;window[_0x6a1459(0x295)][_0x6a1459(0x27c)]=_0x6a1459(0x15f);},0xbb8);}else{if(_0x599685=='Email\x20exist')var _0xe23980=_0x36e106(0x1ca);else{if(_0x599685==_0x36e106(0x232))var _0xe23980=_0x36e106(0x225);}}document[_0x36e106(0x243)]('.alertRep')[_0x36e106(0x130)]=_0xe23980,document[_0x36e106(0x1c5)](_0x36e106(0x1b1))[_0x36e106(0x221)]='',document[_0x36e106(0x1c5)](_0x36e106(0x1e4))['value']='',document[_0x36e106(0x1c5)](_0x36e106(0x1d4))['value']='',document['getElementById'](_0x36e106(0x27e))[_0x36e106(0x221)]='';}),socket['on'](_0x38a113(0x287),_0x273adc=>{var _0x18b0d8=_0x38a113;dateArray[_0x18b0d8(0x238)](_0x273adc),dateArr(dateArray),document[_0x18b0d8(0x243)]('.timeArrange')['style'][_0x18b0d8(0x1be)]='block',document['querySelector'](_0x18b0d8(0x144))[_0x18b0d8(0x231)][_0x18b0d8(0x1be)]=_0x18b0d8(0x18c),document[_0x18b0d8(0x243)](_0x18b0d8(0x144))[_0x18b0d8(0x130)]=_0x273adc[_0x18b0d8(0x1e2)]+_0x18b0d8(0x16c),go_off();});function dateArr(_0x55b4ba){var _0x200340=_0x38a113,_0x12a28a='';if(_0x55b4ba[_0x200340(0x25f)]>0x0){for(let _0x139988=0x0;_0x139988<_0x55b4ba[_0x200340(0x25f)];_0x139988++){_0x12a28a+=_0x200340(0x156)+_0x55b4ba[_0x139988][_0x200340(0x1e2)]+_0x200340(0x13b)+_0x55b4ba[_0x139988][_0x200340(0x13d)]+_0x200340(0x183)+_0x139988+'\x22><input\x20type=\x22hidden\x22\x20class=\x22form-control-user\x20hiddenId'+_0x139988+_0x200340(0x172)+_0x55b4ba[_0x139988][_0x200340(0x19e)]+_0x200340(0x253)+_0x139988+'\x22\x20onclick=\x22reject(\x27'+_0x139988+_0x200340(0x1f8)+_0x139988+_0x200340(0x27f)+_0x139988+_0x200340(0x14b);}document[_0x200340(0x243)](_0x200340(0x1d7))[_0x200340(0x130)]=_0x12a28a;}else document['querySelector'](_0x200340(0x29a))[_0x200340(0x231)]['display']=_0x200340(0x280);}function contactme(_0x54bd70,_0x15f0a0){var _0x485532=_0x38a113,_0x15f0a0=document[_0x485532(0x1c5)]('up')['textContent'],_0x542ed9=document['querySelector'](_0x485532(0x211))['value'];const _0x2066b2={'to':_0x54bd70,'from':window['localStorage'][_0x485532(0x202)](_0x485532(0x1fc)),'name':_0x15f0a0,'profilepic':_0x542ed9};socket[_0x485532(0x15c)](_0x485532(0x287),_0x2066b2),document[_0x485532(0x243)]('.notifydiv')['style'][_0x485532(0x1be)]='block',document[_0x485532(0x243)](_0x485532(0x144))['innerHTML']='Notification\x20sent,\x20awaiting\x20response...',go_off();}function postImage(){var _0x2dffdf=_0x38a113,_0x1d2d4e=document[_0x2dffdf(0x243)](_0x2dffdf(0x1b3))['value'],_0x3f48d2=document[_0x2dffdf(0x1c5)]('up')[_0x2dffdf(0x226)],_0x357a94=document[_0x2dffdf(0x1c5)]('hiddenImage')[_0x2dffdf(0x297)];if(_0x357a94[_0x2dffdf(0x25f)]>0x0){var _0x32eafb=_0x357a94[0x0],_0x23e96e=new FileReader();_0x23e96e[_0x2dffdf(0x212)]=function(_0x3a5a51){var _0x5b4fb6=_0x2dffdf,_0x3be738=_0x3a5a51[_0x5b4fb6(0x26b)][_0x5b4fb6(0x285)];const _0x4c4131={'comment':_0x3be738,'from':window['localStorage'][_0x5b4fb6(0x202)](_0x5b4fb6(0x1fc)),'to':window[_0x5b4fb6(0x207)][_0x5b4fb6(0x202)](_0x5b4fb6(0x2a1)),'room':_0x1d2d4e,'name':_0x3f48d2,'type_':'2','date_added':new Date()};socket[_0x5b4fb6(0x15c)](_0x5b4fb6(0x169),_0x4c4131),window[_0x5b4fb6(0x207)]['removeItem'](_0x5b4fb6(0x2a1));},_0x23e96e[_0x2dffdf(0x1a7)](_0x32eafb);}}function undoWork(){var _0x1cc55c=_0x38a113;document['querySelector']('.enlever')['style'][_0x1cc55c(0x1be)]=_0x1cc55c(0x18c),document[_0x1cc55c(0x1c5)](_0x1cc55c(0x285))[_0x1cc55c(0x231)]['display']='block',document[_0x1cc55c(0x243)](_0x1cc55c(0x1f2))[_0x1cc55c(0x231)][_0x1cc55c(0x1be)]=_0x1cc55c(0x280),document[_0x1cc55c(0x243)](_0x1cc55c(0x26f))['innerHTML']=_0x1cc55c(0x184),commentDisplay['innerHTML']='';}function returnHome(){var _0x5da359=_0x38a113;divMenu['style'][_0x5da359(0x1be)]=_0x5da359(0x18c),document['querySelector']('.feedback')[_0x5da359(0x231)][_0x5da359(0x1be)]=_0x5da359(0x280),document[_0x5da359(0x243)]('.webcast')[_0x5da359(0x231)][_0x5da359(0x1be)]=_0x5da359(0x280),document[_0x5da359(0x243)](_0x5da359(0x201))[_0x5da359(0x231)][_0x5da359(0x1be)]=_0x5da359(0x280),userprofileDiv[_0x5da359(0x231)][_0x5da359(0x1be)]=_0x5da359(0x280),menu[_0x5da359(0x231)][_0x5da359(0x275)]=_0x5da359(0x22a),dateDash[_0x5da359(0x231)]['display']=_0x5da359(0x280),creatAcc[_0x5da359(0x231)][_0x5da359(0x1be)]=_0x5da359(0x280),document[_0x5da359(0x243)](_0x5da359(0x1e9))[_0x5da359(0x231)][_0x5da359(0x1be)]='none',document[_0x5da359(0x243)](_0x5da359(0x271))['style']['display']=_0x5da359(0x280),document[_0x5da359(0x243)](_0x5da359(0x23c))[_0x5da359(0x231)][_0x5da359(0x1be)]=_0x5da359(0x280);var _0x275a6d=new Date(),_0x395a6f=new Date(_0x275a6d['getFullYear'](),_0x275a6d[_0x5da359(0x20f)](),_0x275a6d[_0x5da359(0x2a0)]());const _0x1620c8={'id':window[_0x5da359(0x207)][_0x5da359(0x202)]('user_num')};socket[_0x5da359(0x15c)](_0x5da359(0x151),_0x1620c8);}function socials(){var _0x2b8444=_0x38a113;divMenu[_0x2b8444(0x231)][_0x2b8444(0x1be)]='none',dateDash[_0x2b8444(0x231)][_0x2b8444(0x1be)]=_0x2b8444(0x280),document[_0x2b8444(0x243)](_0x2b8444(0x271))[_0x2b8444(0x231)][_0x2b8444(0x1be)]=_0x2b8444(0x18c),socket['emit'](_0x2b8444(0x246),'');}function checkUserDatingReg(){var _0x337f88=_0x38a113,_0xedb126=window['localStorage']['getItem'](_0x337f88(0x1b9));alert(_0xedb126);if(_0xedb126===0x0||_0xedb126==='0'||_0xedb126===undefined||_0xedb126===_0x337f88(0x25d)||_0xedb126===null)divMenu[_0x337f88(0x231)]['display']=_0x337f88(0x280),dateDash[_0x337f88(0x231)][_0x337f88(0x1be)]=_0x337f88(0x280),creatAcc[_0x337f88(0x231)][_0x337f88(0x1be)]=_0x337f88(0x18c);else(_0xedb126===0x1||_0xedb126==='1')&&(date_(),date_dasher());}function date_(){var _0x15d12d=_0x38a113;divMenu['style'][_0x15d12d(0x1be)]=_0x15d12d(0x280),creatAcc[_0x15d12d(0x231)][_0x15d12d(0x1be)]=_0x15d12d(0x280),dateDash[_0x15d12d(0x231)][_0x15d12d(0x1be)]=_0x15d12d(0x18c);}function picUpload(){var _0x442b3=_0x38a113,_0x49b2fe=document[_0x442b3(0x1c5)](_0x442b3(0x13d))[_0x442b3(0x297)];if(_0x49b2fe['length']>0x0){var _0x32b270=_0x49b2fe[0x0],_0x509666=new FileReader();_0x509666[_0x442b3(0x212)]=function(_0x277dc5){var _0x3b376e=_0x442b3,_0x571bca=_0x277dc5[_0x3b376e(0x26b)][_0x3b376e(0x285)];document[_0x3b376e(0x243)]('.hiddenPicDetails')[_0x3b376e(0x221)]=_0x571bca;},_0x509666[_0x442b3(0x1a7)](_0x32b270);}}function createDash(){var _0x50be02=_0x38a113,_0x1e6b93=document[_0x50be02(0x243)]('.gender'),_0x11fc1a=document[_0x50be02(0x243)]('.hiddenPicDetails')[_0x50be02(0x221)];_0x1e6b93[_0x50be02(0x221)]===_0x50be02(0x240)&&(_0x1e6b93[_0x50be02(0x231)]['border']=_0x50be02(0x1da),document[_0x50be02(0x243)](_0x50be02(0x144))[_0x50be02(0x231)][_0x50be02(0x1be)]=_0x50be02(0x18c),document['querySelector']('.notifydiv')[_0x50be02(0x130)]='<i\x20class=\x27fas\x20fa-male\x20text-danger\x20m-1\x27></i><i\x20class=\x27fas\x20fa-female\x20text-danger\x20m-1\x27></i>\x20Gender');_0x11fc1a===''&&(document['querySelector'](_0x50be02(0x144))[_0x50be02(0x231)][_0x50be02(0x1be)]=_0x50be02(0x18c),document['querySelector']('.notifydiv')[_0x50be02(0x130)]=_0x50be02(0x17f));if(_0x1e6b93[_0x50be02(0x221)]!=='Select\x20Gender'&&_0x11fc1a!=''){_0x1e6b93['style'][_0x50be02(0x149)]='';var _0x4031df=document[_0x50be02(0x1c5)]('up')[_0x50be02(0x226)],_0x1e0b9a={'name':_0x4031df,'id':window[_0x50be02(0x207)]['getItem'](_0x50be02(0x1fc)),'sex':_0x1e6b93[_0x50be02(0x221)],'profilepic':_0x11fc1a,'country':window['localStorage']['getItem'](_0x50be02(0x1c6)),'notice':[]};socket[_0x50be02(0x15c)]('dating-account',_0x1e0b9a);}}function displaySearchBar(){var _0x52b34e=_0x38a113;document[_0x52b34e(0x1c5)](_0x52b34e(0x195))[_0x52b34e(0x231)][_0x52b34e(0x1be)]=_0x52b34e(0x217),document[_0x52b34e(0x1c5)](_0x52b34e(0x259))['style'][_0x52b34e(0x1be)]=_0x52b34e(0x280),dateDash[_0x52b34e(0x231)][_0x52b34e(0x1be)]=_0x52b34e(0x280),document[_0x52b34e(0x1c5)](_0x52b34e(0x273))[_0x52b34e(0x231)][_0x52b34e(0x1be)]=_0x52b34e(0x182);}function hideSearchBar(){var _0x34454f=_0x38a113;document[_0x34454f(0x1c5)](_0x34454f(0x195))[_0x34454f(0x231)][_0x34454f(0x1be)]=_0x34454f(0x280),document[_0x34454f(0x1c5)](_0x34454f(0x273))[_0x34454f(0x231)][_0x34454f(0x1be)]=_0x34454f(0x280),dateDash[_0x34454f(0x231)][_0x34454f(0x1be)]='none',document[_0x34454f(0x1c5)]('sidebarToggle')[_0x34454f(0x231)][_0x34454f(0x1be)]=_0x34454f(0x182);}userprofile[_0x38a113(0x1ed)](_0x38a113(0x1ea),()=>{var _0x1bea88=_0x38a113;document[_0x1bea88(0x243)](_0x1bea88(0x23c))[_0x1bea88(0x231)][_0x1bea88(0x1be)]=_0x1bea88(0x280),divMenu[_0x1bea88(0x231)][_0x1bea88(0x1be)]=_0x1bea88(0x280),creatAcc[_0x1bea88(0x231)][_0x1bea88(0x1be)]=_0x1bea88(0x280),document[_0x1bea88(0x243)](_0x1bea88(0x1e9))['style'][_0x1bea88(0x1be)]=_0x1bea88(0x280),document['querySelector'](_0x1bea88(0x17d))[_0x1bea88(0x231)][_0x1bea88(0x1be)]='none',document[_0x1bea88(0x243)](_0x1bea88(0x1e5))[_0x1bea88(0x231)]['display']=_0x1bea88(0x280),dateDash[_0x1bea88(0x231)][_0x1bea88(0x1be)]=_0x1bea88(0x280),document[_0x1bea88(0x243)](_0x1bea88(0x271))['style'][_0x1bea88(0x1be)]=_0x1bea88(0x280),userprofileDiv[_0x1bea88(0x231)][_0x1bea88(0x1be)]=_0x1bea88(0x18c);}),subTopic[_0x38a113(0x1ed)]('submit',_0x3c7f5a=>{var _0x37873c=_0x38a113;_0x3c7f5a[_0x37873c(0x242)]();topi['value']===''&&(topi[_0x37873c(0x231)][_0x37873c(0x149)]=_0x37873c(0x1da));if(topi[_0x37873c(0x221)]!==''){topi['style'][_0x37873c(0x149)]='';const _0x3701b1={'topic':topi[_0x37873c(0x221)],'userid':window[_0x37873c(0x207)][_0x37873c(0x202)](_0x37873c(0x1fc)),'date_created':new Date()};socket[_0x37873c(0x15c)](_0x37873c(0x27a),_0x3701b1),topi[_0x37873c(0x221)]='',hideSearchBar();}});function langa(_0x3f8b41){var _0x1eb4ba=_0x38a113;location[_0x1eb4ba(0x23b)]=_0x3f8b41,location[_0x1eb4ba(0x13a)]();}document[_0x38a113(0x243)]('.female_')[_0x38a113(0x1ed)](_0x38a113(0x1ea),()=>{findUserSexFemale();}),document[_0x38a113(0x243)](_0x38a113(0x1f7))[_0x38a113(0x1ed)](_0x38a113(0x1ea),()=>{var _0xcbc4b6=_0x38a113,_0x3a6d61=JSON[_0xcbc4b6(0x214)](window[_0xcbc4b6(0x207)]['getItem'](_0xcbc4b6(0x228))),_0x5c24e7='';for(let _0x422ecb=0x0;_0x422ecb<_0x3a6d61[_0xcbc4b6(0x25f)];_0x422ecb++){if(_0x3a6d61[_0x422ecb][_0xcbc4b6(0x17e)]===0x1||_0x3a6d61[_0x422ecb][_0xcbc4b6(0x17e)]==='1')var _0x1ad0a9=_0xcbc4b6(0x1bb);else{if(_0x3a6d61[_0x422ecb]['sex']===0x2||_0x3a6d61[_0x422ecb][_0xcbc4b6(0x17e)]==='2')var _0x1ad0a9=_0xcbc4b6(0x235);else{}}if(_0x3a6d61[_0x422ecb][_0xcbc4b6(0x290)]===null)var _0x477f3b='';else var _0x477f3b=_0x3a6d61[_0x422ecb][_0xcbc4b6(0x290)];_0x5c24e7+=_0xcbc4b6(0x1c2)+_0x3a6d61[_0x422ecb]['profilepic']+_0xcbc4b6(0x1fb)+_0x3a6d61[_0x422ecb][_0xcbc4b6(0x1e2)]+_0xcbc4b6(0x1de)+_0x1ad0a9+'\x20'+_0x477f3b+_0xcbc4b6(0x12e)+_0x3a6d61[_0x422ecb]['id']+_0xcbc4b6(0x17b)+_0x3a6d61[_0x422ecb]['name']+'\x27)\x22>Send</span></div>';}usersList[_0xcbc4b6(0x130)]=_0x5c24e7;}),document[_0x38a113(0x243)](_0x38a113(0x272))[_0x38a113(0x1ed)](_0x38a113(0x1ea),()=>{findUserSexMale();});function findUserSexMale(){var _0x349bc4=_0x38a113,_0x62386f=JSON['parse'](window[_0x349bc4(0x207)]['getItem'](_0x349bc4(0x228))),_0xe43a6='';for(let _0x183558=0x0;_0x183558<_0x62386f[_0x349bc4(0x25f)];_0x183558++){if(_0x62386f[_0x183558][_0x349bc4(0x17e)]===0x1||_0x62386f[_0x183558][_0x349bc4(0x17e)]==='1'){if(_0x62386f[_0x183558][_0x349bc4(0x290)]===null)var _0x21bdd0='';else var _0x21bdd0=_0x62386f[_0x183558][_0x349bc4(0x290)];var _0x1377ed=_0x349bc4(0x1bb);_0xe43a6+=_0x349bc4(0x1c2)+_0x62386f[_0x183558][_0x349bc4(0x13d)]+_0x349bc4(0x1fb)+_0x62386f[_0x183558][_0x349bc4(0x1e2)]+_0x349bc4(0x1de)+_0x1377ed+'\x20'+_0x21bdd0+_0x349bc4(0x12e)+_0x62386f[_0x183558]['id']+_0x349bc4(0x17b)+_0x62386f[_0x183558][_0x349bc4(0x1e2)]+'\x27)\x22>Send</span></div>';}}usersList[_0x349bc4(0x130)]=_0xe43a6;}function findUserSexFemale(){var _0x5a9b26=_0x38a113,_0x442746='',_0x495334=JSON[_0x5a9b26(0x214)](window[_0x5a9b26(0x207)][_0x5a9b26(0x202)](_0x5a9b26(0x228)));for(let _0x1c67cc=0x0;_0x1c67cc<_0x495334[_0x5a9b26(0x25f)];_0x1c67cc++){if(_0x495334[_0x1c67cc][_0x5a9b26(0x17e)]==='2'||_0x495334[_0x1c67cc][_0x5a9b26(0x17e)]===0x2){if(_0x495334[_0x1c67cc][_0x5a9b26(0x290)]===null)var _0x46fbd3='';else var _0x46fbd3=_0x495334[_0x1c67cc]['country'];var _0x1b56c1='<i\x20class=\x22fas\x20fa-female\x20text-danger\x22></i>';_0x442746+=_0x5a9b26(0x1c2)+_0x495334[_0x1c67cc]['profilepic']+_0x5a9b26(0x1c1)+_0x495334[_0x1c67cc]['name']+_0x5a9b26(0x293)+_0x495334[_0x1c67cc][_0x5a9b26(0x1e2)]+_0x5a9b26(0x1de)+_0x1b56c1+'\x20'+_0x46fbd3+'</div></div></div><span\x20class=\x22btn\x20btn-sm\x20btn-primary\x20text-white\x22\x20onclick=\x22contactme(\x27'+_0x495334[_0x1c67cc]['id']+'\x27,\x27'+_0x495334[_0x1c67cc]['name']+_0x5a9b26(0x249);}}usersList[_0x5a9b26(0x130)]=_0x442746;}function updateUserName(){var _0x59cacb=_0x38a113;const _0x26bbcc={'user':window['localStorage']['getItem'](_0x59cacb(0x1fc)),'email':window[_0x59cacb(0x207)]['getItem'](_0x59cacb(0x29f))};socket[_0x59cacb(0x15c)](_0x59cacb(0x189),_0x26bbcc);}function updateUserEmail(){var _0x284406=_0x38a113;const _0x41c3ee={'user':window[_0x284406(0x207)][_0x284406(0x202)]('user_num'),'email':window[_0x284406(0x207)][_0x284406(0x202)](_0x284406(0x29f))};socket['emit'](_0x284406(0x254),_0x41c3ee);}function updateUserPass(){var _0x2fa625=_0x38a113;const _0x4ecd0d={'user':window[_0x2fa625(0x207)]['getItem'](_0x2fa625(0x1fc)),'email':window[_0x2fa625(0x207)][_0x2fa625(0x202)](_0x2fa625(0x29f))};socket[_0x2fa625(0x15c)](_0x2fa625(0x24e),_0x4ecd0d);}socket['on'](_0x38a113(0x189),()=>{var _0x459373=_0x38a113;document[_0x459373(0x243)](_0x459373(0x144))[_0x459373(0x231)][_0x459373(0x1be)]=_0x459373(0x18c),document[_0x459373(0x243)](_0x459373(0x144))['innerHTML']=_0x459373(0x139),go_off();});var language={'eng':{'welcome':_0x38a113(0x220)+_0x38a113(0x198)+_0x38a113(0x153)},'es':{'welcome':_0x38a113(0x170)+_0x38a113(0x14f)+_0x38a113(0x27d),'index':_0x38a113(0x244),'register':'Registrarse\x20aquí','login':_0x38a113(0x15d),'create':_0x38a113(0x175)},'hin':{'welcome':'GeeksforGeeks\x20पोर्टल\x20पर\x20आपका\x20स्वागत\x20है!\x20'+_0x38a113(0x171)+_0x38a113(0x13c)},'pr':{'welcome':_0x38a113(0x1cb)+_0x38a113(0x171)+_0x38a113(0x13c),'ball':_0x38a113(0x1ab)}};function initPayPalButton(){var _0x43c77b=_0x38a113,_0x3fd2d7=Math[_0x43c77b(0x1dc)](Math['random']()*0x2540be400)+0x1,_0x85b660=0x0,_0x349ee4=document[_0x43c77b(0x243)](_0x43c77b(0x135)),_0x59ee5d=parseInt(),_0x18a7c9=document[_0x43c77b(0x243)]('#smart-button-container\x20#quantitySelect');!isNaN(_0x59ee5d)&&(_0x18a7c9[_0x43c77b(0x231)][_0x43c77b(0x1ad)]=_0x43c77b(0x12b));var _0x56e790=_0x3fd2d7;_0x56e790===''&&(_0x56e790='Item'),paypal[_0x43c77b(0x299)]({'style':{'color':_0x43c77b(0x292),'shape':'pill','label':_0x43c77b(0x1d2),'layout':_0x43c77b(0x1ef)},'createOrder':function(_0x2545cd,_0x2fb9ea){var _0x342ad4=_0x43c77b,_0x37b7e2=_0x349ee4[_0x342ad4(0x1c8)][_0x349ee4[_0x342ad4(0x1e6)]][_0x342ad4(0x221)],_0x596732=parseFloat(_0x349ee4['options'][_0x349ee4[_0x342ad4(0x1e6)]][_0x342ad4(0x157)](_0x342ad4(0x1a4))),_0x5ec2fe=0x0===0x0||![]?0x0:_0x596732*(parseFloat(0x0)/0x64);_0x18a7c9[_0x342ad4(0x1c8)][_0x342ad4(0x25f)]>0x0?_0x59ee5d=parseInt(_0x18a7c9[_0x342ad4(0x1c8)][_0x18a7c9['selectedIndex']][_0x342ad4(0x221)]):_0x59ee5d=0x1;_0x5ec2fe*=_0x59ee5d,_0x5ec2fe=Math[_0x342ad4(0x28c)](_0x5ec2fe*0x64)/0x64;var _0xc3a7b9=_0x59ee5d*_0x596732+parseFloat(_0x85b660)+_0x5ec2fe;_0xc3a7b9=Math[_0x342ad4(0x28c)](_0xc3a7b9*0x64)/0x64;var _0xc0ad3e=Math['round'](_0x596732*_0x59ee5d*0x64)/0x64;return _0x2fb9ea[_0x342ad4(0x24c)]['create']({'purchase_units':[{'description':_0x56e790,'amount':{'currency_code':'USD','value':_0xc3a7b9,'breakdown':{'item_total':{'currency_code':_0x342ad4(0x193),'value':_0xc0ad3e},'shipping':{'currency_code':'USD','value':_0x85b660},'tax_total':{'currency_code':_0x342ad4(0x193),'value':_0x5ec2fe}}},'items':[{'name':_0x37b7e2,'unit_amount':{'currency_code':_0x342ad4(0x193),'value':_0x596732},'quantity':_0x59ee5d}]}]});},'onApprove':function(_0x2a6b2e,_0x49dd7a){var _0x122010=_0x43c77b;return _0x49dd7a[_0x122010(0x24c)][_0x122010(0x1c3)]()[_0x122010(0x26e)](function(_0x168dec){var _0x545865=_0x122010,_0x4037c5=parseFloat(_0x349ee4[_0x545865(0x1c8)][_0x349ee4['selectedIndex']][_0x545865(0x157)](_0x545865(0x1a4)));if(_0x4037c5===1.5||_0x4037c5===_0x545865(0x13f))var _0xc53fba=0x1e,_0x597b=new Date(),_0x5a9e3e=new Date(_0x597b[_0x545865(0x16e)](),_0x597b[_0x545865(0x20f)](),_0x597b['getDate']()+_0xc53fba);else{}document['querySelector'](_0x545865(0x144))[_0x545865(0x231)][_0x545865(0x1be)]=_0x545865(0x18c),document['querySelector'](_0x545865(0x144))[_0x545865(0x130)]=_0x545865(0x223),go_off();const _0x19eef3={'id':Number(window['localStorage']['getItem'](_0x545865(0x1fc))),'days':_0xc53fba,'start':_0x597b,'end':_0x5a9e3e,'agent':'','texxt':_0x3fd2d7,'gateway':_0x545865(0x1c7)+_0x4037c5};socket['emit']('payment-successful',_0x19eef3);});},'onError':function(_0x17e4f6){var _0x5c8aec=_0x43c77b;console[_0x5c8aec(0x161)](_0x17e4f6);}})['render'](_0x43c77b(0x1c9));}app['addEventListener'](_0x38a113(0x1ea),()=>{mejvod();});function mejvod(){var _0x9e9fa8=_0x38a113;const _0x4cc201={'id':window['localStorage'][_0x9e9fa8(0x202)](_0x9e9fa8(0x1fc))};socket[_0x9e9fa8(0x15c)]('get-appointments',_0x4cc201);}socket['on'](_0x38a113(0x294),_0x16cb5c=>{var _0x64bc55=_0x38a113;divMenu[_0x64bc55(0x231)]['display']=_0x64bc55(0x280),document[_0x64bc55(0x243)](_0x64bc55(0x17d))[_0x64bc55(0x231)][_0x64bc55(0x1be)]=_0x64bc55(0x280),document[_0x64bc55(0x243)](_0x64bc55(0x1e5))[_0x64bc55(0x231)]['display']=_0x64bc55(0x280),userprofileDiv[_0x64bc55(0x231)][_0x64bc55(0x1be)]=_0x64bc55(0x280),dateDash[_0x64bc55(0x231)]['display']=_0x64bc55(0x280),creatAcc['style'][_0x64bc55(0x1be)]=_0x64bc55(0x280),document[_0x64bc55(0x243)](_0x64bc55(0x271))[_0x64bc55(0x231)][_0x64bc55(0x1be)]='none',document[_0x64bc55(0x243)](_0x64bc55(0x23c))['style'][_0x64bc55(0x1be)]='none',document[_0x64bc55(0x243)](_0x64bc55(0x1e9))[_0x64bc55(0x231)][_0x64bc55(0x1be)]=_0x64bc55(0x18c);var _0x20c8dd=JSON[_0x64bc55(0x214)](_0x16cb5c);let _0x28a63c='';if(_0x20c8dd[_0x64bc55(0x25f)]>0x0)for(let _0x1523a9=0x0;_0x1523a9<_0x20c8dd[_0x64bc55(0x25f)];_0x1523a9++){if(_0x20c8dd[_0x1523a9][_0x64bc55(0x26d)]===window[_0x64bc55(0x207)][_0x64bc55(0x202)](_0x64bc55(0x1fc))){if(_0x20c8dd[_0x1523a9][_0x64bc55(0x28a)]==='')var _0x388010=_0x64bc55(0x209)+_0x20c8dd[_0x1523a9][_0x64bc55(0x1df)]+_0x64bc55(0x208)+_0x20c8dd[_0x1523a9][_0x64bc55(0x1df)]+_0x64bc55(0x17b)+_0x20c8dd[_0x1523a9]['receiver']+'\x27)\x22>Send</button>';else var _0x388010=_0x20c8dd[_0x1523a9][_0x64bc55(0x28a)];}else{if(_0x20c8dd[_0x1523a9]['receiver']===window['localStorage']['getItem'](_0x64bc55(0x1fc))){if(_0x20c8dd[_0x1523a9][_0x64bc55(0x28a)]==='')var _0x388010=_0x64bc55(0x248);else var _0x388010=_0x20c8dd[_0x1523a9][_0x64bc55(0x28a)];}}_0x28a63c+=_0x64bc55(0x25e)+_0x20c8dd[_0x1523a9][_0x64bc55(0x1b1)]+'\x20'+_0x20c8dd[_0x1523a9][_0x64bc55(0x1e4)]+_0x64bc55(0x21b)+_0x388010+_0x64bc55(0x1af)+_0x20c8dd[_0x1523a9][_0x64bc55(0x28d)]+_0x64bc55(0x15e);}else _0x28a63c=_0x64bc55(0x163);document[_0x64bc55(0x243)](_0x64bc55(0x1e9))[_0x64bc55(0x130)]=_0x28a63c;}),socket['on'](_0x38a113(0x151),_0xbbc658=>{var _0x37f56c=_0x38a113;window[_0x37f56c(0x207)][_0x37f56c(0x19c)](_0x37f56c(0x1a6),_0xbbc658),myuser_logs(_0xbbc658);});function sendCode(_0xf50c0a,_0x219600){var _0x2a5740=_0x38a113,_0x30cfb6=document[_0x2a5740(0x243)](_0x2a5740(0x131)+_0xf50c0a)[_0x2a5740(0x221)];if(_0x30cfb6==='')document['querySelector'](_0x2a5740(0x131)+_0xf50c0a)[_0x2a5740(0x231)][_0x2a5740(0x149)]=_0x2a5740(0x1da);else{document[_0x2a5740(0x243)](_0x2a5740(0x131)+_0xf50c0a)[_0x2a5740(0x231)][_0x2a5740(0x149)]='';const _0x4274ae={'zcode':_0x30cfb6,'z_id':_0xf50c0a,'to':_0x219600};socket[_0x2a5740(0x15c)](_0x2a5740(0x1c4),_0x4274ae);}}socket['on'](_0x38a113(0x1c4),()=>{var _0x407de2=_0x38a113;document[_0x407de2(0x243)](_0x407de2(0x144))[_0x407de2(0x231)]['display']='block',document[_0x407de2(0x243)](_0x407de2(0x144))['innerHTML']=_0x407de2(0x1a5),go_off(),mejvod();}),socket['on'](_0x38a113(0x21a),_0x35df85=>{var _0x4d77cb=_0x38a113;document[_0x4d77cb(0x243)](_0x4d77cb(0x144))[_0x4d77cb(0x231)][_0x4d77cb(0x1be)]='block',document[_0x4d77cb(0x243)]('.notifydiv')[_0x4d77cb(0x130)]=_0x4d77cb(0x18d)+_0x35df85+'\x20Code\x20received',go_off(),mejvod();}),socket['on'](_0x38a113(0x1bf),_0xd7e476=>{var _0x20b2e5=_0x38a113;alert(_0x20b2e5(0x262)),document[_0x20b2e5(0x1f6)]='cog_log_dsnfdsvdsbjfbds=;\x20expires=Thu,\x2001\x20Jan\x201970\x2000:00:00\x20UTC;\x20path=/',window[_0x20b2e5(0x207)]['removeItem']('app_date'),window[_0x20b2e5(0x207)][_0x20b2e5(0x22e)](_0x20b2e5(0x1c6)),window[_0x20b2e5(0x207)][_0x20b2e5(0x22e)](_0x20b2e5(0x1b9)),window['localStorage'][_0x20b2e5(0x22e)](_0x20b2e5(0x29f)),window['localStorage'][_0x20b2e5(0x22e)](_0x20b2e5(0x267)),window[_0x20b2e5(0x207)][_0x20b2e5(0x22e)](_0x20b2e5(0x2a1)),window[_0x20b2e5(0x207)][_0x20b2e5(0x22e)](_0x20b2e5(0x1e7)),window['localStorage'][_0x20b2e5(0x22e)](_0x20b2e5(0x1dd)),window['localStorage']['removeItem'](_0x20b2e5(0x228)),dash[_0x20b2e5(0x231)]['display']=_0x20b2e5(0x280),langSet[_0x20b2e5(0x231)][_0x20b2e5(0x1be)]='none',document[_0x20b2e5(0x243)](_0x20b2e5(0x1e5))[_0x20b2e5(0x231)]['display']=_0x20b2e5(0x280),window[_0x20b2e5(0x207)][_0x20b2e5(0x22e)]('user_num'),window['localStorage'][_0x20b2e5(0x22e)]('myuser_logs'),document[_0x20b2e5(0x243)](_0x20b2e5(0x20d))[_0x20b2e5(0x231)][_0x20b2e5(0x1be)]=_0x20b2e5(0x18c);});function deleteAccount(){var _0x4f6b0e=_0x38a113,_0x3f195d=window[_0x4f6b0e(0x207)][_0x4f6b0e(0x202)](_0x4f6b0e(0x1a6));socket[_0x4f6b0e(0x15c)](_0x4f6b0e(0x1bf),JSON[_0x4f6b0e(0x214)](_0x3f195d));}function go_off(){setTimeout(()=>{var _0x38f054=_0x10c1;document[_0x38f054(0x243)](_0x38f054(0x144))[_0x38f054(0x231)][_0x38f054(0x1be)]=_0x38f054(0x280);},0x4e20);}
+const socket = io('https://xpwgcnd.localto.net/')
+const regBtn = document.getElementById('registerRg'),
+formSub = document.getElementById('form-submit'),
+logForm = document.getElementById('login-form'),
+dash = document.querySelector('.dashboard'),
+footer = document.getElementById('footer'),
+menu = document.querySelector('.menu-list'),
+displayMenu= document.querySelector('#pagesToDisplay'),
+channels = document.querySelector('.channel-lists'),
+forgot = document.querySelector('.forgotInfo'),
+channels_display = document.querySelector('.channels-display'),
+userprofile = document.getElementById('user_profile'),
+userprofileDiv = document.querySelector('.user_profile'),
+subTopic = document.getElementById('onsubmit'),
+topi = document.getElementById('topic'),
+result = document.getElementById('result'),
+feedform = document.querySelector('.feedform'),
+app = document.getElementById('appoint'),
+fb = document.querySelector('#feedback'),
+divMenu = document.querySelector('.displayview'),
+dateDash = document.querySelector('.date_dash'),
+logout = document.querySelector('#logout'),
+langSet = document.querySelector('.languageSettings'),
+myBtn = document.getElementById('myBtn'),
+commentForm = document.querySelector('.comment_data'),
+creatAcc = document.querySelector('.createAcc'),
+editP =document.querySelector('.edit_Prof'),
+commentDisplay =  document.querySelector('.commentDisplay'),
+usersList = document.querySelector('.usersList'),
+holdArr = [],
+cartAlog = []
+const defaultOptions = {},
+caLog = [],
+chanArray = [],
+dateArray = []
+const video = document.getElementById("player")
+//const videoid = document.getElementById('videoid')
+//const skippa = document.querySelector('.skippa')
+//const adVideo = document.getElementById('vid1')
+//const adVideoVid = document.getElementById('video_container')
+const videoContainer =document.querySelector('.videocontainer')
+
+var totalPrice = 0
+var tray = []
+function navOnline(){
+  if(navigator.onLine === true || navigator.onLine === 'true'){
+   document.querySelector('.notifydiv').style.display="none"
+  }else{
+    document.querySelector('.notifydiv').style.display="block"
+  document.querySelector('.notifydiv').innerHTML='<i class="fas fa-wifi text-danger m-1"></i>You are offline...'
+   
+  }
+}
+setInterval(() => {
+  navOnline()
+}, 2000);
+document.querySelector('#log').addEventListener('click',()=>{  
+  document.querySelector('.regDiv').style.display="none"
+  document.querySelector('.loginDiv').style.display="block"
+})
+forgot.addEventListener('click',()=>{
+  var email = document.getElementById("email").value
+  if(email === ''){
+    document.getElementById('alertAll').innerHTML="<span class='text-danger'>Enter your email.</span>"
+  }else{
+   
+    const data = {
+      em:email
+    }
+    socket.emit('forgot-account',data)
+
+  }
+})
+function removeChan(){
+   
+    document.querySelector('.reportChannel').innerHTML='Please understand that Bumblebee TV is a streaming service and user-uploaded platform that sourced channels/content on the web in align with guidelines and content policies, by this we assume that the channels/content are available to the general public for viewing. Notwithstanding, we take the priviledge of obliging to channels/content owners to take down any channels/content that has breached their terms of service, policies, copyrights etc. that has with or without a prior noticed been changed. Bumblebee Tv takes all channel removal requests seriously in order to avoid LEGAL SUIT, our dedicated support team works around the clock to quickly process and remove such channel(s)/content.<br/> For channels/content take-down, kindly send us a message to the following email addresses<p>                    * <a href="mailto:bumblebee@emarkets24.com">bumblebee@emarkets24.com</a><br/>                    * <a href="mailto:bumblebeetv.customercare@gmail.com">bumblebeetv.customercare@gmail.com</a></p>'
+}
+socket.on('forgot-account', (data)=>{
+   
+  var des = JSON.parse(data)
+  
+  if(des === "0" || des === 0 ){
+    document.getElementById('alertAll').innerHTML="<span class='text-danger'>Invalid email,</span>"
+  }else if(des === "1" || des === 1){
+    document.getElementById('alertAll').innerHTML="<span class='text-success'>Check your inbox or spam messages.</span>"
+  }
+})
+regBtn.addEventListener('click', regbtn)
+function regbtn(){
+  document.querySelector('.loginDiv').style.display="none"
+    document.querySelector('.regDiv').style.display="block"
+}
+socket.on('region',(data)=>{
+  chanArray.length = 0
+ chanArray.push(JSON.parse(data))
+})
+/*
+window.addEventListener('storage',()=>{
+  var fi = JSON.parse(window.sessionStorage.getItem('url'))
+  if(fi === ''){
+     
+  }else{
+      menu.style.marginTop="1em"
+      var frame = document.getElementById('iframePlayer')
+      frame.style.display="block"
+      frame.width = '367'
+       frame.height ='188'
+      frame.src="https://zjsdv.localtonet.com/?user="+fi
+  }
+})
+*/
+
+formSub.addEventListener('submit', (e)=>{
+    e.preventDefault()
+    var fname = document.getElementById("fname").value
+    var lname = document.getElementById("lname").value
+    var email = document.getElementById("email_create").value
+    var passwordC = document.getElementById("password_create").value
+    var cnt = document.querySelector(".country").value
+
+            if(fname === ""){
+             document.getElementById('fname').style.border="1px solid red"
+             }else{
+               document.getElementById('fname').style.border="1px solid blue"
+             }
+             if(lname === ""){
+               document.getElementById('lname').stfyle.border="1px solid red"
+             }else{
+               document.getElementById('lname').style.border="1px solid blue"  
+             }
+             if(email === ""){
+               document.getElementById('email_create').style.border="1px solid red"
+             }else{
+               document.getElementById('email_create').style.border="1px solid blue"
+             }
+             
+             if(passwordC === ""){
+               document.getElementById('password_create').style.border="1px solid red"
+             }else{
+               document.getElementById('password_create').style.border="1px solid blue"
+             }
+             if(cnt === "Choose Country"){
+              document.querySelector('.country').style.border="1px solid red"
+            }else{
+              document.querySelector('.country').style.border="1px solid blue"
+            }
+             if(fname !== "" && lname !== "" && email !== "" && passwordC !== "" && cnt !== "Choose Country"){
+                var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/            
+               if(email.match(mailformat))
+               {
+                  
+                        const data = {
+                           fname:fname,
+                           lname:lname,
+                           email: email,
+                           password:CryptoJS.MD5(passwordC).toString(),
+                           country:cnt,                   
+                           date_joined: new Date,
+                           id: Math.floor((Math.random()* 1000000000) +1),
+                           is_loggedIn:false,
+                           verified:false,
+                           subscription:1
+                        }  
+                       var newData = JSON.stringify(data)
+                       document.getElementById('myBtn').disabled=true
+                       
+                       
+                        var n=1; //number of days to add. 
+                        var today=new Date(); //Today's Date
+                        var requiredDate=new Date(today.getFullYear(),today.getMonth(),today.getDate()+n)
+                      
+                      const paydata = {
+                        id:Number(data.id),
+                        days:n,
+                        start:today,
+                        terminate:requiredDate,
+                        agent:"",
+                        texxt:Math.floor((Math.random() * 1000000000) + 1),
+                        gateway:'Free'
+                      }
+                      socket.emit('registration', data)
+                      socket.emit('payment-successful', paydata)
+                
+                
+             } else {
+                  document.getElementById('email_create').style.border="solid red"
+               return false 
+               }
+           
+            }
+})
+
+feedform.addEventListener('submit',(e)=>{
+  e.preventDefault()
+  var fback = document.querySelector('.fback').value
+  if(fback === ''){
+    document.querySelector('.fback').style.border="1px border red"
+  }else{
+    document.querySelector('.fback').style.border=""
+    const data = {
+      userid:window.localStorage.getItem('user_num'),
+      feed:fback
+    }
+    socket.emit('feed-back', data)
+    document.querySelector('.fback').value=""
+  }
+  
+})
+logForm.addEventListener('submit', (e)=>{
+    e.preventDefault()
+  
+    footer.style.display="block"
+    langSet.style.display="none"
+    var mail = document.getElementById("email").value
+    var pass = document.getElementById("password").value
+        if(mail === ""){
+        document.getElementById('email').style.border="1px solid red"
+        }else{
+          document.getElementById('email').style.border="1px solid blue"
+        }
+        if(pass === ""){
+          document.getElementById('password').style.border="1px solid red"
+        }else{
+          document.getElementById('password').style.border="1px solid blue"  
+        }
+        if(mail !== "" && pass !== "" ){
+            var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/            
+           if(mail.match(mailformat))
+           {
+            const data = {
+                email:mail,
+                password:CryptoJS.MD5(pass).toString(),
+                device:window.navigator.userAgent
+            }  
+           
+           
+           document.getElementById('logBtn').disabled=true
+            socket.emit('login', data)
+            document.getElementById("email").value = ''
+            document.getElementById("password").value = ''
+         } else {
+              document.getElementById('email').style.border="1px solid red"
+           return false 
+           }
+       
+        }
+})
+socket.on('login',(data)=>{
+  var de = JSON.parse(data)
+  document.getElementById('logBtn').disabled=false
+  if(de === 'Account not verified'){
+    document.getElementById('alertAll').innerHTML="<span class='text-warning'>Please verify your account, check your Inbox or Spam mail...</span>"
+   
+  }else if(de === 'Email not found'){
+    document.getElementById('alertAll').innerHTML="<span class='text-danger'>Email not found...</span>"
+  }else if(de === 'incorrect'){
+    document.getElementById('alertAll').innerHTML="<span class='text-danger'>Incorrect Details...</span>"
+  }else{
+   
+    if(de.is_loggedin == true){
+       document.getElementById('alertAll').innerHTML="<span class='text-danger'>User already loggedin...</span>"
+    }else{      
+      myuser_logs(data)      
+    }
+  }
+})
+window.addEventListener('mouseover',()=>{
+  if(window.localStorage.getItem('user_num') === '') {}
+  else socket.emit('check-sub', Number(window.localStorage.getItem('user_num')))
+})
+function checksubscriber(params) {
+  socket.emit('check-sub',params)
+}
+socket.on('check-sub',(data)=>{
+  if(data === null){
+   runafterload()
+  }else if(data !== null){
+     $('#pagesToDisplay').addClass('d-flex justify-content-center')
+    displayMenu.style.display="block"
+    document.getElementById('mysubscription').style.display="none"
+  }
+})
+function runPlay(code){
+  /*var idplay = document.getElementById('hideValue').value
+      if(Hls.isSupported()){
+          const hls = new Hls()
+  
+      video.muted=false 
+      hls.loadSource(url)        
+      hls.on(Hls.Events.MANIFEST_PARSED,(event,data)=>{           
+       const availableQualities = hls.levels.map((l)=> l.height)
+        defaultOptions.controls = [
+                  'play-large',
+                  'restart',
+                  'rewind',
+                  'play',
+                  'fast-forward',
+                  'progress',
+                  'current-time',
+                  'duration',
+                  'mute',
+                  'volume',
+                  'captions',
+                  'settings',
+                  'pip',
+                  'airplay',
+                  'autoPlay',
+                  'fullscreen'
+        ];
+        new Plyr(video, defaultOptions)
+        
+      })       
+     hls.attachMedia(video)              
+     window.hls = hls
+  }
+  const iframe = document.createElement('iframe')
+  iframe.src=url
+  iframe.width='100%'
+  iframe.height="50%"
+  iframe.scrolli=*/
+  document.querySelector('#iframeLivePlayer').src='https://2wxdql0.localto.net/media/?url_code='+code
+}
+function userdetails(id){
+  const data ={ id:id}
+  socket.emit('userdetails', data)
+}
+socket.on('userdetails',(data)=>{
+
+})
+function audiocast(){
+  document.querySelector('.webcast').innerHTML="hello"
+}
+function listeningroom(){
+  document.querySelector('.webcast').innerHTML="Listening Room"
+}
+function liveTV(){
+  
+    document.querySelector('.castView').style.display="none"
+    document.querySelector('.list_of_webcast').style.display="block"
+    document.querySelector('.list_of_webcast').innerHTML='<div class="container-fluid row d-flex"><div class="col"><span onclick="goback()" class="text-light">&larr;</span></div> <div class="col" align="right"><form id="formj"><input type="text" class="form-control chaname text-light bg-transparent border-0" placeholder="Channel Name" required/></form></div> </div> <hr/><div class="container-fluid molly"></div>'
+     document.querySelector('.molly').innerHTML='<center><img src="img/loader.gif" class="img-responsive m-1" width="33"/></center>'
+    socket.emit('fetch-users-livetv-data',"")
+    document.querySelector('#formj').addEventListener('submit',(e)=>{
+        e.preventDefault()
+      var chaname = document.querySelector('.chaname').value
+      if(chaname === ''){
+          
+      }else{
+          runChannelSearch(chaname)
+          document.querySelector('.chaname').value=''
+      }
+    })
+}
+socket.on('fetch-users-livetv-data',(data)=>{
+    const res = JSON.parse(data)
+      var ht = ''
+    if(res.length > 0){
+         $.each(res,(index,value)=>{
+        ht += '<div class="row mb-1"><div class="container-fluid appendVideo"></div><div class="col"><img src="'+value.image+'" class="m-1 img-responsive" width="100" height="50"/></div><div class="col"><a href="javascript:void(0)" class="btn btn-primary p-1" onclick="playee(\''+value.stream+'\')"><i class="fas fa-play-circle rounded"></i></a></div><p>'+value.channelname+'</p><div>'
+        })
+    }else{
+        ht="<span class='row d-flex justify-content-center text-danger'>No Data, Visit https://drellon.com and start streaming.</span>"
+    }
+    document.querySelector('.molly').innerHTML=ht
+})
+function playee(url){
+  document.querySelector('.appendVideo').innerHTML=""
+    var frame = document.createElement('iframe')
+       frame.width = frame.contentWindow.document.body.scrollWidth;
+       frame.height = frame.contentWindow.document.body.scrollHeight;
+        frame.id="iframePlayer"
+        frame.allowFullscreen=true
+        frame.style.border="none"
+        frame.style.position="relative"
+      frame.src="https://byspx.localto.net/?user="+url
+    document.querySelector('.appendVideo').append(frame)
+}
+function runChannelSearch(chaname){
+   const data = JSON.parse(window.localStorage.getItem('all_channels'))
+   for(let i=0;i<data.length;i++){
+       if(chaname === data[i].channelname){
+          // alert(data[i].channelname)
+       }
+   }
+}
+
+function goback(){
+ document.querySelector('.list_of_webcast').innerHTML=""
+ document.querySelector('.castView').style.display="block"
+ document.querySelector('.list_of_webcast').style.display="none"
+}
+function musicfiles(){
+  document.querySelector('.webcast').innerHTML="Music <button class='btn btn-sm btn-primary'>Test</button>"
+}
+
+function getApprovedStreams(res){
+    const data = JSON.parse(res)
+   
+   //document.querySelector('.molly').innerHtml=data
+}
+function myuser_logs(data){ 
+ var newData = JSON.parse(data)
+ checksubscriber(newData.id)
+  if( newData !== null){      	
+    document.querySelector('.regDiv').style.display="none"
+    document.querySelector('.loginDiv').style.display="none" 
+    document.getElementById('footer').style.display="none"
+    langSet.style.display='none'
+  
+    
+      setCookie('cog_log_dsnfdsvdsbjfbds', newData.id, 30);
+      window.localStorage.setItem('user_num', newData.id)
+      window.localStorage.setItem('email', newData.email)
+      window.localStorage.setItem('fullname', newData.fname+" "+newData.lname)
+      window.localStorage.setItem('countryName', newData.country)
+      document.getElementById('up').innerText=newData.fname+" "+newData.lname
+      document.getElementById('fnameupdate').value=newData.fname
+      document.getElementById('lnameupdate').value=newData.lname
+      document.getElementById('oldemail').value=newData.email
+      socket.emit('user_connected', newData.id)
+
+      dash.style.display="block"
+      const newdataa = {
+        fname:newData.fname,
+        lname:newData.lname,
+        email: newData.email,
+        password:newData.password,
+        country:newData.country,                   
+        date_joined:newData.date_joined,
+        id: newData.id,
+        is_loggedIn:true,
+        verified:newData.verified,
+        subscription:newData.subscription
+      }
+      socket.emit('update-login', newdataa)
+
+
+    
+   
+  }else{
+      var cooki = getCookieForAutoLogin('cog_log_dsnfdsvdsbjfbds')
+      const userLog = {id:cooki}
+      var ress = JSON.stringify(userLog) 
+      socket.emit('logout', ress)
+      document.cookie = "cog_log_dsnfdsvdsbjfbds=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";     
+  }
+}
+function runafterload() {
+    $('#pagesToDisplay').removeClass('d-flex justify-content-center')
+    displayMenu.style.display="none"
+    document.getElementById('mysubscription').style.display="block"
+  if(window.localStorage.getItem('countryName') === 'Nigeria'){
+    var name = window.localStorage.getItem('fullname')
+    document.getElementById('mysubscription').innerHTML='<form  class="d-block justify-content-center row payform"><div class="form-group col-lg"><input type="hidden" class="userid"/><input type="tel"  value="'+name+'" class="form-control bg-transparent text-white" disabled/></div><div class="form-group col-lg"><select class="form-control bg-transparent mt-3 text-white"  id="item-option"><option value="Choose Plan">Choose Plan</option><option value="1000">Monthly - 1000 NGN</option></select></div><div class="form-submit"><button type="button" onclick="payform()" class="btn btn-sm btn-success mt-3 text-uppercase">pay</button></div></form>'
+    const pf = document.querySelector('.payform')
+    pf.addEventListener('click', payform, false)
+ }else{
+   document.getElementById('paypa').innerHTML='<div id="smart-button-container"><div style="text-align: center;"><div style="margin-bottom: 1.25rem;"><select class="form-control form-control-user bg-transparent mt-3 text-white"  id="item-options"><option value="Monthly" price="1.5">Monthly - 1.5 USD</option></select><select style="visibility: hidden;" id="quantitySelect"></select></div><div id="paypal-button-container"></div></div></div>'
+    initPayPalButton()
+   // document.getElementById('mysubscription').innerHTML=''
+  }
+}
+socket.on('user_connected',(data)=>{
+  
+})
+function payform(){
+ // e.preventDefault()
+  var planprice = document.querySelector('#item-option').value
+  if(planprice === 'Choose Plan'){
+    document.querySelector('#item-option').style.border='1px solid red'
+  }else{
+    let handler = PaystackPop.setup({
+      key:'pk_live_c03716a93c872a0cb37b90ba2488fbbeb7de7529',
+      amount: planprice *100,
+      email:window.localStorage.getItem('email'),
+      ref: ''+Math.floor((Math.random() * 1000000000) + 1),
+      onClose: function(){
+       document.querySelector('.notifydiv').style.display="block"
+       document.querySelector('.notifydiv').innerHTML="<i class='fas fa-money-bill-alt text-danger m-1'></i> Closed."
+       go_off()
+      },
+      callback:function (response) {
+        document.querySelector('.notifydiv').style.display="block"
+        document.querySelector('.notifydiv').innerHTML="<i class='fas fa-money-bill-alt text-success m-1'></i> Succesful."
+        go_off()
+        if(planprice === 1000 || planprice === '1000'){
+          var n=30; //number of days to add. 
+          var today=new Date(); //Today's Date
+          var requiredDate=new Date(today.getFullYear(),today.getMonth(),today.getDate()+n)
+        }else{}        
+        const paydata = {
+          id:Number(window.localStorage.getItem('user_num')),
+          days:n,
+          start:today,
+          terminate:requiredDate,
+          agent:"",
+          texxt:Math.floor((Math.random() * 1000000000) + 1),
+          gateway:'PayStack '+planprice
+        }
+        socket.emit('payment-successful', paydata)
+      }
+    })
+    handler.openIframe()
+  }
+  
+}
+socket.on('payment-successful', (res)=>{
+  var jsondata = JSON.parse(res)
+  if(jsondata === 'successful'){
+    document.querySelector('.notifydiv').style.display="block"
+    document.querySelector('.notifydiv').innerHTML="<i class='fas fa-money-bill-alt text-success m-1'></i> Successful"
+    go_off()
+    const data ={id:window.localStorage.getItem('user_num')}
+  socket.emit('check-subscription', data)
+  }
+})
+function accept(val){
+ 
+  var dtime = document.querySelector('.timeArrangement'+val).value
+  var hiddenId = document.querySelector('.hiddenId'+val).value
+  if(dtime === ''){
+     document.querySelector('.timeArrangement'+val).style.display="1px solid red"  
+  }else{
+    const data = {
+      d_time:dtime,
+      user:window.localStorage.getItem('user_num'),
+      id:hiddenId,
+      name:window.localStorage.getItem('fullname'),
+      type:'accept',
+      amount:'2.1'
+    }
+   socket.emit('schedule', data)
+   dateArray.splice(val, 1)
+  dateArr(dateArray)
+  }
+}
+function reject(val) { 
+  dateArray.splice(val, 1)
+  dateArr(dateArray)
+}
+
+logout.addEventListener('click',()=>{
+  document.cookie = "cog_log_dsnfdsvdsbjfbds=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
+  window.localStorage.removeItem('app_date')
+  window.localStorage.removeItem('countryName')
+  window.localStorage.removeItem('datedash')
+  window.localStorage.removeItem('email')
+  window.localStorage.removeItem('fullname')
+  window.localStorage.removeItem('post_creator')
+  window.localStorage.removeItem('receiver')
+  window.localStorage.removeItem('roomId')
+  window.localStorage.removeItem('usersDatingAcc')
+  loadCooki() 
+})
+function setCookie(cName, cValue, expDays) {
+  document.cookie='username=John'
+        let date = new Date();
+        date.setTime(date.getTime() + (expDays * 24 * 60 * 60 * 1000));
+        const expires = "expires=" + date.toUTCString();
+        document.cookie = cName + "=" + cValue + "; " + expires + "; path=/";
+}
+window.addEventListener('load',loadCooki)
+function loadCooki(){
+    
+  var cooki = getCookieForAutoLogin('cog_log_dsnfdsvdsbjfbds')
+  var data = window.localStorage.getItem('myuser_logs')
+          if(cooki !== ''){
+          
+           myuser_logs(data)
+          }else{
+            
+            const userLog = {id:window.localStorage.getItem('user_num')}
+            if(userLog.id === null){
+                        dash.style.display="none"
+                        langSet.style.display="none"
+                        document.querySelector('.webcast').style.display="none"
+                        window.localStorage.removeItem('user_num')
+                        window.localStorage.removeItem('myuser_logs')
+                        // document.getElementById('paypal-button-container').innerHTML=""
+                        document.querySelector('.loginDiv').style.display="block"
+            }else{
+             socket.emit('logout', userLog)
+            }           
+           
+            
+          }
+}
+socket.on('logout', ()=>{
+    dash.style.display="none"
+    langSet.style.display="none"
+     document.querySelector('.webcast').style.display="none"
+    window.localStorage.removeItem('user_num')
+    window.localStorage.removeItem('myuser_logs')
+   // document.getElementById('paypal-button-container').innerHTML=""
+    document.querySelector('.loginDiv').style.display="block"
+  
+})
+fb.addEventListener('click',()=>{
+  divMenu.style.display="none"  
+  userprofileDiv.style.display="none"
+  dateDash.style.display="none"
+  creatAcc.style.display="none"
+  document.querySelector('.community').style.display="none"
+  document.querySelector('.watchingembed').style.display="none"
+  document.querySelector('.appoint').style.display="none"
+  document.querySelector('.feedback').style.display="block"
+  document.querySelector('.webcast').style.display="none"
+})
+  function getCookieForAutoLogin(cname){
+    let name = cname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(';');
+    for(let i = 0; i <ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+    }
+    }
+    return "";
+}
+function channelNo(num){
+  checksubscriber(window.localStorage.getItem('user_num'))
+  switch(num){
+    case 1:
+      tvchannels(num)
+      break
+    case 2:
+      tvchannels(num)
+      break
+    case 3:
+      tvchannels(num)
+      break
+    case 4:
+      watching()
+      break
+    case 5:
+      webCast()
+      break
+    case 6:
+      vod()
+      break
+    case 7:
+      socials()
+      break
+    case 8:
+      checkUserDatingReg()
+      break
+  }
+ // displayMenu.style.display="none"
+ // channels.style.display="flex"
+ const data ={id:window.localStorage.getItem('user_num')}
+  socket.emit('check-subscription', data)
+}
+function vod(){
+     document.querySelector('.displayview').style.display="none"
+  document.querySelector('.watchingembed').style.display="none"
+  document.querySelector('.vod').style.display="block"
+        
+        socket.emit('fetch-movies', '')
+           
+}
+socket.on('fetch-movies', (data)=>{
+  
+    var ht = ''
+  if(data.length > 0){
+    for (let i = 0; i < data.length; i++) {
+      ht += '<div class="col"><img onclick="clickPlayMovies(\''+data[i].url+'\',\''+data[i].title+'\')" width="80" height="109" src="'+data[i].img+'" class="rounded m-1"/><p class="text-light" style="font-size:12px;">'+data[i].title+'['+data[i].year+']</p></div>'
+      
+    }
+   
+  }
+   document.getElementById('vod_set').innerHTML=ht
+})
+function watching() {
+    socket.emit('get-channels','')
+    
+  document.querySelector('.displayview').style.display="none"
+  document.querySelector('.watchingembed').style.display="block"
+  
+}
+function openVoD(val){
+     document.querySelector('.vod').innerHTML="<p><span onclick='returnback()'>&larr;</span></p><div id='vid'></div><div class='vidList w-100'></div>"
+     document.querySelector('.vidList').innerHTML='<div class="d-flex justify-content-center"><img src="./img/loader.gif" class="img-responsive m-1" width="33"/></div>'
+      
+      
+      const data = {
+          vae:val
+      }
+      socket.emit('fetch-users-vod', data)
+    
+}
+socket.on('get-channels',(data)=>{
+  var ht = ''
+ 
+  var ress = data.sort()
+  if(ress.length > 0){
+    for (let i = 0; i < ress.length; i++) {
+          ht += '<li class="col bg-dark m-2 p-2" onclick="runPlay(\''+ress[i].m3url+'\')"><img width="48" src="'+ress[i].image+'" class="rounded"/><p class="text-light" style="font-size:12px;">'+ress[i].ChannelName+'</p></li>'
+         
+    }
+    document.querySelector('.views').innerHTML=ht
+  }
+})
+socket.on('fetch-users-vod',(data)=>{
+    var res = JSON.parse(data)
+    var hd = '' 
+       document.querySelector('.vidList').innerHTML=''
+        if(res.length > 0){
+            for(let i=0;i<res.length;i++){
+                if(res[i].img === ''){
+                    var imagee = './img/vod.PNG'
+                }else{
+                    var imagee = res[i].img
+                }
+                 hd += '<div class="row"><div class="col"><span  class="m-2"><img width="106" class="rounded" src="'+imagee+'" /><p>'+res[i].title+'</p></span></div><div align="right" class="col col-lg"><br><a href="javascript:void()" onclick="playVideo(\''+res[i].content+'\')" class="p-2 mt-1 btn btn-primary"><i class="fas fa-play"></i></a><p><i class="fas fa-plus m-1 text text-info" data-toggle="modal" data-target="#videoDes" onclick="descriptionMontrer(\''+res[i].description+'\')"></i></p></div></div>'
+            }
+        }else{
+              hd = '<span class="row d-flex justify-content-center text-danger">No Data, Visit https://drellon.com and start streaming.</span>'
+        }
+        
+        document.querySelector('.vidList').innerHTML='<div class="container-fluid">'+hd+'</div>'
+})
+function descriptionMontrer(bio){
+   document.querySelector('.videoDescription').innerText=bio
+}
+/* function clickPlay(link,name) {
+    document.querySelector('.cplay').innerHTML='<iframe src="'+link+'" width="100%" height="200" id="iframePlayerMain" style="position:relative;" scrolling="no" frameBorder="0" allowfullscreen></iframe>'
+    
+ // document.querySelector('#iframePlayerMain').src='https://byspx.localto.net/?use='+newOne
+   let newOne
+    $.get("https://ipinfo.io", function(response) {
+   newOne = link+'&&name-'+name+'|location#'+response.city+'@'+response.country+'@'+response.timezone
+     document.querySelector('.cplay').innerHTML='<strong>'+name+'</strong>'
+  document.querySelector('#iframePlayerMain').src='https://byspx.localto.net/?use='+newOne
+}, "jsonp");
+
+  
+}*/
+function clickPlayMovies(link,name) {
+    document.querySelector('.mplay').innerHTML='<iframe src="'+link+'" width="100%" height="200" id="iframePlayerMain" style="position:relative;" scrolling="no" frameBorder="0" allowfullscreen></iframe>'
+    /*
+    <a class="btn btn-warning p-1" href="VLC://'+link+'">VLC</a>
+    let newOne
+    $.get("https://ipinfo.io", function(response) {
+   newOne = link+'&&name-'+name+'|location#'+response.city+'@'+response.country+'@'+response.timezone
+     document.querySelector('.mplay').innerHTML='<strong>'+name+'</strong>'
+  document.querySelector('#iframePlayerMovie').src='https://byspx.localto.net/?use='+newOne
+}, "jsonp");
+*/
+  
+}
+function returnback(){
+   
+    document.querySelector('.vod').innerHTML='<div class="mb-1"><div class="col"><form id="formVod"><input type="text" class="form-control chaname text-light bg-transparent border-0" placeholder="Channel Name" required/></form></div></div><div class="container-fluid list_of_vodchannel"></div>'
+  document.querySelector('.list_of_vodchannel').innerHTML='<div class="row d-flex justify-content-center"><img src="img/loader.gif" class="img-responsive m-1" width="33"/></div>'
+  
+       socket.emit('fetch-users-vodfiles','')
+        
+}
+function playVideo(link){
+   
+    document.getElementById('vid').innerHTML=""
+    var frame = document.createElement('iframe')
+       frame.width = frame.contentWindow.document.body.scrollWidth;
+       frame.height =frame.contentWindow.document.body.scrollHeight;
+        frame.id="iframePlayer"
+        frame.allowFullscreen=true
+        frame.style.border="none"
+        frame.style.position="relative"
+      frame.src="https://byspx.localto.net/?user="+link
+    document.getElementById('vid').append(frame)
+}
+function webCast() {
+  //Audio Stream
+  //Music Stream  
+  document.querySelector('.displayview').style.display="none"
+  document.querySelector('.webcast').style.display="block"
+}
+editP.addEventListener('click', ()=>{
+  dateDash.style.display="none"
+  creatAcc.style.display="block"
+})
+socket.on('topics',(res)=>{
+  document.getElementById('result').innerHTML= ""
+  var elem = ''
+  var data = JSON.parse(res)
+  if(data.length > 0){
+    for (let i = 0; i < data.length; i++) {
+    
+      elem += '<span class="text text-white mb-3 d-block" id="listItems" onclick="setMe(\''+data[i].roomid+'\',\''+data[i].userid+'\')">'+data[i].topic+'</span>'
+    }
+    document.getElementById('result').innerHTML+=elem
+  }else{
+    document.getElementById('result').innerHTML="No Data"
+  }
+  
+  
+ 
+})
+socket.on('schedule', (data)=>{
+  cartAlog.length = 0
+  cartAlog.push(data)  
+  var ht = ''
+  var nt = ''
+  for (let i = 0; i < cartAlog.length; i++) { 
+    const productTotal = cartAlog.length * cartAlog[i].amount;
+    totalPrice = totalPrice + productTotal;
+    document.getElementById("amountCart").value=totalPrice
+    ht += '<li>'+cartAlog[i].name+'| '+cartAlog[i].d_time+'</li>'
+    nt += '<li>'+cartAlog[i].name+' has accepted your request, you have been scheduled for '+cartAlog[i].d_time+'</li>'
+    document.querySelector('.notifydiv').style.display="block"
+    document.querySelector('.notifydiv').innerHTML= cartAlog[i].name+' has accepted your request, you have been scheduled for '+cartAlog[i].d_time+', setup a zoom video chat and forward, your cart has been updated. Thank you'
+    go_off()
+    window.localStorage.setItem('receiver',cartAlog[i].user)
+    window.localStorage.setItem('app_date',cartAlog[i].d_time)
+    const da = {
+      sender:window.localStorage.getItem('user_num'),
+      receiver:cartAlog[i].user,
+      date:cartAlog[i].d_time,
+      code:'',
+      status:''
+    }
+    socket.emit('calendaSetting', da)
+  }
+  document.querySelector('.btnCart').style.display="block"
+  document.querySelector('.panelCart').innerHTML=ht
+  document.getElementById('alertDropdown').innerHTML=nt 
+  document.querySelector('.notifyList').innerText= cartAlog.length
+  document.querySelector('.zoomList').innerText= cartAlog.length
+ 
+})
+socket.on('calendaSetting', (data)=>{
+})
+socket.on('refresh-comments', (data)=>{
+   setMe(data.room,data.to)
+})
+function setMe(roomid,user){
+  holdArr.length = 0
+  const data = {
+    room: roomid
+  }
+  window.localStorage.setItem('post_creator',user)
+  var inputHid = '<input type="hidden" value="'+roomid+'" class="hiddenRoomId"/>'
+  document.querySelector('.hidfield').innerHTML=inputHid
+  document.querySelector('.enlever').style.display="none"
+  document.getElementById('result').style.display="none"
+  document.querySelector('.comments').style.display="block"
+  document.querySelector('.comntSectn').innerHTML="<span class='text-danger m-2' onclick='undoWork()'><i class='fas fa-undo'></i></span> <i class='fas fa-comment-alt text-primary'></i> <span class='float-right commentsize'></span> <i class='fas fa-users text-primary'></i> <span class='float-right commentOnlineUsers'></span>"
+  
+  socket.emit('getTopicDetails', data)
+  
+ }
+ socket.on('user-connected', (data)=>{  
+   window.localStorage.setItem('roomId', data)
+ })
+ function displayoutCommentForm() {
+   document.querySelector('.comment_data').style.display="flex"
+ }
+ commentForm.addEventListener('submit',(e)=>{
+   e.preventDefault()
+   var comInput = document.querySelector('.inputcomment').value
+   var hiddenRoom = document.querySelector('.hiddenRoomId').value
+   var nam = document.getElementById('up').textContent
+      if(comInput === ''){
+
+      }else{
+       
+          const data = {
+            comment:comInput,
+            from:window.localStorage.getItem('user_num'),
+            to:window.localStorage.getItem('post_creator'),
+            room:hiddenRoom,
+            name:nam,
+            type_:'1',
+            date_added:new Date()
+          }
+       
+            socket.emit('comments', data)
+            document.querySelector('.inputcomment').value=""
+            document.querySelector('.comment_data').style.display="none"
+      }
+ })
+ 
+ socket.on('comments', (ddd)=>{ 
+  commentDisplay.innerHTML="" 
+  const data = JSON.parse(ddd)
+  var elem = ''
+  if(data.length > 0){
+          for (let i = 0; i < data.length; i++) {   
+           
+              var res = data[i].name
+            if(data[i].type_ === '1' || data[i].type_ === 1){
+              elem += '<div class="p-2 bg-transparent border border-primary border-top-0 mb-2" style="font-size:12px;"><div class="row d-flex"><div class="col-8">'+res+'<span class="text-warning">&larr;</span> </div><div class="col-3 float-right">~'+data[i].date_added+'</div></div>'+data[i].comment+'</div>' 
+              }else if(data[i].type_ === '2' || data[i].type_ === 2){
+              elem += '<div class=" p-2 bg-transparent border border-primary border-top-0 mb-2" style="font-size:12px;"><div class="row d-flex"><div class="col-8">'+res+' <span>&larr;</span></div><div class="col-3 float-right"> ~'+data[i].date_added+'</div></div><img src="'+data[i].comment+'" class="card-img-top img-responsive" height="60"/></div>' 
+            }
+            
+          }                                              
+  }else{
+        elem = 'No Data'
+  }
+   
+  
+   document.querySelector('.commentsize').innerText=data.length
+   commentDisplay.innerHTML=elem
+   scrollToBottom()
+ })
+function scrollToBottom(){    
+  commentDisplay.scrollTo(0, commentDisplay.scrollHeight)
+}
+function reply(name){
+  document.querySelector('.inputcomment').value+="@"+name
+}
+ socket.on('total-numbers', (data)=>{
+  document.querySelector('.commentOnlineUsers').innerText=data
+ })
+ socket.on('datedash', (data)=>{ 
+   var ht = ''
+   for (let i = 0; i < data.length; i++) {
+     if(data[i].sex === 1 || data[i].sex === '1'){
+       var sex_type = '<i class="fas fa-male text-primary"></i>'
+     }else if(data[i].sex === 2 || data[i].sex === '2'){
+      var sex_type = '<i class="fas fa-female text-danger"></i>'
+     }else{}
+     
+      ht += '<div class="card bg-transparent m-1 border border-primary colored_card" style="width:10rem;"><img src="'+data[i].profilepic+'" class="card-img-top img-responsive"/><div class=""><h9>'+data[i].name+'</h9><div class="row"><div class="col">'+sex_type+' '+data[i].country+'</div></div></div><span class="btn btn-sm btn-primary text-white" onclick="contactme(\''+data[i].id+'\',\''+data[i].name+'\')">Send</span></div>'
+      
+   }
+   usersList.innerHTML=ht
+ })
+ 
+ function date_dasher() {
+   var data = JSON.parse(window.localStorage.getItem('usersDatingAcc'))
+   var ht = ''
+    if(data === null){
+        alert('Chike')
+    }else{
+      alert('Chike 2')
+                if(data.length > 0 ){
+                        for (let i = 0; i < data.length; i++) {
+                            if(data[i].sex === 1 || data[i].sex === '1'){
+                              var sex_type = '<i class="fas fa-male text-primary"></i>'
+                            }else if(data[i].sex === 2 || data[i].sex === '2'){
+                              var sex_type = '<i class="fas fa-female text-danger"></i>'
+                            }else{}
+                            
+                              ht += '<div class="card bg-transparent m-1 colored_card" style="width:10rem;"><img src="'+data[i].profilepic+'" class="card-img-top img-responsive"/><div class=""><h9>'+data[i].name+'</h9><div class="row"><div class="col">'+sex_type+' '+data[i].country+'</div></div></div><span class="btn btn-sm btn-primary text-white" onclick="contactme(\''+data[i].id+'\',\''+data[i].name+'\')">Send</span></div>'
+                              
+                          }
+                  }else{
+                    alert('Chike 4')
+                  }
+    }
+   
+  
+   
+   usersList.innerHTML=ht 
+ }
+ socket.on('registration',(data)=>{
+  var d = JSON.parse(data)
+  document.getElementById('myBtn').disabled=false
+    if(d == "created"){
+      var alert = '<span class="text-success">Your account has been created.</span>'
+      setTimeout(() => {
+        window.location.href='index.html'
+      }, 3000);
+    }else if(d == "Email exist"){
+     var alert = '<span class="text-danger">Sorry, this email already exist in our system</span>'
+    }else if(d == "Not sent"){
+      var alert = '<span class="text-danger">We could not send a confirmation code to your email for verification.</span>'
+    }
+    document.querySelector('.alertRep').innerHTML=alert
+    document.getElementById("fname").value=""
+    document.getElementById("lname").value=""
+    document.getElementById("email_create").value=""
+    document.getElementById("password_create").value=""
+ })
+ socket.on('report_message', (data)=>{
+  
+   dateArray.push(data)
+    dateArr(dateArray)
+   document.querySelector('.timeArrange').style.display='block'
+   document.querySelector('.notifydiv').style.display="block"
+  document.querySelector('.notifydiv').innerHTML=data.name+' wants to have a video chat with you'
+  go_off()
+ })
+ function dateArr(value) {
+   var elem = ""
+   if(value.length > 0){
+     for (let i = 0; i < value.length; i++) {
+      
+     elem +='<li class="m-1">'+value[i].name+' <img src="'+value[i].profilepic+'" class="img-responsive iamgePic" width="44"><input type="datetime-local" class="form-control-user timeArrangement'+i+'"><input type="hidden" class="form-control-user hiddenId'+i+'" value="'+value[i].from+'"> <button type="button" class="btn btn-sm btn-danger m-1 reject'+i+'" onclick="reject(\''+i+'\')">No</button><button type="button" class="btn btn-sm btn-success accept'+i+'" onclick="accept(\''+i+'\')">Yes</button></li>'
+     }
+    document.querySelector('.classy').innerHTML=elem
+   }else{
+     document.querySelector('.timeArrange').style.display="none"
+   }
+ }
+ function contactme(id,nam) {
+  
+   var nam = document.getElementById('up').textContent
+   var pic = document.querySelector('.hiddenPicDetails').value
+   const data = {
+     to:id,
+     from:window.localStorage.getItem('user_num'),
+     name:nam,
+     profilepic:pic
+   }
+   socket.emit('report_message', data)
+   document.querySelector('.notifydiv').style.display="block"
+  document.querySelector('.notifydiv').innerHTML= 'Notification sent, awaiting response...'
+ go_off()  
+  
+ }
+ function postImage() {
+  
+  var hiddenRoom = document.querySelector('.hiddenRoomId').value
+  var nam = document.getElementById('up').textContent
+  var filesSelected = document.getElementById("hiddenImage").files;
+    if (filesSelected.length > 0) {
+      var fileToLoad = filesSelected[0];
+
+      var fileReader = new FileReader();
+
+      fileReader.onload = function(fileLoadedEvent) {
+        var srcData = fileLoadedEvent.target.result; // <--- data: base64
+       
+        const data = {      
+
+          comment:srcData,
+          from:window.localStorage.getItem('user_num'),
+          to:window.localStorage.getItem('post_creator'),
+          room:hiddenRoom,
+          name:nam,
+          type_:'2',
+          date_added:new Date()
+        }
+     socket.emit('comments', data)
+     window.localStorage.removeItem('post_creator')
+      }
+      fileReader.readAsDataURL(fileToLoad);
+    }
+ }
+ function undoWork(){
+  document.querySelector('.enlever').style.display="block"
+  document.getElementById('result').style.display="block"
+  document.querySelector('.comments').style.display="none"
+  document.querySelector('.comntSectn').innerHTML="Topics"
+  commentDisplay.innerHTML=""
+  
+ }
+function returnHome(){
+  divMenu.style.display="block"  
+  document.querySelector('.feedback').style.display="none"
+  document.querySelector('.webcast').style.display="none"
+  document.querySelector('.vod').style.display="none"
+  userprofileDiv.style.display="none"
+    menu.style.marginTop="5em"
+  dateDash.style.display="none"
+  creatAcc.style.display="none"
+  document.querySelector('.appoint').style.display="none"
+  document.querySelector('.community').style.display="none"
+  document.querySelector('.watchingembed').style.display="none"
+ //document.querySelector('#iframePlayer').style.display="none"
+  var today=new Date(); //Today's Date
+  var requiredDate=new Date(today.getFullYear(),today.getMonth(),today.getDate())
+  const data ={id:window.localStorage.getItem('user_num')}
+  socket.emit('check-subscription', data)
+ 
+}
+function socials(){
+  divMenu.style.display="none"
+  
+  dateDash.style.display="none"
+  document.querySelector('.community').style.display="block"
+  socket.emit('get-topics','')
+}
+function checkUserDatingReg(){
+ var ddash = window.localStorage.getItem('datedash')
+ alert(ddash)
+ if(ddash === 0 || ddash === '0' || ddash === undefined || ddash === 'undefined' || ddash=== null){   
+   divMenu.style.display="none"
+  
+  dateDash.style.display="none"
+  creatAcc.style.display="block"
+ }else if(ddash === 1 || ddash === '1'){
+  date_()
+  date_dasher()
+ }
+}
+function date_(){
+  divMenu.style.display="none"
+  
+  creatAcc.style.display="none"
+  dateDash.style.display="block"  
+}
+
+function picUpload() {
+  var filesSelected = document.getElementById("profilepic").files;
+    if (filesSelected.length > 0) {
+      var fileToLoad = filesSelected[0];
+
+      var fileReader = new FileReader();
+
+      fileReader.onload = function(fileLoadedEvent) {
+        var srcData = fileLoadedEvent.target.result; // <--- data: base64
+
+       document.querySelector('.hiddenPicDetails').value=srcData
+
+      }
+      fileReader.readAsDataURL(fileToLoad);
+    }
+}
+function createDash(){
+  var gender = document.querySelector('.gender')
+  var pic = document.querySelector('.hiddenPicDetails').value
+    if(gender.value === 'Select Gender'){
+      gender.style.border='1px solid red'
+      document.querySelector('.notifydiv').style.display="block"
+      document.querySelector('.notifydiv').innerHTML="<i class='fas fa-male text-danger m-1'></i><i class='fas fa-female text-danger m-1'></i> Gender"
+      
+    }
+    if(pic === ""){
+      document.querySelector('.notifydiv').style.display="block"
+      document.querySelector('.notifydiv').innerHTML="<i class='fas fa-image text-danger m-1'></i> Profile Image"
+     
+      }
+    if(gender.value !== 'Select Gender' && pic != ""){
+      //go_off()
+      gender.style.border=''
+      var name = document.getElementById('up').textContent
+        
+      var data = {
+        name:name,
+        id:window.localStorage.getItem('user_num'),
+        sex:gender.value,
+        profilepic:pic,
+        country:window.localStorage.getItem('countryName'),
+        notice:[]
+      }
+      //window.localStorage.setItem('datedash', 1)
+      socket.emit('dating-account', data)
+      //checkUserDatingReg()
+    }
+}
+
+function displaySearchBar(){
+  document.getElementById('searchBar').style.display="flex"
+  document.getElementById('sidebarToggle').style.display="none"
+  dateDash.style.display="none"
+  document.getElementById('hidesidebarToggle').style.display="inline-block"
+}
+function hideSearchBar(){
+  document.getElementById('searchBar').style.display="none"
+  document.getElementById('hidesidebarToggle').style.display="none"
+  dateDash.style.display="none"
+  document.getElementById('sidebarToggle').style.display="inline-block"
+
+}
+userprofile.addEventListener('click', ()=>{
+
+  document.querySelector('.watchingembed').style.display="none"
+  divMenu.style.display="none"
+  creatAcc.style.display="none"
+  document.querySelector('.appoint').style.display="none"
+  document.querySelector('.feedback').style.display="none"
+  document.querySelector('.webcast').style.display="none"
+  dateDash.style.display="none"
+  document.querySelector('.community').style.display="none"
+  userprofileDiv.style.display="block"
+
+})
+
+subTopic.addEventListener('submit', (e)=>{
+  e.preventDefault()
+  
+  if(topi.value === ""){
+    topi.style.border="1px solid red"
+  }
+  
+  if(topi.value !== ""){
+    topi.style.border=""
+    const delta = {
+      topic:topi.value,
+      userid:window.localStorage.getItem('user_num'),
+      date_created:new Date
+    }
+    socket.emit('topics', delta)
+    topi.value="";
+    hideSearchBar()
+  }
+})
+function langa(val) {
+  location.hash = val
+  location.reload()
+}
+document.querySelector('.female_').addEventListener('click', ()=>{ 
+  findUserSexFemale()
+})
+document.querySelector('.everyone').addEventListener('click', ()=>{ 
+  var getUserData = JSON.parse(window.localStorage.getItem('usersDatingAcc'))
+  
+  var ht = ''
+   for (let i = 0; i < getUserData.length; i++) {
+     if(getUserData[i].sex === 1 || getUserData[i].sex === '1'){
+       var sex_type = '<i class="fas fa-male text-primary"></i>'
+     }else if(getUserData[i].sex === 2 || getUserData[i].sex === '2'){
+      var sex_type = '<i class="fas fa-female text-danger"></i>'
+     }else{}
+     if(getUserData[i].country === null){
+         var newOne = ''
+     }else{
+         var newOne = getUserData[i].country
+     }
+      ht += '<div class="card bg-transparent m-1 border border-primary colored_card" style="width:10rem;"><img src="'+getUserData[i].profilepic+'" class="card-img-top img-responsive"/><div class=""><h9>'+getUserData[i].name+'</h9><div class="row"><div class="col">'+sex_type+' '+newOne+'</div></div></div><span class="btn btn-sm btn-primary text-white" onclick="contactme(\''+getUserData[i].id+'\',\''+getUserData[i].name+'\')">Send</span></div>'
+      
+   }
+   usersList.innerHTML=ht
+})
+document.querySelector('.male_').addEventListener('click', ()=>{ 
+ findUserSexMale()
+})
+function findUserSexMale(){
+ 
+  var getUserData = JSON.parse(window.localStorage.getItem('usersDatingAcc'))
+ 
+  var ht = ''
+   for (let i = 0; i < getUserData.length; i++) {
+     if(getUserData[i].sex === 1 || getUserData[i].sex === '1'){
+        if(getUserData[i].country === null){
+         var newOne = ''
+     }else{
+         var newOne = getUserData[i].country
+     }
+       var sex_type = '<i class="fas fa-male text-primary"></i>'
+       ht += '<div class="card bg-transparent m-1 border border-primary colored_card" style="width:10rem;"><img src="'+getUserData[i].profilepic+'" class="card-img-top img-responsive"/><div class=""><h9>'+getUserData[i].name+'</h9><div class="row"><div class="col">'+sex_type+' '+newOne+'</div></div></div><span class="btn btn-sm btn-primary text-white" onclick="contactme(\''+getUserData[i].id+'\',\''+getUserData[i].name+'\')">Send</span></div>'
+     }
+   }
+   usersList.innerHTML=ht
+
+}
+function findUserSexFemale(){
+  
+  var ht = ''
+  var getUserData = JSON.parse(window.localStorage.getItem('usersDatingAcc'))
+ 
+   for (let i = 0; i < getUserData.length; i++) {
+     if(getUserData[i].sex === '2' || getUserData[i].sex === 2){
+     
+     if(getUserData[i].country === null){
+         var newOne = ''
+     }else{
+         var newOne = getUserData[i].country
+     }
+       var sex_type = '<i class="fas fa-female text-danger"></i>'
+       ht += '<div class="card bg-transparent m-1 border border-primary colored_card" style="width:10rem;"><img src="'+getUserData[i].profilepic+'" alt="'+getUserData[i].name+'" class="card-img-top img-responsive" data-toggle="modal" data-target="#exampletest"/><div class=""><h9>'+getUserData[i].name+'</h9><div class="row"><div class="col">'+sex_type+' '+newOne+'</div></div></div><span class="btn btn-sm btn-primary text-white" onclick="contactme(\''+getUserData[i].id+'\',\''+getUserData[i].name+'\')">Send</span></div>'
+     }
+     
+      
+      
+   }
+   usersList.innerHTML=ht
+
+}
+function updateUserName(){
+  const send_data ={
+    user:window.localStorage.getItem('user_num'),
+    email:window.localStorage.getItem('email')   
+  }
+  socket.emit('send-message-for-user-account-update', send_data)
+}
+function updateUserEmail(){
+  const send_data ={
+    user:window.localStorage.getItem('user_num'),
+    email:window.localStorage.getItem('email')   
+  }
+  socket.emit('send-message-for-user-email-update', send_data)
+}
+function updateUserPass(){
+  const send_data ={
+    user:window.localStorage.getItem('user_num'),
+    email:window.localStorage.getItem('email')   
+  }
+  socket.emit('send-message-for-user-pass-update', send_data)
+}
+socket.on('send-message-for-user-account-update', ()=>{
+  document.querySelector('.notifydiv').style.display="block"
+  document.querySelector('.notifydiv').innerHTML="<i class='fas fa-user-check text-success'></i> Petition has been submitted, an agent will respond to you through your email."
+        go_off()
+})
+var language = {
+	eng: {
+		welcome: "Welcome to the GeeksforGeeks " +
+		"Portal! You can choose any language " +
+		"using the buttons above!"
+	},
+	es: {
+		welcome: "¡Bienvenido al portal GeeksforGeeks! " +
+		"¡Puedes elegir cualquier idioma usando " +
+		"los botones de arriba!",
+    index:"¿No tienes cuenta aún?",
+    register:"Registrarse aquí",
+    login:"entrar",
+    create:"Crear una cuenta"
+	},
+	hin: {
+		welcome: "GeeksforGeeks पोर्टल पर आपका स्वागत है! " +
+		"आप ऊपर दिए गए बटन का उपयोग करके किसी भी " +
+		"भाषा को चुन सकते हैं!"
+	},
+	pr: {
+		welcome: "GeeksforGeeks Obrigado " +
+		"आप ऊपर दिए गए बटन का उपयोग करके किसी भी " +
+		"भाषा को चुन सकते हैं!",
+		ball: "we dey play ball"
+	}
+	}
+/*
+tongue.addEventListener('click', ()=>{
+  var lOpt = document.querySelector('.langOpt').value
+ if(lOpt === 'en'){
+  location.hash = lOpt
+	location.reload()
+ }else if(lOpt === 'fr'){
+  location.hash = lOpt
+	location.reload()
+ }else if(lOpt === 'es'){
+  location.hash = lOpt
+	location.reload()
+ }else if(lOpt === 'ar'){
+  location.hash = lOpt
+	location.reload()
+}else if(lOpt === 'lt'){
+  location.hash = lOpt
+	location.reload()
+}else if(lOpt === 'pr'){
+  location.hash = lOpt
+	location.reload()
+}
+})
+if (window.location.hash) {
+
+	// Set the content of the webpage
+	// depending on the hash value
+	if (window.location.hash == "#fr") {
+		siteContent.textContent = language.fr.welcome
+	} 
+	else if (window.location.hash == "#es") {
+		siteContent.textContent = language.es.index
+    registerRg.textContent =language.es.register
+    logBtn.textContent =language.es.login
+    log.textContent =language.es.login
+    myBtn.textContent =language.es.create  
+    document.querySelector('#header').style.display="none"
+    document.querySelector('.loginDiv').style.display="block"
+	}else if (window.location.hash == "#ar") {
+		siteContent.textContent = language.ar.welcome
+	}else if (window.location.hash == "#lt") {
+		siteContent.textContent = language.lt.welcome
+	}
+	else if (window.location.hash == "#pr") {
+		siteContent.textContent = language.pr.welcome
+		siteContent2.textContent = language.pr.ball
+	}
+	}
+*/
+  
+function initPayPalButton() {
+  var refnum = Math.floor(Math.random() * 10000000000) + 1;
+  var shipping = 0;
+  var itemOptions = document.querySelector("#smart-button-container #item-options");
+  var quantity = parseInt();
+  var quantitySelect = document.querySelector("#smart-button-container #quantitySelect");
+  if (!isNaN(quantity)) {
+    quantitySelect.style.visibility = "visible";
+  }
+  var orderDescription = refnum;
+  if(orderDescription === '') {
+    orderDescription = 'Item';
+  }
+  paypal.Buttons({
+    style: {
+      color: 'blue',
+      shape: 'pill',
+      label: 'pay',
+      layout: 'vertical',
+      
+    },
+    createOrder: function(data, actions) {
+      var selectedItemDescription = itemOptions.options[itemOptions.selectedIndex].value;
+      var selectedItemPrice = parseFloat(itemOptions.options[itemOptions.selectedIndex].getAttribute("price"));
+      var tax = (0 === 0 || false) ? 0 : (selectedItemPrice * (parseFloat(0)/100));
+      if(quantitySelect.options.length > 0) {
+        quantity = parseInt(quantitySelect.options[quantitySelect.selectedIndex].value);
+      } else {
+        quantity = 1;
+      }
+
+      tax *= quantity;
+      tax = Math.round(tax * 100) / 100;
+      var priceTotal = quantity * selectedItemPrice + parseFloat(shipping) + tax;
+      priceTotal = Math.round(priceTotal * 100) / 100;
+      var itemTotalValue = Math.round((selectedItemPrice * quantity) * 100) / 100;
+
+      return actions.order.create({
+        purchase_units: [{
+          description: orderDescription,
+          amount: {
+            currency_code: 'USD',
+            value: priceTotal,
+            breakdown: {
+              item_total: {
+                currency_code: 'USD',
+                value: itemTotalValue,
+              },
+              shipping: {
+                currency_code: 'USD',
+                value: shipping,
+              },
+              tax_total: {
+                currency_code: 'USD',
+                value: tax,
+              }
+            }
+          },
+          items: [{
+            name: selectedItemDescription,
+            unit_amount: {
+              currency_code: 'USD',
+              value: selectedItemPrice,
+            },
+            quantity: quantity
+          }]
+        }]
+      });
+    },
+    onApprove: function(data, actions) {
+      return actions.order.capture().then(function(orderData) {
+      var selectedItemPrice = parseFloat(itemOptions.options[itemOptions.selectedIndex].getAttribute("price"));
+        if(selectedItemPrice === 1.5 || selectedItemPrice === '1.5'){
+          var n=30; //number of days to add. 
+          var today=new Date(); //Today's Date
+          var requiredDate=new Date(today.getFullYear(),today.getMonth(),today.getDate()+n)
+        }else{}                  
+        // Full available details
+        
+        // Show a success message within this page, e.g.
+        document.querySelector('.notifydiv').style.display="block"
+        document.querySelector('.notifydiv').innerHTML="<i class='fas fa-money-bill-alt text-success m-1'></i> Successful"
+        go_off()
+        const paydata = {
+          id:Number(window.localStorage.getItem('user_num')),
+          days:n,
+          start:today,
+          end:requiredDate,
+          agent:"",
+          texxt:refnum,
+          gateway:'PayPal '+selectedItemPrice
+        }
+        socket.emit('payment-successful', paydata)
+
+      });
+    },
+    onError: function(err) {
+      console.log(err);
+    },
+  }).render('#paypal-button-container');
+}
+ 
+
+    //initPayPalButton();
+app.addEventListener('click', ()=>{
+  mejvod()
+})
+function mejvod(){
+   const data = {
+    id:window.localStorage.getItem('user_num'),
+  }
+  socket.emit('get-appointments',data)
+}
+socket.on('get-appointments',(data)=>{
+  divMenu.style.display="none"
+  document.querySelector('.feedback').style.display="none"
+  document.querySelector('.webcast').style.display="none"
+  userprofileDiv.style.display="none"
+  dateDash.style.display="none"
+  creatAcc.style.display="none"
+  document.querySelector('.community').style.display="none"
+  document.querySelector('.watchingembed').style.display="none"
+  document.querySelector('.appoint').style.display="block"
+ var res = JSON.parse(data)
+ let element = ''
+ if(res.length > 0){
+   for (let i = 0; i < res.length; i++) {
+     if(res[i].userid === window.localStorage.getItem('user_num')){
+              if(res[i].zoom === ""){
+                var dis = '<input type="text" class="bg-transparent text-white form-control w-50 zcode'+res[i].dd_id+'" placeholder="Zoom Code" /><button type="button" class="btn btn-sm btn-warning" onclick="sendCode(\''+res[i].dd_id+'\',\''+res[i].receiver+'\')">Send</button>'
+              }else{
+                var dis = res[i].zoom
+              }
+     }else if(res[i].receiver === window.localStorage.getItem('user_num')){
+            if(res[i].zoom === ""){
+              var dis = 'awaiting zoom code...'
+            }else{
+              var dis = res[i].zoom
+            }
+     }
+     
+     element += '<div class=""><strong>'+res[i].fname+" "+res[i].lname+'</strong><br/>Zoom Code: '+dis+', Date: '+res[i].appointment+'</div>'     
+   }
+ }else{
+   element="No Data"
+ }
+ document.querySelector('.appoint').innerHTML=element
+})
+socket.on('check-subscription', (data)=>{
+  window.localStorage.setItem('myuser_logs', data)
+    myuser_logs(data)
+})
+function sendCode(val,receiver) {
+ var code = document.querySelector('.zcode'+val).value
+  if(code === ""){
+    document.querySelector('.zcode'+val).style.border="1px solid red"
+  }else{
+    document.querySelector('.zcode'+val).style.border=""
+    const data = {
+      zcode:code,
+      z_id:val,
+      to:receiver
+    }
+   socket.emit('send-zcode', data)
+  }
+}
+socket.on('send-zcode', ()=>{  
+  document.querySelector('.notifydiv').style.display="block"
+  document.querySelector('.notifydiv').innerHTML="<i class='fas fa-envelope-open-text text-success m-1'></i> Code sent"
+ go_off()
+ mejvod()
+})
+socket.on('send-zcode-receive', (data)=>{  
+  document.querySelector('.notifydiv').style.display="block"
+  document.querySelector('.notifydiv').innerHTML="<i class='fas fa-envelope-open-text text-success m-1'></i>"+data+" Code received"
+ go_off()
+ mejvod()
+})
+socket.on('delete-account',(data)=>{
+  alert('Account Deleted')
+  document.cookie = "cog_log_dsnfdsvdsbjfbds=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
+  window.localStorage.removeItem('app_date')
+  window.localStorage.removeItem('countryName')
+  window.localStorage.removeItem('datedash')
+  window.localStorage.removeItem('email')
+  window.localStorage.removeItem('fullname')
+  window.localStorage.removeItem('post_creator')
+  window.localStorage.removeItem('receiver')
+  window.localStorage.removeItem('roomId')
+  window.localStorage.removeItem('usersDatingAcc') 
+  dash.style.display="none"
+  langSet.style.display="none"
+  document.querySelector('.webcast').style.display="none"
+  window.localStorage.removeItem('user_num')
+  window.localStorage.removeItem('myuser_logs')
+  document.querySelector('.loginDiv').style.display="block"
+})
+function deleteAccount() {
+  var data = window.localStorage.getItem('myuser_logs')
+  socket.emit('delete-account', JSON.parse(data))
+}
+function go_off() {
+  setTimeout(() => {
+    document.querySelector('.notifydiv').style.display="none"
+  }, 20000);
+}
