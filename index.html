@@ -17,6 +17,13 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/js-sha1/0.6.0/sha1.min.js" integrity="sha512-q6FuE4ifzTygTD/ug8CFnAFXl+i1zXqBWP6flRAuSWjaXrFu4Cznk8Xr+VrWMyi7fSatbssh7ufobAetvXK8Pg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> 
   <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
   -->
+  <script>
+         window.onload = function() {
+            var iframe = document.getElementById("iframeLivePlayer");
+            iframe.width = iframe.contentWindow.document.body.scrollWidth;
+            iframe.height = iframe.contentWindow.document.body.scrollHeight;
+         }
+      </script>
 </head>
 <body>  
   
@@ -356,7 +363,7 @@
                                   <div class="vplay bg-dark">
                                     <!--<label class="title-label btn border-white text-light channelname"></label>
                                     <video  autoplay controls width="100%" id="player" preload="none" controlList="nodownload"></video>-->
-                                    <iframe class="responsive-iframe" id="iframeLivePlayer" width="100%" height="200" marginheight="0" frameborder="0" border="0" scrolling="no"></iframe>
+                                    <iframe class="responsive-iframe" id="iframeLivePlayer" scrolling="no" allowfullscreen allow="accelerometer; autoplay; gyroscope;encrypted-media; picture-in-picture"  frameborder="0" border="0" scrolling="no"></iframe>
                                             
                                     </div>
                                 </div>
