@@ -318,7 +318,7 @@ function runPlay(code){
   iframe.width='100%'
   iframe.height="50%"
   iframe.scrolli=*/
-  document.querySelector('#iframeLivePlayer').src='https://2wxdql0.localto.net/media/?url_code='+code
+  document.querySelector('#iframeLivePlayer').src='https://pv0wr7s.localto.net//media/?url_code='+code
 }
 function userdetails(id){
   const data ={ id:id}
