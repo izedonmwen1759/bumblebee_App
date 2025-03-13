@@ -1,4 +1,4 @@
-const socket = io('https://xpwgcnd.localto.net/')
+const socket = io('https://hzuby7wjo.localto.net/')
 const regBtn = document.getElementById('registerRg'),
 formSub = document.getElementById('form-submit'),
 logForm = document.getElementById('login-form'),
